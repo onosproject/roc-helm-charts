@@ -4,7 +4,7 @@ Files: VERSION .gitreview
 Copyright: 2021 Open Networking Foundation
 License: Apache-2.0
 
-Files: config-models/*/files/*.tree */files/configs/*.json
+Files: config-models/*/files/*.tree */files/configs/*.json */dashboards/*/*.json */files/opa-rbac/test/*.json
 Copyright: 2021 Open Networking Foundation
 License: LicenseRef-ONF-Member-Only-1.0
 
