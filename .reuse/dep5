@@ -1,10 +1,10 @@
 Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 
-Files: VERSION .gitreview
+Files: VERSION .gitreview .gitignore CODE_OF_CONDUCT.md
 Copyright: 2021 Open Networking Foundation
 License: Apache-2.0
 
-Files: config-models/*/files/*.tree */files/configs/*.json */dashboards/*/*.json */files/opa-rbac/test/*.json
+Files: config-models/*/files/*.tree */files/configs/*.json */dashboards/*/*.json */files/opa-rbac/test/*.json go.mod go.sum
 Copyright: 2021 Open Networking Foundation
 License: LicenseRef-ONF-Member-Only-1.0
 

@@ -17,6 +17,8 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
+const aetherCharts = "https://charts.aetherproject.org/"
+
 // AetherRocUmbrellaSuite is the aether-roc-umbrella chart test suite
 type AetherRocUmbrellaSuite struct {
 	test.Suite
@@ -50,7 +52,7 @@ func (s *AetherRocUmbrellaSuite) TestInstall(t *testing.T) {
 	assert.NoError(t, err)
 	registry := s.c.GetArg("registry").String("")
 
-	onos := helm.Chart("aether-roc-umbrella", onostest.SdranChartRepo).
+	onos := helm.Chart("aether-roc-umbrella", aetherCharts).
 		Release("aether-roc-umbrella").
 		SetUsername(username).
 		SetPassword(password).

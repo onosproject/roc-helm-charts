@@ -46,7 +46,7 @@ Currently 2 versions of the `Aether` model are loaded:
 
 Then run:
 ```bash
-helm -n micro-onos install aether-roc-umbrella sdran/aether-roc-umbrella \
+helm -n micro-onos install aether-roc-umbrella aether/aether-roc-umbrella \
 --set onos-config.openidc.issuer=http://dex-ldap-umbrella:5556 \
 --set aether-roc-gui.openidc.issuer=http://dex-ldap-umbrella:5556
 ```
