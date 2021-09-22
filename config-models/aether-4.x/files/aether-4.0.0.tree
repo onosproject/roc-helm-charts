@@ -4,16 +4,16 @@ module: onf-application
         +--rw id              application-id
         +--rw display-name?   string
         +--rw description?    at:description
+        +--rw address         ietf:host
         +--rw endpoint* [name]
         |  +--rw name          string
-        |  +--rw address       ietf:host
         |  +--rw port-start    ietf:port-number
         |  +--rw port-end?     ietf:port-number
         |  +--rw protocol?     at:protocol
+        |  +--rw mbr
+        |     +--rw uplink?     at:bitrate
+        |     +--rw downlink?   at:bitrate
         +--rw enterprise      -> /ent:enterprise/enterprise/id
-        +--rw mbr
-           +--rw uplink?     at:bitrate
-           +--rw downlink?   at:bitrate
 
 module: onf-connectivity-service
   +--rw connectivity-service
@@ -128,8 +128,9 @@ module: onf-vcs
         |  +--rw device-group    -> /dg:device-group/device-group/id
         |  +--rw enable?         boolean
         +--rw template?        -> /vt:template/template/id
-        +--rw application* [application]
+        +--rw filter* [application]
         |  +--rw application    -> /app:application/application/id
+        |  +--rw priority?      uint8
         |  +--rw allow?         boolean
         +--rw upf?             -> /upf:upf/upf/id
         +--rw description?     at:description

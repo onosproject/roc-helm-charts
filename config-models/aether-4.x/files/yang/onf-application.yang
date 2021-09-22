@@ -54,19 +54,19 @@ module onf-application {
         description "description of this application";
       }
 
+      leaf address {
+        type ietf:host;
+        mandatory true;
+        description
+            "Address of this application. Either a hostname, an IP, or a subnet.";
+      }
+
       list endpoint {
         key "name";
-        max-elements 1;
         leaf name {
           type string;
           description
               "Name of this endpoint";
-        }
-        leaf address {
-          type ietf:host;
-          mandatory true;
-          description
-              "Address of this endpoint. Either a hostname, and IP, or a subnet.";
         }
         leaf port-start {
           type ietf:port-number;
@@ -82,8 +82,22 @@ module onf-application {
         leaf protocol {
           type at:protocol;
           description
-              "Name of this endpoint";
-        }                   
+              "Protocol of this endpoint";
+        }
+        container mbr {
+          description "Maximum bitrate";
+          leaf uplink {
+            type at:bitrate;
+            units mbr;
+            description "Per-Device per-Application mbr uplink data rate in mbps";
+          }
+
+          leaf downlink {
+            type at:bitrate;
+            units mbr;
+            description "Per-Device per application mbr downlink data rate in mbps";
+          }
+        }
       }
 
       leaf enterprise {
@@ -94,21 +108,6 @@ module onf-application {
         description
           "Link to enterprise that owns this Application. May be set to None if the application is global to all Enterprises.";
       }
-
-      container mbr {
-        description "Maximum bitrate";
-        leaf uplink {
-          type at:bitrate;
-          units mbr;
-          description "Per-Application mbr uplink data rate in mbps";
-        }
-
-        leaf downlink {
-          type at:bitrate;
-          units mbr;
-          description "Per-Application mbr downlink data rate in mbps";
-        }
-      }      
     }
-  } 
+  }
 }

@@ -17,7 +17,7 @@ module onf-vcs {
 
   organization "Open Networking Foundation.";
   contact "Scott Baker";
-  description 
+  description
     "An Aether Virtual Cellular Service (VCS) is
      used to connect devices with applications";
 
@@ -53,13 +53,13 @@ module onf-vcs {
       }
 
       list device-group {
-        key "device-group";   
+        key "device-group";
         leaf device-group {
           type leafref {
             path "/dg:device-group/dg:device-group/dg:id";
-          }          
+          }
           description
-            "Link to device group";          
+            "Link to device group";
         }
         leaf enable {
           type boolean;
@@ -70,19 +70,19 @@ module onf-vcs {
         description
           "A list of device groups. Groups will only participate in
            the VCS if the enable field is set to True";
-      }         
+      }
 
       leaf template {
         type leafref {
           path "/vt:template/vt:template/vt:id";
-        }          
+        }
         description
           "Link to user vcs template that was used to initialize
            this VCS";
       }
 
-      list application {
-        key "application";   
+      list filter {
+        key "application";
         leaf application {
           type leafref {
             path "/app:application/app:application/app:id";
@@ -91,6 +91,12 @@ module onf-vcs {
           description
             "Link to application";
         }
+        leaf priority {
+          type uint8;
+          default 0;
+          description
+            "Priority of this application";
+        }
         leaf allow {
           type boolean;
           default true;
@@ -98,15 +104,15 @@ module onf-vcs {
             "Allow or deny this application";
         }
         description
-          "An ordered list of applications to allow and deny. The deny rules
-           will be executed first, followed by the allow rules. The first rule
-           to match is returned. An implicit DENY ALL lies at the end.";
-      }      
+          "A list of applications to allow and/or deny. Rules are executed in
+           priority order. The first rule to match will determine the fate
+           of the packet.";
+      }
 
       leaf upf {
         type leafref {
           path "/upf:upf/upf:upf/upf:id";
-        }          
+        }
         description
           "Link to user plane that implements this vcf";
       }
@@ -123,7 +129,7 @@ module onf-vcs {
         mandatory true;
         description
           "Link to enterprise that owns this VCS";
-      }      
+      }
 
       // the following are populated from the template
       leaf sst {
@@ -131,7 +137,7 @@ module onf-vcs {
         mandatory true;
         description "Slice/Service type. Immutable.";
       }
-      
+
       leaf sd {
         type at:sd;
         mandatory true;
@@ -184,5 +190,5 @@ module onf-vcs {
       }
       // end of items populated from the template
     }
-  } 
+  }
 }
