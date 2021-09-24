@@ -53,3 +53,26 @@ spec:
     onos.topo.Asset:
       name: 5G Core
     onos.topo.MastershipState: {}
+---
+# The 4G/5G v4.0.0 sdcore-adapter
+apiVersion: topo.onosproject.org/v1beta1
+kind: Entity
+metadata:
+  name: connectivity-service-v4
+spec:
+  uri: connectivity-service-v4
+  kind:
+    name: aether
+  aspects:
+    onos.topo.Configurable:
+      address: sdcore-adapter-v4:5150
+      version: 4.0.0
+      type: Aether
+    onos.topo.Location:
+      lat: 52.5150
+      lng: 13.3885
+    onos.topo.TLSOptions:
+      insecure: true
+    onos.topo.Asset:
+      name: 5G Core
+    onos.topo.MastershipState: {}

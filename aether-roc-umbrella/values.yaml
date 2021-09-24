@@ -46,6 +46,8 @@ import:
       enabled: false
     v3:
       enabled: true
+    v4:
+      enabled: true
   sdcore-adapter:
     v2_1:
       enabled: true
