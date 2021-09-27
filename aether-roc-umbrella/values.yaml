@@ -245,6 +245,8 @@ onos-config:
         enabled: false
       v3:
         enabled: true
+      v4:
+        enabled: true
   plugin:
     compiler:
       target: ""
