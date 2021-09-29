@@ -49,8 +49,6 @@ import:
     v4:
       enabled: true
   sdcore-adapter:
-    v2_1:
-      enabled: true
     v3:
       enabled: true
   subscriber-proxy:
@@ -78,7 +76,7 @@ onos-cli: {}
 aether-roc-api: {}
 
 # Aether ROC GUI
-aether-roc-gui-v3:
+aether-roc-gui:
   websocket:
     proxyEnabled: true
   grafana:
@@ -89,20 +87,15 @@ aether-roc-gui-v3:
     service: aether-roc-umbrella-prometheus-server
 
 # SD-Core Adapter
-sdcore-adapter-v21:
-  nameOverride: sdcore-adapter-v21
-  fullnameOverride: sdcore-adapter-v21
+sdcore-adapter:
+  nameOverride: sdcore-adapter-v3
+  fullnameOverride: sdcore-adapter-v3
   prometheusEnabled: false
 
 # Subscriber Proxy
 subscriber-proxy:
   nameOverride: subscriber-proxy
   fullnameOverride: subscriber-proxy
-  prometheusEnabled: false
-
-sdcore-adapter-v3:
-  nameOverride: sdcore-adapter-v3
-  fullnameOverride: sdcore-adapter-v3
   prometheusEnabled: false
 
 grafana:
