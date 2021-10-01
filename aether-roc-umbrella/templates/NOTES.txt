@@ -18,7 +18,7 @@ $ kubectl -n {{.Release.Namespace}} exec -it $(kubectl -n {{.Release.Namespace}}
 * Aether Portal at http://<server_IP>:31190
 
 If you are using KinD as a Kubernetes server, you will have to use a "port-forward" to access the Aether ROC GUI e.g.
-$ kubectl -n {{.Release.Namespace}} port-forward $(kubectl -n {{.Release.Namespace}} get pods -l type=arg -o name) 8183:80
+$ kubectl -n {{.Release.Namespace}} port-forward service/aether-roc-gui 8183:80
 and then access the GUI at
 * http://localhost:8183
 

@@ -47,7 +47,7 @@ import:
     v3:
       enabled: true
     v4:
-      enabled: true
+      enabled: false
   sdcore-adapter:
     v3:
       enabled: true
@@ -77,6 +77,16 @@ aether-roc-api: {}
 
 # Aether ROC GUI
 aether-roc-gui:
+  websocket:
+    proxyEnabled: true
+  grafana:
+    proxyEnabled: true
+    service: aether-roc-umbrella-grafana # the grafana hostname - use FQDN for other namespaces
+  prometheus:
+    proxyEnabled: true
+    service: aether-roc-umbrella-prometheus-server
+
+aether-roc-gui-v4:
   websocket:
     proxyEnabled: true
   grafana:
