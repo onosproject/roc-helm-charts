@@ -73,6 +73,13 @@ module: onf-site
         |  +--rw address?   inet:host
         |  +--rw tac        at:tac
         |  +--rw enable?    boolean
+        +--rw monitoring
+        |  +--rw edge-cluster-prometheus-url?      inet:uri
+        |  +--rw edge-monitoring-prometheus-url?   inet:uri
+        |  +--rw edge-device* [name]
+        |     +--rw name            string
+        |     +--rw display-name?   string
+        |     +--rw description?    at:description
         +--rw enterprise         -> /ent:enterprise/enterprise/id
         +--rw imsi-definition
         |  +--rw mcc           at:mcc

@@ -73,7 +73,42 @@ module onf-site {
         }
         description
           "List of small cell addresses";
-      }        
+      } 
+
+      container monitoring {
+        leaf edge-cluster-prometheus-url {
+          type inet:uri;
+          description
+            "URL of edge cluster prometheus";
+        }
+        leaf edge-monitoring-prometheus-url {
+          type inet:uri;
+          description
+            "URL of monitoring prometheus";
+        }        
+        list edge-device {
+          key "name";
+          leaf name {
+            type string {
+              length 1..80;
+            }
+            description
+              "Name of edge monitoring device";
+          }
+          leaf display-name {
+            type string {
+                length 1..80;
+            }
+            description "display name to use in GUI or CLI";            
+          }
+          leaf description {
+            type at:description;
+            description "description of this site";
+          }
+          description
+            "List of edge monitoring devices";
+        }
+      }
 
       leaf enterprise {
         type leafref {
