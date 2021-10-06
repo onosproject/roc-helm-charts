@@ -10,7 +10,7 @@ replicaCount: 1
 
 image:
   repository: onosproject/aether-roc-api
-  tag: v0.7.15
+  tag: v0.8.0
   pullPolicy: IfNotPresent
   pullSecrets: []
   websocketsidecar:
@@ -23,6 +23,11 @@ fullnameOverride: "aether-roc-api"
 # Needed for development only - set to blank otherwise
 corsOrigins:
   - http://localhost:4200
+
+# Enable by giving a value like http://k3u-keycloak:80/auth/realms/master
+# make sure this is reachable at http://k3u-keycloak:80/auth/realms/master/.well-known/openid-configuration
+openidc:
+  issuer:
 
 websocketsidecar:
   enabled: true
