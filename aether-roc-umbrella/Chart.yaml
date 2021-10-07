@@ -7,7 +7,7 @@ name: aether-roc-umbrella
 description: Aether ROC Umbrella chart to deploy all Aether ROC
 kubeVersion: ">=1.18.0"
 type: application
-version: 1.3.10
+version: 1.3.11
 appVersion: v0.0.0
 keywords:
   - aether
@@ -21,20 +21,14 @@ dependencies:
     condition: import.onos-topo.enabled
     repository: https://charts.onosproject.org
     version: 1.1.102
-  - name: config-model-aether
-    condition: onos-config.models.aether.v2_1.enabled
-    repository: "@aether"
-    version: 2.1.3
-    alias: config-model-aether-2-1-0
-  - name: config-model-aether
+  - name: config-model-aether-3
     condition: onos-config.models.aether.v3.enabled
-    repository: "@aether"
-    version: 3.0.13
-    alias: config-model-aether-3-0-0
+    repository: "file://../config-models/aether-3.x"
+    version: 3.0.150
   - name: onos-config
     condition: import.onos-config.enabled
     repository: https://charts.onosproject.org
-    version: 1.3.4
+    version: 1.3.5
   - name: onos-gui
     condition: import.onos-gui.enabled
     repository: https://charts.onosproject.org
@@ -45,21 +39,19 @@ dependencies:
     version: 1.1.5
   - name: aether-roc-api
     condition: import.aether-roc-api.enabled
-    repository: "@aether"
-    version: 1.1.14
+    repository: "file://../aether-roc-api"
+    version: 1.1.150
   - name: aether-roc-gui
     condition: import.aether-roc-gui.v3.enabled
-    repository: "@aether"
-    version: 3.0.24
-    alias: aether-roc-gui-v3
+    repository: "file://../aether-roc-gui"
+    version: 3.0.150
   - name: sdcore-adapter
     condition: import.sdcore-adapter.v3.enabled
-    repository: "@aether"
+    repository: "file://../sdcore-adapter"
     version: 3.0.15
-    alias: sdcore-adapter-v3
   - name: subscriber-proxy
     condition: import.subscriber-proxy.enabled
-    repository: "@aether"
+    repository: "file://../subscriber-proxy"
     version: 0.0.3
   - name: nginx
     alias: sdcore-test-dummy
