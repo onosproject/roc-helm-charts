@@ -42,12 +42,10 @@ import:
   aether-roc-api:
     enabled: true
   aether-roc-gui:
-    v2_1:
-      enabled: false
     v3:
-      enabled: true
-    v4:
       enabled: false
+    v4:
+      enabled: true
   sdcore-adapter:
     v3:
       enabled: true
@@ -242,10 +240,6 @@ onos-config:
       enabled: false
   models:
     aether:
-      v2_1:
-        enabled: true
-      v2_2:
-        enabled: false
       v3:
         enabled: true
       v4:
