@@ -2,32 +2,28 @@
 #
 # SPDX-License-Identifier: LicenseRef-ONF-Member-Only-1.0
 
-# Default values for aether-roc-api.
+# Default values for aether-roc-websocket.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
 replicaCount: 1
 
 image:
-  repository: onosproject/aether-roc-api
+  repository: onosproject/aether-roc-websocket
   tag: v0.8.3
   pullPolicy: IfNotPresent
   pullSecrets: []
 
 imagePullSecrets: []
 nameOverride: ""
-fullnameOverride: "aether-roc-api"
-
-# Needed for development only - set to blank otherwise
-corsOrigins:
-  - http://localhost:4200
+fullnameOverride: "aether-roc-websocket"
 
 # Enable by giving a value like http://k3u-keycloak:80/auth/realms/master
 # make sure this is reachable at http://k3u-keycloak:80/auth/realms/master/.well-known/openid-configuration
 openidc:
   issuer:
 
-store: {}
+port: 8120
 
 service:
   type: ClusterIP

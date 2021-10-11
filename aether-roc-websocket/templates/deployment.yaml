@@ -1,33 +1,33 @@
-# SPDX-FileCopyrightText: 2020-present Open Networking Foundation <info@opennetworking.org>
+# SPDX-FileCopyrightText: 2021-present Open Networking Foundation <info@opennetworking.org>
 #
 # SPDX-License-Identifier: LicenseRef-ONF-Member-Only-1.0
 
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "aether-roc-api.fullname" . }}
+  name: {{ include "aether-roc-websocket.fullname" . }}
   namespace: {{ .Release.Namespace }}
   labels:
-    {{- include "aether-roc-api.labels" . | nindent 4 }}
+    {{- include "aether-roc-websocket.labels" . | nindent 4 }}
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      name: {{ template "aether-roc-api.fullname" . }}
+      name: {{ template "aether-roc-websocket.fullname" . }}
       app: aether
-      type: api
-      resource: {{ template "aether-roc-api.fullname" . }}
-      {{- include "aether-roc-api.selectorLabels" . | nindent 6 }}
+      type: ws
+      resource: {{ template "aether-roc-websocket.fullname" . }}
+      {{- include "aether-roc-websocket.selectorLabels" . | nindent 6 }}
   template:
     metadata:
       labels:
-        name: {{ template "aether-roc-api.fullname" . }}
+        name: {{ template "aether-roc-websocket.fullname" . }}
         app: aether
-        type: api
-        resource: {{ template "aether-roc-api.fullname" . }}
-        {{- include "aether-roc-api.selectorLabels" . | nindent 8 }}
+        type: ws
+        resource: {{ template "aether-roc-websocket.fullname" . }}
+        {{- include "aether-roc-websocket.selectorLabels" . | nindent 8 }}
     spec:
-      serviceAccountName: aether-roc-api
+      serviceAccountName: aether-roc-websocket
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       {{- with .Values.imagePullSecrets }}
@@ -43,52 +43,35 @@ spec:
               valueFrom:
                 fieldRef:
                   fieldPath: metadata.namespace
-            - name: OIDC_SERVER_URL
-              value: {{ .Values.openidc.issuer }}
-          args:
-            {{- range $key, $corsorigin := .Values.corsOrigins }}
-            - {{ printf "-allowCorsOrigin=%s" $corsorigin }}{{end}}
+          args: []
           ports:
             - name: http
-              containerPort: 8181
+              containerPort: {{ .Values.port }}
           startupProbe:
             tcpSocket:
-              port: 8181
+              port: {{ .Values.port }}
             periodSeconds: 5
             failureThreshold: 60
           readinessProbe:
             tcpSocket:
-              port: 8181
+              port: {{ .Values.port }}
             initialDelaySeconds: 10
             periodSeconds: 10
           livenessProbe:
             tcpSocket:
-              port: 8181
+              port: {{ .Values.port }}
             initialDelaySeconds: 10
             periodSeconds: 10
-          volumeMounts:
-            - name: secret
-              mountPath: /etc/aether-roc-api/certs
-              readOnly: true
-            - name: config
-              mountPath: /etc/onos/config
-              readOnly: true
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
-          # Enable ptrace for debugging
-          securityContext:
-            {{- if .Values.debug }}
-            capabilities:
-              add:
-                - SYS_PTRACE
-            {{- end }}
+          securityContext: {}
       volumes:
         - name: secret
           secret:
-            secretName: {{ template "aether-roc-api.fullname" . }}-secret
+            secretName: {{ template "aether-roc-websocket.fullname" . }}-secret
         - name: config
           configMap:
-            name: {{ template "aether-roc-api.fullname" . }}-config
+            name: {{ template "aether-roc-websocket.fullname" . }}-config
       {{- with .Values.nodeSelector }}
     nodeSelector:
       {{- toYaml . | nindent 8 }}

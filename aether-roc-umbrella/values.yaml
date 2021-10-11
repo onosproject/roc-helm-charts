@@ -41,6 +41,8 @@ import:
     enabled: true
   aether-roc-api:
     enabled: true
+  aether-roc-websocket:
+    enabled: true
   aether-roc-gui:
     v3:
       enabled: false
@@ -170,7 +172,7 @@ prometheus:
     enabled: false
   alertmanager:
     configMapOverrideName: alertmanager
-    webhook_url: "http://aether-roc-api-websocket/webhook"
+    webhook_url: "http://aether-roc-websocket/webhook"
   serverFiles:
     alerting_rules.yml:
      groups:

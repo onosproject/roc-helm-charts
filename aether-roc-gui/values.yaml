@@ -66,7 +66,7 @@ aetherservices:
 
 websocket:
   proxyEnabled: false
-  service: aether-roc-api-websocket
+  service: aether-roc-websocket
   protocol: http
   port: 80
 
