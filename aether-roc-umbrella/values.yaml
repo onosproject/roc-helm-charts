@@ -50,6 +50,8 @@ import:
       enabled: true
   sdcore-adapter:
     v3:
+      enabled: false
+    v4:
       enabled: true
   subscriber-proxy:
     enabled: true
@@ -100,6 +102,9 @@ aether-roc-gui-v4:
 sdcore-adapter:
   nameOverride: sdcore-adapter-v3
   fullnameOverride: sdcore-adapter-v3
+  prometheusEnabled: false
+
+sdcore-adapter-v4:
   prometheusEnabled: false
 
 # Subscriber Proxy
