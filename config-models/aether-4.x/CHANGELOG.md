@@ -3,6 +3,13 @@ SPDX-FileCopyrightText: 2021 Open Networking Foundation
 
 SPDX-License-Identifier: LicenseRef-ONF-Member-Only-1.0
 -->
+Changes on 10/13/2021
+=====================
+Application
+  * Add Traffic-Class to Application
+  * Add Site to UPF
+  * Add Device.Mbr.<Uplink,Downlink> to DeviceGroup
+
 Differences from Aether-3.0.0
 =============================
 

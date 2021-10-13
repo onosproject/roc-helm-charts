@@ -6,13 +6,14 @@ module: onf-application
         +--rw description?    at:description
         +--rw address         ietf:host
         +--rw endpoint* [name]
-        |  +--rw name          string
-        |  +--rw port-start    ietf:port-number
-        |  +--rw port-end?     ietf:port-number
-        |  +--rw protocol?     at:protocol
+        |  +--rw name             string
+        |  +--rw port-start       ietf:port-number
+        |  +--rw port-end?        ietf:port-number
+        |  +--rw protocol?        at:protocol
         |  +--rw mbr
-        |     +--rw uplink?     at:bitrate
-        |     +--rw downlink?   at:bitrate
+        |  |  +--rw uplink?     at:bitrate
+        |  |  +--rw downlink?   at:bitrate
+        |  +--rw traffic-class?   -> /tc:traffic-class/traffic-class/id
         +--rw enterprise      -> /ent:enterprise/enterprise/id
 
 module: onf-connectivity-service
@@ -37,6 +38,10 @@ module: onf-device-group
         |  +--rw imsi-range-from?   uint64
         |  +--rw imsi-range-to?     uint64
         +--rw ip-domain?      -> /ipd:ip-domain/ip-domain/id
+        +--rw device
+        |  +--rw mbr
+        |     +--rw uplink?     at:bitrate
+        |     +--rw downlink?   at:bitrate
         +--rw site            -> /st:site/site/id
 
 module: onf-enterprise
@@ -125,6 +130,7 @@ module: onf-upf
         +--rw display-name?      string
         +--rw description?       at:description
         +--rw enterprise         -> /ent:enterprise/enterprise/id
+        +--rw site               -> /st:site/site/id
 
 module: onf-vcs
   +--rw vcs

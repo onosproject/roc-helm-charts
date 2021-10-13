@@ -7,9 +7,10 @@ module onf-upf {
   prefix upf;
 
   import ietf-inet-types { prefix inet; }
-  import ietf-yang-types{ prefix yg; }  
+  import ietf-yang-types{ prefix yg; }
   import onf-aether-types { prefix at; }
   import onf-enterprise{ prefix ent; }
+  import onf-site{ prefix st; }
 
   organization "Open Networking Foundation.";
   contact "Scott Baker";
@@ -71,8 +72,7 @@ module onf-upf {
       }
 
       // UPFs are always owned by an Enterprise, since they typically exist on the
-      // Enterprise's edge. TODO: Consider whether they should be owned by a Site
-      // instead of Enterprise.
+      // Enterprise's edge.
       leaf enterprise {
         type leafref {
           path "/ent:enterprise/ent:enterprise/ent:id";
@@ -80,7 +80,18 @@ module onf-upf {
         mandatory true;
         description
           "Link to enterprise that owns this Access Point List";
-      }      
+      }
+
+      // UPFs always reside at a site, as the exist on physical infrastructure. GUI
+      // will ensure that the tuple (DG, VCS, UPF) all exist on the same site.
+      leaf site {
+        type leafref {
+          path "/st:site/st:site/st:id";
+        }
+        mandatory true;
+        description
+          "Link to site";
+      }
     }
-  } 
+  }
 }

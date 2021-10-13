@@ -80,10 +80,28 @@ module onf-device-group {
       leaf ip-domain {
         type leafref {
           path "/ipd:ip-domain/ipd:ip-domain/ipd:id";
-        }          
+        }
         description
           "Link to ip-domain settings that determine the pool of IP addresses,
            as well as the domain resolver settings to use";
+      }
+
+      container device {
+        description "Per-device QOS Settings";
+        container mbr {
+          description "Maximum bitrate";
+          leaf uplink {
+            type at:bitrate;
+            units bps;
+            description "Per-device mbr uplink data rate in mbps";
+          }
+
+          leaf downlink {
+            type at:bitrate;
+            units bps;
+            description "Per-device mbr downlink data rate in mbps";
+          }
+        }
       }
 
       leaf site {

@@ -144,6 +144,8 @@ module onf-vcs {
         description "Slice differentiator. Immutable.";
       }
 
+      // This is deprecated. Per-device QOS is moving
+      // to DG.
       container device {
         description "Per-device QOS Settings";
         container mbr {
