@@ -40,8 +40,9 @@ module: onf-device-group
         +--rw ip-domain?      -> /ipd:ip-domain/ip-domain/id
         +--rw device
         |  +--rw mbr
-        |     +--rw uplink?     at:bitrate
-        |     +--rw downlink?   at:bitrate
+        |  |  +--rw uplink?     at:bitrate
+        |  |  +--rw downlink?   at:bitrate
+        |  +--rw traffic-class?   -> /tc:traffic-class/traffic-class/id
         +--rw site            -> /st:site/site/id
 
 module: onf-enterprise
@@ -118,6 +119,8 @@ module: onf-traffic-class
         +--rw display-name?   string
         +--rw arp?            at:arp
         +--rw qci?            at:qci
+        +--rw pelr?           at:pelr
+        +--rw pdb?            at:pdb
         +--rw description?    at:description
 
 module: onf-upf

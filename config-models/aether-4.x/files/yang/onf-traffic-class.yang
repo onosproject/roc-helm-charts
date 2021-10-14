@@ -49,12 +49,22 @@ module onf-traffic-class {
       leaf arp {
         type at:arp;
         description "Allocation and Retention Priority. 1 is the highest. 15 is the lowest.";
-      }        
+      }
 
       leaf qci {
         type at:qci;
         description "QOS Class Identifier";
-      }      
+      }
+
+      leaf pelr {
+        type at:pelr;
+        description "PELR exponent";
+      }
+
+      leaf pdb {
+        type at:pdb;
+        description "PDB";
+      }
 
       leaf description {
         type at:description;

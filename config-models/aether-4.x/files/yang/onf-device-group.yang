@@ -10,6 +10,7 @@ module onf-device-group {
   import onf-aether-types { prefix at; }
   import onf-ip-domain{ prefix ipd; }
   import onf-site{ prefix st; }
+  import onf-traffic-class{ prefix tc; }
 
   organization "Open Networking Foundation.";
   contact "Scott Baker";
@@ -102,6 +103,13 @@ module onf-device-group {
             description "Per-device mbr downlink data rate in mbps";
           }
         }
+        leaf traffic-class {
+          type leafref {
+            path "/tc:traffic-class/tc:traffic-class/tc:id";
+          }
+          description
+            "Link to traffic class";
+        }
       }
 
       leaf site {
@@ -113,5 +121,5 @@ module onf-device-group {
           "Link to site";
       }
     }
-  } 
+  }
 }
