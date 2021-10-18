@@ -1,0 +1,85 @@
+# SPDX-FileCopyrightText: 2020-present Open Networking Foundation <info@opennetworking.org>
+#
+# SPDX-License-Identifier: LicenseRef-ONF-Member-Only-1.0
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ template "prom-label-proxy.fullname" . }}
+  namespace: {{ .Release.Namespace }}
+  labels:
+    name: {{ template "prom-label-proxy.fullname" . }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      {{- include "prom-label-proxy.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        name: {{ template "prom-label-proxy.fullname" . }}
+        {{- include "prom-label-proxy.selectorLabels" . | nindent 8 }}
+    spec:
+    {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 6 }}
+    {{- end }}
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      containers:
+        - name: {{ .Chart.Name }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          env:
+            - name: POD_NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
+            - name: POD_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+            - name: POD_IP
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.podIP
+            - name: NODE_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: spec.nodeName
+            - name: OIDC_SERVER_URL
+              value: {{ .Values.config.openidc.issuer }}  
+          args:
+              [
+              "-label={{ .Values.config.label }}",
+              "-admingroup={{ .Values.config.admingroup }}",
+              "-upstream={{ .Values.config.upstream }}",
+              "-insecure-listen-address=0.0.0.0:{{ .Values.config.http.port }}",
+              "-config_address=$(POD_IP):{{ .Values.config.gnmi.port }}",
+              "-onos_config_url={{ .Values.config.onos_config_url }}",
+              "-key=/etc/prom-label-proxy/certs/tls.key",
+              "-cert=/etc/prom-label-proxy/certs/tls.crt",
+              "-ca=/etc/prom-label-proxy/certs/tls.cacert" ]
+          ports:
+            - name: http
+              containerPort: {{ .Values.config.http.port }}
+            - name: gnmi
+              containerPort: {{ .Values.config.gnmi.port }}
+          readinessProbe:
+            tcpSocket:
+              port: {{ .Values.config.http.port }}
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          livenessProbe:
+            tcpSocket:
+              port: {{ .Values.config.http.port }}
+            initialDelaySeconds: 15
+            periodSeconds: 20
+          volumeMounts:
+            - name: secret
+              mountPath: /etc/prom-label-proxy/certs
+              readOnly: true              
+      volumes:
+        - name: secret
+          secret:
+            secretName: {{ template "prom-label-proxy.fullname" . }}-secret

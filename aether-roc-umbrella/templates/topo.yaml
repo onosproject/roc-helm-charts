@@ -76,3 +76,34 @@ spec:
     onos.topo.Asset:
       name: 5G Core
     onos.topo.MastershipState: {}
+
+---
+apiVersion: topo.onosproject.org/v1beta1
+kind: Kind
+metadata:
+  name: plproxy
+spec:
+  aspects: {}
+
+---
+# Prom-label-proxy
+apiVersion: topo.onosproject.org/v1beta1
+kind: Entity
+metadata:
+  name: plproxy-service-v1
+spec:
+  uri: plproxy-service-v1
+  kind:
+    name: plproxy
+  aspects:
+    onos.topo.Configurable:
+      address: prom-label-proxy-v1:5150
+      version: 1.0.0
+      type: PLProxy
+    onos.topo.TLSOptions:
+      insecure: true
+    onos.topo.Asset:
+      name: Prom Label Proxy
+    onos.topo.MastershipState: {}
+
+

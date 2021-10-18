@@ -1,0 +1,44 @@
+# SPDX-FileCopyrightText: 2020-present Open Networking Foundation <info@opennetworking.org>
+#
+# SPDX-License-Identifier: LicenseRef-ONF-Member-Only-1.0
+nameOverride: ""
+fullnameOverride: ""
+
+replicaCount: 1
+annotations: {}
+
+image:
+  repository: onosproject/prom-label-proxy
+  pullPolicy: IfNotPresent
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: v0.3.3
+  pullSecrets: []
+
+resources:
+  requests:
+    cpu: 0.5
+    memory: 128Mi
+
+config:
+  http:
+    port: 8080
+  gnmi:
+    port: 5150
+  label: "ent"
+  model:
+    version: "" 
+  upstream: http://aether-roc-umbrella-prometheus-server.micro-onos.svc.cluster.local
+  admingroup: "AetherROCAdmin"
+  openidc:
+    issuer: ""
+  plproxy:
+    target: "plproxy-service-v1"
+  onos_config_url: "onos-config:5150"
+ 
+service:
+  type: ClusterIP
+  http:
+    port: 8080
+  gnmi:
+    port: 5150
+

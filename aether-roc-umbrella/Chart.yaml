@@ -7,7 +7,7 @@ name: aether-roc-umbrella
 description: Aether ROC Umbrella chart to deploy all Aether ROC
 kubeVersion: ">=1.18.0"
 type: application
-version: 1.4.16
+version: 1.4.17
 appVersion: v0.0.0
 keywords:
   - aether
@@ -29,6 +29,11 @@ dependencies:
     condition: onos-config.models.aether.v4.enabled
     repository: "file://../config-models/aether-4.x"
     version: 4.0.8
+  - name: config-model-plproxy
+    condition: onos-config.models.plproxy.v1.enabled
+    repository: "file://../config-models/plproxy-1.x"
+    version: 1.0.0
+    alias: config-model-plproxy-1-0-0
   - name: onos-config
     condition: import.onos-config.enabled
     repository: https://charts.onosproject.org
@@ -82,3 +87,8 @@ dependencies:
     condition: import.prometheus.enabled
     repository: https://prometheus-community.github.io/helm-charts
     version: 14.6.1
+  - name: prom-label-proxy
+    condition: import.plproxy.enabled
+    repository: "file://../prom-label-proxy"
+    version: 0.3.3
+    alias: prom-label-proxy-v1

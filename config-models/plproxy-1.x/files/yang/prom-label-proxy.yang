@@ -1,0 +1,32 @@
+// SPDX-FileCopyrightText: 2021 Open Networking Foundation
+//
+// SPDX-License-Identifier: LicenseRef-ONF-Member-Only-1.0
+
+module prom-label-proxy {
+  namespace "http://opennetworking.org/promlabelproxy/config/";
+  prefix plp;
+  organization "Open Networking Foundation.";
+  contact "Amit Wankhede";
+  description "A Aether groups and prom label configuration";
+
+  revision "2021-09-24" {
+    description "Prom label proxy user configuration";
+    reference "RFC 6087";
+  }
+
+  container user-groups {
+    description "The top level container";
+    list user-group {
+		key "name";
+		description "A list of user groups";
+		leaf name { type  string;description "name of user group";}
+		list label {
+			   key "name";
+			   description "A list of labels";
+			   leaf name { type  string;mandatory true;description "name of label";}
+			   leaf value { type  string;mandatory true;description "value of label";}
+		}
+	}
+ }
+
+}

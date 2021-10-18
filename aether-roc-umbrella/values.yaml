@@ -57,6 +57,8 @@ import:
     enabled: true
   sdcore-test-dummy:
     enabled: true
+  plproxy:
+    enabled: true
   grafana:
     enabled: true #also enable the proxy below
   prometheus:
@@ -111,6 +113,12 @@ sdcore-adapter-v4:
 subscriber-proxy:
   nameOverride: subscriber-proxy
   fullnameOverride: subscriber-proxy
+  prometheusEnabled: false
+
+# Prom label Proxy
+prom-label-proxy:
+  nameOverride: prom-label-proxy-v1
+  fullnameOverride: prom-label-proxy-v1
   prometheusEnabled: false
 
 grafana:
@@ -250,6 +258,9 @@ onos-config:
       v3:
         enabled: true
       v4:
+        enabled: true
+    plproxy:
+      v1:
         enabled: true
   plugin:
     compiler:
