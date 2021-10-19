@@ -40,9 +40,9 @@ module: onf-device-group
         +--rw ip-domain?      -> /ipd:ip-domain/ip-domain/id
         +--rw device
         |  +--rw mbr
-        |  |  +--rw uplink?     at:bitrate
-        |  |  +--rw downlink?   at:bitrate
-        |  +--rw traffic-class?   -> /tc:traffic-class/traffic-class/id
+        |  |  +--rw uplink      at:bitrate
+        |  |  +--rw downlink    at:bitrate
+        |  +--rw traffic-class    -> /tc:traffic-class/traffic-class/id
         +--rw site            -> /st:site/site/id
 
 module: onf-enterprise
@@ -97,20 +97,16 @@ module: onf-site
 module: onf-template
   +--rw template
      +--rw template* [id]
-        +--rw id               template-id
-        +--rw display-name?    string
-        +--rw sst?             at:sst
-        +--rw sd?              at:sd
-        +--rw device
-        |  +--rw mbr
-        |     +--rw uplink?     at:bitrate
-        |     +--rw downlink?   at:bitrate
+        +--rw id                  template-id
+        +--rw display-name?       string
+        +--rw sst?                at:sst
+        +--rw sd?                 at:sd
         +--rw slice
         |  +--rw mbr
         |     +--rw uplink?     at:bitrate
         |     +--rw downlink?   at:bitrate
-        +--rw traffic-class?   -> /tc:traffic-class/traffic-class/id
-        +--rw description?     at:description
+        +--rw default-behavior    at:behavior
+        +--rw description?        at:description
 
 module: onf-traffic-class
   +--rw traffic-class
@@ -138,27 +134,22 @@ module: onf-upf
 module: onf-vcs
   +--rw vcs
      +--rw vcs* [id]
-        +--rw id               vcs-id
-        +--rw display-name?    string
+        +--rw id                  vcs-id
+        +--rw display-name?       string
         +--rw device-group* [device-group]
         |  +--rw device-group    -> /dg:device-group/device-group/id
         |  +--rw enable?         boolean
-        +--rw template?        -> /vt:template/template/id
+        +--rw default-behavior    at:behavior
         +--rw filter* [application]
         |  +--rw application    -> /app:application/application/id
-        |  +--rw priority?      uint8
+        |  +--rw priority?      at:priority
         |  +--rw allow?         boolean
-        +--rw upf?             -> /upf:upf/upf/id
-        +--rw description?     at:description
-        +--rw enterprise       -> /ent:enterprise/enterprise/id
-        +--rw sst              at:sst
-        +--rw sd               at:sd
-        +--rw device
-        |  +--rw mbr
-        |     +--rw uplink?     at:bitrate
-        |     +--rw downlink?   at:bitrate
+        +--rw upf?                -> /upf:upf/upf/id
+        +--rw description?        at:description
+        +--rw enterprise          -> /ent:enterprise/enterprise/id
+        +--rw sst                 at:sst
+        +--rw sd                  at:sd
         +--rw slice
-        |  +--rw mbr
-        |     +--rw uplink?     at:bitrate
-        |     +--rw downlink?   at:bitrate
-        +--rw traffic-class    -> /tc:traffic-class/traffic-class/id
+           +--rw mbr
+              +--rw uplink?     at:bitrate
+              +--rw downlink?   at:bitrate

@@ -95,12 +95,14 @@ module onf-device-group {
             type at:bitrate;
             units bps;
             description "Per-device mbr uplink data rate in mbps";
+            mandatory true;
           }
 
           leaf downlink {
             type at:bitrate;
             units bps;
             description "Per-device mbr downlink data rate in mbps";
+            mandatory true;
           }
         }
         leaf traffic-class {
@@ -109,6 +111,7 @@ module onf-device-group {
           }
           description
             "Link to traffic class";
+          mandatory true;
         }
       }
 
@@ -116,9 +119,9 @@ module onf-device-group {
         type leafref {
           path "/st:site/st:site/st:id";
         }
-        mandatory true;
         description
           "Link to site";
+        mandatory true;
       }
     }
   }

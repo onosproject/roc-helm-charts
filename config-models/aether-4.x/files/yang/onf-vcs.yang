@@ -12,7 +12,6 @@ module onf-vcs {
   import onf-device-group{ prefix dg; }
   import onf-enterprise{ prefix ent; }
   import onf-template{ prefix vt; }
-  import onf-traffic-class{ prefix tc; }
   import onf-upf { prefix upf; }
 
   organization "Open Networking Foundation.";
@@ -72,13 +71,11 @@ module onf-vcs {
            the VCS if the enable field is set to True";
       }
 
-      leaf template {
-        type leafref {
-          path "/vt:template/vt:template/vt:id";
-        }
+      leaf default-behavior {
+        type at:behavior;
+        mandatory true;
         description
-          "Link to user vcs template that was used to initialize
-           this VCS";
+          "Default behavior if no filter rules match";
       }
 
       list filter {
@@ -92,7 +89,7 @@ module onf-vcs {
             "Link to application";
         }
         leaf priority {
-          type uint8;
+          type at:priority;
           default 0;
           description
             "Priority of this application";
@@ -144,26 +141,6 @@ module onf-vcs {
         description "Slice differentiator. Immutable.";
       }
 
-      // This is deprecated. Per-device QOS is moving
-      // to DG.
-      container device {
-        description "Per-device QOS Settings";
-        container mbr {
-          description "Maximum bitrate";
-          leaf uplink {
-            type at:bitrate;
-            units bps;
-            description "Per-device mbr uplink data rate in mbps";
-          }
-
-          leaf downlink {
-            type at:bitrate;
-            units bps;
-            description "Per-device mbr downlink data rate in mbps";
-          }
-        }
-      }
-
       container slice {
         description "Per-Slice QOS Settings";
         container mbr {
@@ -182,14 +159,6 @@ module onf-vcs {
         }
       }
 
-      leaf traffic-class {
-        type leafref {
-          path "/tc:traffic-class/tc:traffic-class/tc:id";
-        }
-        mandatory true;
-        description
-          "Link to traffic class";
-      }
       // end of items populated from the template
     }
   }

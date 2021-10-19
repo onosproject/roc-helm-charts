@@ -3,6 +3,22 @@ SPDX-FileCopyrightText: 2021 Open Networking Foundation
 
 SPDX-License-Identifier: LicenseRef-ONF-Member-Only-1.0
 -->
+
+Changes on 10/19/2021
+=====================
+
+Device-Group:
+  * Device.MBR and Device.Traffic-Class set to mandatory
+
+VCS:
+  * Add Allow-Internet boolean
+  * Restricted application filter priority to 0-200.
+  * Remove link to template
+
+Template:
+  * Add Allow-Internet boolean
+  * Remove Traffic-Class and Device.MBR
+
 Changes on 10/13/2021
 =====================
 Application

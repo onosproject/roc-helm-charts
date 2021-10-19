@@ -87,7 +87,14 @@ module onf-aether-types {
       type uint16 {
         range 0..1000;
       }
-  }  
+  }
+
+  typedef priority {
+    type uint8 {
+      // priorities 201-255 are reserved for system use
+      range 0..200;
+    }
+  }
 
   // "TCP" or "UDP"
   typedef protocol {
@@ -105,7 +112,14 @@ module onf-aether-types {
         pattern "ENABLE|MAINTENANCE|DISABLE";
       }
       default "ENABLE";
-  }  
+  }
+
+  typedef behavior {
+      type string {
+        length 0..20;
+        pattern "DENY-ALL|ALLOW-ALL|ALLOW-PUBLIC";
+      }
+  }
 
   typedef mtu {
       type inet:port-number;
