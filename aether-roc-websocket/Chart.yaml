@@ -7,8 +7,8 @@ name: aether-roc-websocket
 description: Aether ROC Websocket
 kubeVersion: ">=1.15.0"
 type: application
-version: 1.0.0
-appVersion: v0.8.3
+version: 1.0.1
+appVersion: v0.8.7
 keywords:
   - aether
   - alerts

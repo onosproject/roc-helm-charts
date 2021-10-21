@@ -7,7 +7,7 @@ name: aether-roc-umbrella
 description: Aether ROC Umbrella chart to deploy all Aether ROC
 kubeVersion: ">=1.18.0"
 type: application
-version: 1.4.18
+version: 1.4.19
 appVersion: v0.0.0
 keywords:
   - aether
@@ -20,7 +20,7 @@ dependencies:
   - name: onos-topo
     condition: import.onos-topo.enabled
     repository: https://charts.onosproject.org
-    version: 1.1.102
+    version: 1.1.107
   - name: config-model-aether-3
     condition: onos-config.models.aether.v3.enabled
     repository: "file://../config-models/aether-3.x"
@@ -45,15 +45,15 @@ dependencies:
   - name: onos-cli
     condition: import.onos-cli.enabled
     repository: https://charts.onosproject.org
-    version: 1.1.6
+    version: 1.1.8
   - name: aether-roc-api
     condition: import.aether-roc-api.enabled
     repository: "file://../aether-roc-api"
-    version: 1.2.5
+    version: 1.2.6
   - name: aether-roc-websocket
     condition: import.aether-roc-websocket.enabled
     repository: "file://../aether-roc-websocket"
-    version: 1.0.0
+    version: 1.0.1
   - name: aether-roc-gui
     condition: import.aether-roc-gui.v3.enabled
     repository: "file://../aether-roc-gui"
@@ -61,7 +61,7 @@ dependencies:
   - name: aether-roc-gui-v4
     condition: import.aether-roc-gui.v4.enabled
     repository: "file://../aether-roc-gui-v4"
-    version: 4.0.3
+    version: 4.0.4
   - name: sdcore-adapter
     condition: import.sdcore-adapter.v3.enabled
     repository: "file://../sdcore-adapter"
@@ -73,7 +73,7 @@ dependencies:
   - name: subscriber-proxy
     condition: import.subscriber-proxy.enabled
     repository: "file://../subscriber-proxy"
-    version: 0.0.3
+    version: 0.0.4
   - name: nginx
     alias: sdcore-test-dummy
     condition: import.sdcore-test-dummy.enabled
@@ -90,5 +90,5 @@ dependencies:
   - name: prom-label-proxy
     condition: import.plproxy.enabled
     repository: "file://../prom-label-proxy"
-    version: 0.3.3
+    version: 0.0.1
     alias: prom-label-proxy-v1

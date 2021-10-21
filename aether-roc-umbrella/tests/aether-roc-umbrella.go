@@ -58,13 +58,19 @@ func (s *AetherRocUmbrellaSuite) TestInstall(t *testing.T) {
 		SetPassword(password).
 		WithTimeout(15*time.Minute).
 		Set("import.onos-gui.enabled", false).
-		Set("import.aether-roc-gui.v2_1.enabled", false).
 		Set("import.aether-roc-gui.v3.enabled", false).
-		Set("import.aether-roc-gui.v4.enabled", false).
+		Set("import.aether-roc-gui.v4.enabled", true).
 		Set("import.onos-cli.enabled", false).
 		Set("onos-topo.image.tag", "latest").
 		Set("onos-config.image.tag", "latest").
 		Set("aether-roc-api.image.tag", "latest").
+		Set("aether-roc-websocket.image.tag", "latest").
+		Set("subscriber-proxy.image.tag", "latest").
+		Set("prom-label-proxy.image.tag", "latest").
+		//Set("sdcore-adapter-v4.image.tag", "latest").
+		Set("aether-roc-gui-v4.image.tag", "latest").
+		Set("aether-roc-gui-v4.ingress.enabled", false).
+		Set("aether-roc-gui-v4.service.type", "NodePort").
 		Set("onos-config.plugin.compiler.target", "github.com/onosproject/onos-config@master").
 		Set("global.image.registry", registry)
 	assert.NoError(t, onos.Install(true))

@@ -10,7 +10,7 @@ replicaCount: 1
 
 image:
   repository: onosproject/aether-roc-websocket
-  tag: v0.8.3
+  tag: v0.8.7
   pullPolicy: IfNotPresent
   pullSecrets: []
 
