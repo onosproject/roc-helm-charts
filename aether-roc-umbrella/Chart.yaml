@@ -7,7 +7,7 @@ name: aether-roc-umbrella
 description: Aether ROC Umbrella chart to deploy all Aether ROC
 kubeVersion: ">=1.18.0"
 type: application
-version: 1.4.23
+version: 1.4.24
 appVersion: v0.0.0
 keywords:
   - aether
@@ -57,11 +57,11 @@ dependencies:
   - name: aether-roc-gui
     condition: import.aether-roc-gui.v3.enabled
     repository: "file://../aether-roc-gui"
-    version: 3.0.27
+    version: 3.0.28
   - name: aether-roc-gui-v4
     condition: import.aether-roc-gui.v4.enabled
     repository: "file://../aether-roc-gui-v4"
-    version: 4.0.4
+    version: 4.0.5
   - name: sdcore-adapter
     condition: import.sdcore-adapter.v3.enabled
     repository: "file://../sdcore-adapter"
@@ -84,11 +84,27 @@ dependencies:
     repository: https://grafana.github.io/helm-charts
     version: 6.16.6
   - name: prometheus
-    condition: import.prometheus.enabled
+    condition: import.prometheus.amp.enabled
     repository: https://prometheus-community.github.io/helm-charts
     version: 14.6.1
+    alias: prometheus-amp
+  - name: prometheus
+    condition: import.prometheus.acc.enabled
+    repository: https://prometheus-community.github.io/helm-charts
+    version: 14.6.1
+    alias: prometheus-acc
+  - name: prometheus
+    condition: import.prometheus.ace.enabled
+    repository: https://prometheus-community.github.io/helm-charts
+    version: 14.6.1
+    alias: prometheus-ace
   - name: prom-label-proxy
-    condition: import.plproxy.enabled
+    condition: import.prometheus.amp.enabled
     repository: "file://../prom-label-proxy"
     version: 0.0.1
-    alias: prom-label-proxy-v1
+    alias: prom-label-proxy-amp
+  - name: prom-label-proxy
+    condition: import.prometheus.acc.enabled
+    repository: "file://../prom-label-proxy"
+    version: 0.0.1
+    alias: prom-label-proxy-acc

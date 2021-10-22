@@ -15,7 +15,7 @@ data:
     receivers:
       - name: default-receiver
         webhook_configs:
-        - url: {{ .Values.prometheus.alertmanager.webhook_url }}
+        - url: {{ index .Values "prometheus-acc" "alertmanager" "webhook_url" }}
 
     route:
       group_wait: 10s

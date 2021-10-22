@@ -57,12 +57,15 @@ import:
     enabled: true
   sdcore-test-dummy:
     enabled: true
-  plproxy:
-    enabled: true
   grafana:
     enabled: true #also enable the proxy below
   prometheus:
-    enabled: true #also enable the proxy below
+    acc:
+      enabled: true # controls its plproxy too
+    amp:
+      enabled: true # controls its plproxy too
+    ace:
+      enabled: true
 
 # ONOS-TOPO
 onos-topo:
@@ -91,14 +94,29 @@ aether-roc-gui:
     service: aether-roc-umbrella-prometheus-server
 
 aether-roc-gui-v4:
+  nameOverride: aether-roc-gui-v4
+  fullnameOverride: aether-roc-gui-v4
   websocket:
     proxyEnabled: true
   grafana:
     proxyEnabled: true
     service: aether-roc-umbrella-grafana # the grafana hostname - use FQDN for other namespaces
   prometheus:
-    proxyEnabled: true
-    service: aether-roc-umbrella-prometheus-server
+    acc:
+      proxyEnabled: true
+      service: prom-label-proxy-acc
+      protocol: http
+      port: 8080
+    amp:
+      proxyEnabled: true
+      service: prom-label-proxy-amp
+      protocol: http
+      port: 8080
+    site:
+      - name: ace1
+        service: aether-roc-umbrella-prometheus-ace-server
+        protocol: http
+        port: 80
 
 # SD-Core Adapter
 sdcore-adapter:
@@ -116,10 +134,19 @@ subscriber-proxy:
   prometheusEnabled: false
 
 # Prom label Proxy
-prom-label-proxy:
-  nameOverride: prom-label-proxy-v1
-  fullnameOverride: prom-label-proxy-v1
+prom-label-proxy-amp:
+  nameOverride: prom-label-proxy-amp
+  fullnameOverride: prom-label-proxy-amp
   prometheusEnabled: false
+  config:
+    upstream: http://aether-roc-umbrella-prometheus-amp-server
+
+prom-label-proxy-acc:
+  nameOverride: prom-label-proxy-acc
+  fullnameOverride: prom-label-proxy-acc
+  prometheusEnabled: false
+  config:
+    upstream: http://aether-roc-umbrella-prometheus-acc-server
 
 grafana: 
   grafana.ini:
@@ -152,7 +179,7 @@ grafana:
 #      allowed_domains: opennetworking.org
 #      allow_sign_up: true
 
-prometheus:
+prometheus-acc:
   pushgateway:
     enabled: false
   nodeExporter:
@@ -216,6 +243,43 @@ prometheus:
           static_configs:
             - targets:
                 - sdcore-adapter-v3-exporter:2112
+
+prometheus-amp:
+  pushgateway:
+    enabled: false
+  nodeExporter:
+    enabled: false
+  kubeStateMetrics:
+    enabled: false
+  alertmanager:
+    enabled: false
+  serverFiles:
+    prometheus.yml:
+      scrape_configs:
+        - job_name: sdcore-exporter
+          scrape_interval: 2s
+          static_configs:
+            - targets:
+                - sdcore-adapter-v3-exporter:2112
+
+prometheus-ace:
+  pushgateway:
+    enabled: false
+  nodeExporter:
+    enabled: false
+  kubeStateMetrics:
+    enabled: false
+  alertmanager:
+    enabled: false
+  serverFiles:
+    prometheus.yml:
+      scrape_configs:
+        - job_name: sdcore-exporter
+          scrape_interval: 2s
+          static_configs:
+            - targets:
+                - sdcore-adapter-v3-exporter:2112
+
 # SD-Core Test Dummy
 # proxy_pass has to be added or nginx will not log the $request_body
 sdcore-test-dummy:

@@ -77,10 +77,17 @@ grafana:
   port: 80
 
 prometheus:
-  proxyEnabled: false
-  service: prometheus
-  protocol: http
-  port: 80
+  acc:
+    proxyEnabled: false
+    service: prometheus-acc
+    protocol: http
+    port: 80
+  amp:
+    proxyEnabled: false
+    service: prometheus-amp
+    protocol: http
+    port: 80
+  site: []
 
 Nginx:
   port: 80
