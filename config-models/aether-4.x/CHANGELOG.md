@@ -19,6 +19,11 @@ Template:
   * Add Allow-Internet boolean
   * Remove Traffic-Class and Device.MBR
 
+Changes on 10/21/2021
+=====================
+Connectivity-Service
+  * Add acc-prometheus-url
+
 Changes on 10/13/2021
 =====================
 Application

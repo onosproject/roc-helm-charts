@@ -16,7 +16,7 @@ module onf-connectivity-service {
     "An Aether Connectivity service is the linkage between the
      ROC and a core that provides connectivity.";
 
-  revision "2021-06-02" {
+  revision "2021-10-21" {
     description "An Aether Connectivity Service. Specifies the endpoints where the sdcore-adapter should push configuration to. A single connectivity service may be attached to multiple Enterprises.";
     reference "RFC 6087";
   }
@@ -45,23 +45,26 @@ module onf-connectivity-service {
             length 1..80;
         }
         description "display name to use in GUI or CLI";
-      }     
+      }
 
       leaf description {
         type at:description;
         description "description of this connectivity service";
       }
 
+      // deprecated
       leaf spgwc-endpoint {
         type inet:uri;
         description "url of the spgwc service";
       }
 
+      // deprecated
       leaf hss-endpoint {
         type inet:uri;
         description "url of the hss service";
       }
 
+      // deprecated
       leaf pcrf-endpoint {
         type inet:uri;
         description "url of the pcrf service";
@@ -70,7 +73,13 @@ module onf-connectivity-service {
       leaf core-5g-endpoint {
         type inet:uri;
         description "url of the 5g core";
-      }      
+      }
+
+      leaf acc-prometheus-url {
+          type inet:uri;
+          description
+            "URL of ACC prometheus";
+      }
     }
-  } 
+  }
 }

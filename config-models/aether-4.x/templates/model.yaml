@@ -16,7 +16,7 @@ spec:
   modules:
   - name: connectivity-service
     organization: Open Networking Foundation
-    revision: 2021-06-02
+    revision: 2021-10-21
     file: onf-connectivity-service.yang
   - name: enterprise
     organization: Open Networking Foundation

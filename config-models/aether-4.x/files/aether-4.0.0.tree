@@ -19,13 +19,14 @@ module: onf-application
 module: onf-connectivity-service
   +--rw connectivity-service
      +--rw connectivity-service* [id]
-        +--rw id                  connectivity-service-id
-        +--rw display-name?       string
-        +--rw description?        at:description
-        +--rw spgwc-endpoint?     inet:uri
-        +--rw hss-endpoint?       inet:uri
-        +--rw pcrf-endpoint?      inet:uri
-        +--rw core-5g-endpoint?   inet:uri
+        +--rw id                    connectivity-service-id
+        +--rw display-name?         string
+        +--rw description?          at:description
+        +--rw spgwc-endpoint?       inet:uri
+        +--rw hss-endpoint?         inet:uri
+        +--rw pcrf-endpoint?        inet:uri
+        +--rw core-5g-endpoint?     inet:uri
+        +--rw acc-prometheus-url?   inet:uri
 
 module: onf-device-group
   +--rw device-group

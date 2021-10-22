@@ -7,7 +7,7 @@ name: aether-roc-umbrella
 description: Aether ROC Umbrella chart to deploy all Aether ROC
 kubeVersion: ">=1.18.0"
 type: application
-version: 1.4.20
+version: 1.4.21
 appVersion: v0.0.0
 keywords:
   - aether
@@ -28,7 +28,7 @@ dependencies:
   - name: config-model-aether-4
     condition: onos-config.models.aether.v4.enabled
     repository: "file://../config-models/aether-4.x"
-    version: 4.0.9
+    version: 4.0.10
   - name: config-model-plproxy
     condition: onos-config.models.plproxy.v1.enabled
     repository: "file://../config-models/plproxy-1.x"
