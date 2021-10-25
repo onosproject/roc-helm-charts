@@ -121,31 +121,7 @@ prom-label-proxy:
   fullnameOverride: prom-label-proxy-v1
   prometheusEnabled: false
 
-grafana:
-  orgs:
-    acme:
-      vcs:
-        - acme-chicago-robots
-      devicegroup:
-        - acme-chicago-robots:
-            production: "0-3"
-            warehouse: "10-12"
-    starbucks:
-      vcs:
-        - starbucks-newyork-cameras
-        - starbucks-seattle-cameras
-      devicegroup:
-        - starbucks-newyork-cameras:
-            front: "40-41"
-            store: "50-55"
-        - starbucks-seattle-pos:
-            tills: "20-22"
-            store: "30-34"
-        - starbucks-seattle-cameras:
-            counter: "0-3"
-            store: "10-14"
-
-  tidyUpPostInstall: true
+grafana: 
   grafana.ini:
     log:
       level: debug
@@ -240,7 +216,6 @@ prometheus:
           static_configs:
             - targets:
                 - sdcore-adapter-v3-exporter:2112
-
 # SD-Core Test Dummy
 # proxy_pass has to be added or nginx will not log the $request_body
 sdcore-test-dummy:
