@@ -148,7 +148,12 @@ prom-label-proxy-acc:
   config:
     upstream: http://aether-roc-umbrella-prometheus-acc-server
 
-grafana: 
+grafana:
+  sidecar:
+    dashboards:
+       enabled: true
+       label: grafana_dashboard
+       labelValue: aether-roc-gui 
   grafana.ini:
     log:
       level: debug
