@@ -8,7 +8,7 @@ all: test
 
 test: # @HELP run the integration tests
 test: deps
-	./build/bin/run-roc-test
+#./build/bin/run-roc-test
 
 clean: # @HELP clean up temporary files for ROC umbrella.
 	rm -rf aether-roc-umbrella/charts aether-roc-umbrella/Chart.lock
