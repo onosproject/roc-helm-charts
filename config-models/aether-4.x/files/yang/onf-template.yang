@@ -64,13 +64,13 @@ module onf-template {
           leaf uplink {
             type at:bitrate;
             units bps;
-            description "Per-Slice mbr uplink data rate in mbps";
+            description "Per-Slice MBR uplink data rate in bps";
           }
 
           leaf downlink {
             type at:bitrate;
             units bps;
-            description "Per-Slice mbr downlink data rate in mbps";
+            description "Per-Slice MBR downlink data rate in bps";
           }
         }
       }
@@ -80,7 +80,7 @@ module onf-template {
         mandatory true;
         description
           "Default behavior if no filter rules match";
-      }      
+      }
 
       leaf description {
         type at:description;

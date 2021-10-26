@@ -148,6 +148,7 @@ module: onf-vcs
         +--rw upf?                -> /upf:upf/upf/id
         +--rw description?        at:description
         +--rw enterprise          -> /ent:enterprise/enterprise/id
+        +--rw site                -> /st:site/site/id
         +--rw sst                 at:sst
         +--rw sd                  at:sd
         +--rw slice

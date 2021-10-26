@@ -94,14 +94,14 @@ module onf-device-group {
           leaf uplink {
             type at:bitrate;
             units bps;
-            description "Per-device mbr uplink data rate in mbps";
+            description "Per-device MBR uplink data rate in bps";
             mandatory true;
           }
 
           leaf downlink {
             type at:bitrate;
             units bps;
-            description "Per-device mbr downlink data rate in mbps";
+            description "Per-device MBR downlink data rate in bps";
             mandatory true;
           }
         }

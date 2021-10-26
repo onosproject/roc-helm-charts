@@ -13,6 +13,7 @@ module onf-vcs {
   import onf-enterprise{ prefix ent; }
   import onf-template{ prefix vt; }
   import onf-upf { prefix upf; }
+  import onf-site{ prefix st; }
 
   organization "Open Networking Foundation.";
   contact "Scott Baker";
@@ -128,6 +129,15 @@ module onf-vcs {
           "Link to enterprise that owns this VCS";
       }
 
+      leaf site {
+        type leafref {
+          path "/st:site/st:site/st:id";
+        }
+        description
+          "Link to site where this VCS is deployed";
+        mandatory true;
+      }
+
       // the following are populated from the template
       leaf sst {
         type at:sst;
@@ -148,13 +158,13 @@ module onf-vcs {
           leaf uplink {
             type at:bitrate;
             units bps;
-            description "Per-Slice mbr uplink data rate in mbps";
+            description "Per-Slice MBR uplink data rate in bps";
           }
 
           leaf downlink {
             type at:bitrate;
             units bps;
-            description "Per-Slice mbr downlink data rate in mbps";
+            description "Per-Slice MBR downlink data rate in bps";
           }
         }
       }

@@ -89,14 +89,14 @@ module onf-application {
           description "Maximum bitrate";
           leaf uplink {
             type at:bitrate;
-            units mbr;
-            description "Per-Device per-Application mbr uplink data rate in mbps";
+            units bps;
+            description "Per-Device per-Application MBR uplink data rate in bps";
           }
 
           leaf downlink {
             type at:bitrate;
-            units mbr;
-            description "Per-Device per application mbr downlink data rate in mbps";
+            units bps;
+            description "Per-Device per application MBR downlink data rate in bps";
           }
         }
         leaf traffic-class {
