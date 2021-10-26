@@ -91,7 +91,7 @@ aether-roc-gui:
     service: aether-roc-umbrella-grafana # the grafana hostname - use FQDN for other namespaces
   prometheus:
     proxyEnabled: true
-    service: aether-roc-umbrella-prometheus-server
+    service: aether-roc-umbrella-prometheus-acc-server
 
 aether-roc-gui-v4:
   nameOverride: aether-roc-gui-v4
