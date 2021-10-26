@@ -6,8 +6,11 @@
 
 all: test
 
-test: # @HELP run the integration tests
+test: # @HELP run the acceptance tests
 test: deps
+
+roc-test: # @HELP run the integration tests
+roc-test: deps # @HELP run the integration tests
 	./build/bin/run-roc-test
 
 clean: # @HELP clean up temporary files for ROC umbrella.
