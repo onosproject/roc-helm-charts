@@ -60,6 +60,8 @@ func (s *AetherRocUmbrellaSuite) TestInstall(t *testing.T) {
 		Set("import.onos-gui.enabled", false).
 		Set("import.aether-roc-gui.v3.enabled", false).
 		Set("import.aether-roc-gui.v4.enabled", true).
+		Set("import.sdcore-adapter.v3.enabled", true).
+		Set("import.sdcore-adapter.v4.enabled", true).
 		Set("import.onos-cli.enabled", false).
 		Set("import.prometheus.acc.enabled", false).
 		Set("aether-roc-gui-v4.prometheus.acc.proxyEnabled", false).
