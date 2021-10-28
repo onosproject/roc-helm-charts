@@ -22,6 +22,12 @@ module onf-aether-types {
       }
   }
 
+  typedef burst {
+      type uint32 {
+      }
+      default 625000;
+  }
+
   typedef mcc {
       type string {
         pattern '[0-9]{3}';

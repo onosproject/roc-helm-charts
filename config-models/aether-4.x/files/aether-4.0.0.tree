@@ -104,8 +104,10 @@ module: onf-template
         +--rw sd?                 at:sd
         +--rw slice
         |  +--rw mbr
-        |     +--rw uplink?     at:bitrate
-        |     +--rw downlink?   at:bitrate
+        |     +--rw uplink?                at:bitrate
+        |     +--rw downlink?              at:bitrate
+        |     +--rw uplink-burst-size?     at:burst
+        |     +--rw downlink-burst-size?   at:burst
         +--rw default-behavior    at:behavior
         +--rw description?        at:description
 
@@ -153,5 +155,7 @@ module: onf-vcs
         +--rw sd                  at:sd
         +--rw slice
            +--rw mbr
-              +--rw uplink?     at:bitrate
-              +--rw downlink?   at:bitrate
+              +--rw uplink?                at:bitrate
+              +--rw downlink?              at:bitrate
+              +--rw uplink-burst-size?     at:burst
+              +--rw downlink-burst-size?   at:burst

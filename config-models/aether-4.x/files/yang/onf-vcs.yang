@@ -166,6 +166,18 @@ module onf-vcs {
             units bps;
             description "Per-Slice MBR downlink data rate in bps";
           }
+
+          leaf uplink-burst-size {
+            type at:burst;
+            units bytes;
+            description "Per-Slice Uplink burst size";
+          }
+
+          leaf downlink-burst-size {
+            type at:burst;
+            units bytes;
+            description "Per-Slice Downlink burst size";
+          }
         }
       }
 
