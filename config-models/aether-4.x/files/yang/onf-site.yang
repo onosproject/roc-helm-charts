@@ -7,13 +7,13 @@ module onf-site {
   prefix st;
 
   import ietf-inet-types { prefix inet; }
-  import ietf-yang-types{ prefix yg; }  
+  import ietf-yang-types{ prefix yg; }
   import onf-aether-types{ prefix at; }
-  import onf-enterprise{ prefix ent; }  
+  import onf-enterprise{ prefix ent; }
 
   organization "Open Networking Foundation.";
   contact "Scott Baker";
-  description 
+  description
     "An Aether site is a location where resources are deployed.";
 
   revision "2021-09-10" {
@@ -48,12 +48,12 @@ module onf-site {
       }
 
       list small-cell {
-        key "name";
-        leaf name {
+        key "id";
+        leaf id {
           type yg:yang-identifier;
           description
-            "Name of small cell";
-        }        
+            "Id of small cell";
+        }
         leaf address {
           type inet:host;
           description
@@ -64,16 +64,22 @@ module onf-site {
           mandatory true;
           description
               "Type Allocation Code";
-        }        
+        }
         leaf enable {
           type boolean;
           default true;
           description
             "Enable this small cell";
         }
+        leaf display-name {
+          type string {
+              length 1..80;
+          }
+          description "display name to use in GUI or CLI";
+        }
         description
           "List of small cell addresses";
-      } 
+      }
 
       container monitoring {
         leaf edge-cluster-prometheus-url {
@@ -85,21 +91,19 @@ module onf-site {
           type inet:uri;
           description
             "URL of monitoring prometheus";
-        }        
+        }
         list edge-device {
-          key "name";
-          leaf name {
-            type string {
-              length 1..80;
-            }
+          key "id";
+          leaf id {
+            type yg:yang-identifier;
             description
-              "Name of edge monitoring device";
+              "Id of edge monitoring device";
           }
           leaf display-name {
             type string {
                 length 1..80;
             }
-            description "display name to use in GUI or CLI";            
+            description "display name to use in GUI or CLI";
           }
           leaf description {
             type at:description;
@@ -113,10 +117,10 @@ module onf-site {
       leaf enterprise {
         type leafref {
           path "/ent:enterprise/ent:enterprise/ent:id";
-        }              
+        }
         description
           "Link to enterprise that owns this site";
-        mandatory true;          
+        mandatory true;
       }
 
       container imsi-definition {
@@ -158,7 +162,7 @@ module onf-site {
       leaf description {
         type at:description;
         description "description of this site";
-      }         
+      }
     }
-  } 
+  }
 }

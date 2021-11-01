@@ -4,6 +4,19 @@ SPDX-FileCopyrightText: 2021 Open Networking Foundation
 SPDX-License-Identifier: LicenseRef-ONF-Member-Only-1.0
 -->
 
+Changes on 11/1/2021
+====================
+Application.Endpoint:
+  * add `display-name` and rename `name` to `id`
+
+Device-Group.Imsi:
+  * add `display-name` and rename `name` to `id`
+
+Site:
+  * small-cell: add `display-name` and rename `name` to `id`
+  * edge-device: rename `name` to `id`
+
+
 Changes on 10/19/2021
 =====================
 

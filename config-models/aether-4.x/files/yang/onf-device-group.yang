@@ -14,7 +14,7 @@ module onf-device-group {
 
   organization "Open Networking Foundation.";
   contact "Scott Baker";
-  description 
+  description
     "An aether device group represents a list of device IMSIS.
      This list is expressed as a set of ranges,
          [(from_imsi, to_imsi),
@@ -34,7 +34,7 @@ module onf-device-group {
         type yg:yang-identifier {
             length 1..32;
         }
-  }  
+  }
 
   container device-group {
     description "The top level container";
@@ -59,19 +59,27 @@ module onf-device-group {
             length 1..80;
         }
         description "display name to use in GUI or CLI";
-      }      
-      
+      }
+
       list imsis {
         // TODO: imsi-range-from cannot be used as a list index
-        key "name";
-        leaf name {
-          type string;
+        key "id";
+        leaf id {
+          type yg:yang-identifier;
+          description
+              "Id of this imsi-range";
         }
         leaf imsi-range-from {
           type uint64;
         }
         leaf imsi-range-to {
           type uint64;
+        }
+        leaf display-name {
+          type string {
+              length 1..80;
+          }
+          description "display name to use in GUI or CLI";
         }
         description
           "List of imsi ranges that comprise this group. It's acceptable for

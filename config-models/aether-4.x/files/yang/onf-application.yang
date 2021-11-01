@@ -14,7 +14,7 @@ module onf-application {
 
   organization "Open Networking Foundation.";
   contact "Scott Baker";
-  description 
+  description
     "An Aether Application is an application that devices may
      connect to. Includes a set of endpoints where services are
      provided.";
@@ -63,11 +63,11 @@ module onf-application {
       }
 
       list endpoint {
-        key "name";
-        leaf name {
-          type string;
+        key "id";
+        leaf id {
+          type yg:yang-identifier;
           description
-              "Name of this endpoint";
+              "Id of this endpoint";
         }
         leaf port-start {
           type ietf:port-number;
@@ -105,6 +105,12 @@ module onf-application {
           }
           description
             "Link to traffic class";
+        }
+        leaf display-name {
+          type string {
+              length 1..80;
+          }
+          description "display name to use in GUI or CLI";
         }
       }
 

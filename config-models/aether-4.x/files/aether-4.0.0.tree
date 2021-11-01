@@ -5,8 +5,8 @@ module: onf-application
         +--rw display-name?   string
         +--rw description?    at:description
         +--rw address         ietf:host
-        +--rw endpoint* [name]
-        |  +--rw name             string
+        +--rw endpoint* [id]
+        |  +--rw id               yg:yang-identifier
         |  +--rw port-start       ietf:port-number
         |  +--rw port-end?        ietf:port-number
         |  +--rw protocol?        at:protocol
@@ -14,6 +14,7 @@ module: onf-application
         |  |  +--rw uplink?     at:bitrate
         |  |  +--rw downlink?   at:bitrate
         |  +--rw traffic-class?   -> /tc:traffic-class/traffic-class/id
+        |  +--rw display-name?    string
         +--rw enterprise      -> /ent:enterprise/enterprise/id
 
 module: onf-connectivity-service
@@ -34,10 +35,11 @@ module: onf-device-group
         +--rw id              device-group-id
         +--rw description?    at:description
         +--rw display-name?   string
-        +--rw imsis* [name]
-        |  +--rw name               string
+        +--rw imsis* [id]
+        |  +--rw id                 yg:yang-identifier
         |  +--rw imsi-range-from?   uint64
         |  +--rw imsi-range-to?     uint64
+        |  +--rw display-name?      string
         +--rw ip-domain?      -> /ipd:ip-domain/ip-domain/id
         +--rw device
         |  +--rw mbr
@@ -75,16 +77,17 @@ module: onf-site
      +--rw site* [id]
         +--rw id                 site-id
         +--rw display-name?      string
-        +--rw small-cell* [name]
-        |  +--rw name       yg:yang-identifier
-        |  +--rw address?   inet:host
-        |  +--rw tac        at:tac
-        |  +--rw enable?    boolean
+        +--rw small-cell* [id]
+        |  +--rw id              yg:yang-identifier
+        |  +--rw address?        inet:host
+        |  +--rw tac             at:tac
+        |  +--rw enable?         boolean
+        |  +--rw display-name?   string
         +--rw monitoring
         |  +--rw edge-cluster-prometheus-url?      inet:uri
         |  +--rw edge-monitoring-prometheus-url?   inet:uri
-        |  +--rw edge-device* [name]
-        |     +--rw name            string
+        |  +--rw edge-device* [id]
+        |     +--rw id              yg:yang-identifier
         |     +--rw display-name?   string
         |     +--rw description?    at:description
         +--rw enterprise         -> /ent:enterprise/enterprise/id
