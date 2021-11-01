@@ -153,7 +153,32 @@ grafana:
     dashboards:
        enabled: true
        label: grafana_dashboard
-       labelValue: aether-roc-gui 
+       labelValue: aether-roc-gui
+    datasources:
+       enabled: true
+       label: grafana_datasource
+       labelValue: aether-roc-gui
+  source:
+  - name: acc
+    protocol: http
+    service: aether-roc-umbrella-prometheus-acc-server
+    port: 80
+  - name: amp
+    protocol: http
+    service: aether-roc-umbrella-prometheus-amp-server
+    port: 80
+  - name: acme-chicago
+    protocol: http
+    service: aether-roc-umbrella-prometheus-ace-server
+    port: 80
+  - name: starbucks-newyork
+    protocol: http
+    service: aether-roc-umbrella-prometheus-ace-server
+    port: 80
+  - name: starbucks-seattle
+    protocol: http
+    service: aether-roc-umbrella-prometheus-ace-server
+    port: 80
   grafana.ini:
     log:
       level: debug
@@ -247,7 +272,7 @@ prometheus-acc:
           scrape_interval: 2s
           static_configs:
             - targets:
-                - sdcore-adapter-v3-exporter:2112
+                - sdcore-adapter-v4-exporter:2112
 
 prometheus-amp:
   pushgateway:
@@ -265,15 +290,15 @@ prometheus-amp:
           scrape_interval: 2s
           static_configs:
             - targets:
-                - sdcore-adapter-v3-exporter:2112
-
+                - sdcore-adapter-v4-exporter:2112
+  
 prometheus-ace:
   pushgateway:
     enabled: false
   nodeExporter:
     enabled: false
   kubeStateMetrics:
-    enabled: false
+    enabled: true
   alertmanager:
     enabled: false
   serverFiles:
@@ -283,7 +308,12 @@ prometheus-ace:
           scrape_interval: 2s
           static_configs:
             - targets:
-                - sdcore-adapter-v3-exporter:2112
+                - sdcore-adapter-v4-exporter:2112
+        - job_name: kube-state-metrics
+          scrape_interval: 2s
+          static_configs:
+            - targets:
+                - aether-roc-umbrella-kube-state-metrics:8080
 
 # SD-Core Test Dummy
 # proxy_pass has to be added or nginx will not log the $request_body

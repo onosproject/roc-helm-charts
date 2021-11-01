@@ -92,7 +92,7 @@
                 "targets": [
                     {
                         "exemplar": true,
-                        "expr": "sum by (enbname) (mme_number_of_enb_attached{enbname=~\"$enb\"})",
+                        "expr": "sum by (enbname) (mme_number_of_enb_attached{enb_state=\"Active\", enbname=~\"$enb\"})",
                         "interval": "",
                         "legendFormat": "{{enbname}}",
                         "queryType": "randomWalk",

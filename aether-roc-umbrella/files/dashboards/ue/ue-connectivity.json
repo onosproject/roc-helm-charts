@@ -19,7 +19,7 @@
     "links": [],
     "panels": [
       {
-        "datasource": "$acc",
+        "datasource": "$ds",
         "description": "UE Connectivity",
         "fieldConfig": {
           "defaults": {
@@ -113,7 +113,7 @@
                     "multi" : false,
                     "name" : "imsi",
                     "type" : "query",
-                    "datasource": "$acc",
+                    "datasource": "$ds",
                     "definition": "label_values(subscribers_info, imsi)",
                     "query": {
                         "query": "label_values(subscribers_info, imsi)",
@@ -121,6 +121,16 @@
                     },
                     "refresh": 1,  
                     "sort" : 1
+        },
+	{
+                    "label" : "Datasource",
+                    "multi" : false,
+                    "name" : "ds",
+                    "type" : "datasource",
+                    "query": "prometheus",
+                    "queryValue": "",
+                    "refresh": 1,
+                    "regex": ""
         }
       ]
     },
