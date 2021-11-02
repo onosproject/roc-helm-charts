@@ -21,12 +21,13 @@ module apn-profile {
   }
 
   // TODO: Think more on whether this should be a UUID or
-  // simply a unique name. If it's a UUID, could fix the 
+  // simply a unique name. If it's a UUID, could fix the
   // string length.
   typedef apn-profile-id {
         type string {
             length 1..32;
         }
+    description "The typedef for apn-profile-id";
   }
 
   container apn-profile {
@@ -47,7 +48,7 @@ module apn-profile {
             length 1..80;
         }
         description "display name to use in GUI or CLI";
-      }     
+      }
 
       leaf apn-name {
         type string {
@@ -96,5 +97,5 @@ module apn-profile {
           "Link to service group";
       }
     }
-  } 
+  }
 }

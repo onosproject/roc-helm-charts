@@ -5,6 +5,7 @@
 module prom-label-proxy {
   namespace "http://opennetworking.org/promlabelproxy/config/";
   prefix plp;
+
   organization "Open Networking Foundation.";
   contact "Amit Wankhede";
   description "A Aether groups and prom label configuration";

@@ -21,6 +21,7 @@ module security-profile {
         type string {
             length 1..32;
         }
+    description "The typedef for security-profile-id";
   }
 
   container security-profile {
@@ -77,7 +78,7 @@ module security-profile {
           length 1..100;
         }
         description "description of this security profile";
-      }      
+      }
     }
-  } 
+  }
 }

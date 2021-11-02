@@ -25,6 +25,7 @@ module onf-site {
         type yg:yang-identifier {
             length 1..32;
         }
+    description "The typedef for site-id";
   }
 
   container site {
@@ -112,32 +113,34 @@ module onf-site {
           description
             "List of edge monitoring devices";
         }
+        description
+            "container for monitoring";
       }
 
       leaf enterprise {
         type leafref {
           path "/ent:enterprise/ent:enterprise/ent:id";
         }
+        mandatory true;
         description
           "Link to enterprise that owns this site";
-        mandatory true;
       }
 
       container imsi-definition {
         leaf mcc {
           type at:mcc;
-          description "mobile country code";
           mandatory true;
+          description "mobile country code";
         }
         leaf mnc {
           type at:mnc;
-          description "mobile network code";
           mandatory true;
+          description "mobile network code";
         }
         leaf enterprise {
           type at:ent;
-          description "enterprise-specific identifier";
           mandatory true;
+          description "enterprise-specific identifier";
         }
         leaf format {
           type string {
@@ -157,6 +160,7 @@ module onf-site {
           //   3 digit enterprise ID
           //   5 digit subscriber ID
         }
+        description "container for imsi-defination";
       }
 
       leaf description {

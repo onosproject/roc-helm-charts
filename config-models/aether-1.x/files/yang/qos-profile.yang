@@ -18,12 +18,13 @@ module qos-profile {
   }
 
   // TODO: Think more on whether this should be a UUID or
-  // simply a unique name. If it's a UUID, could fix the 
+  // simply a unique name. If it's a UUID, could fix the
   // string length.
   typedef qos-profile-id {
         type string {
             length 1..32;
         }
+    description "The typedef for qos-profile-id";
   }
 
   container qos-profile {
@@ -44,8 +45,8 @@ module qos-profile {
           type uint32 {
             range 0..4294967295;
           }
+	  units bps;
           default 0;
-          units bps;
           description
             "Upstream aggregate maximum bit rate";
         }
@@ -53,13 +54,14 @@ module qos-profile {
           type uint32 {
             range 0..4294967295;
           }
-          default 0;
           units bps;
+          default 0;
           description
             "Downstream aggregate maximum bit rate";
-        }        
+        }
+        description "The container for apn-ambr";
       }
-      
+
       leaf description {
         type string {
           length 1..100;
@@ -67,5 +69,5 @@ module qos-profile {
         description "description of this profile";
       }
     }
-  } 
+  }
 }

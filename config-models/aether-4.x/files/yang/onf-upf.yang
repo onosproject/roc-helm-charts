@@ -25,6 +25,7 @@ module onf-upf {
         type yg:yang-identifier {
             length 1..32;
         }
+   description "The typedef for upf-id";
   }
 
   container upf {
@@ -57,7 +58,7 @@ module onf-upf {
       leaf config-endpoint {
         type inet:uri;
         description "url for configuring the UPF";
-      }         
+      }
 
       leaf display-name {
         type string {

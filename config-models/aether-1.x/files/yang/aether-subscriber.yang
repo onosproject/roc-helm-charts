@@ -31,24 +31,28 @@ module aether-subscriber {
       type string {
           length 1..31;
       }
+    description "The typedef for ueid";
   }
 
   typedef mcc {
       type uint32 {
         range 0..999;
       }
+    description "The typedef for mcc";
   }
 
   typedef mnc {
       type uint32 {
         range 0..999;
       }
+    description "The typedef for mnc";
   }
 
   typedef tac {
       type uint32 {
         range 0..99999999;
       }
+    description "The typedef for tac";
   }
 
   container subscriber {
@@ -60,8 +64,8 @@ module aether-subscriber {
         "List of subscriber devices";
 
       leaf ueid {
+	type ueid;
         description "identifier for this subscriber, may or may not be an IMSI";
-        type ueid;
       }
 
       container serving-plmn {
@@ -77,6 +81,7 @@ module aether-subscriber {
           type tac;
           description "type allocation code";
         }
+	description "The contaiber for serving-plmn";
       }
 
       leaf requested-apn {
@@ -113,14 +118,14 @@ module aether-subscriber {
         leaf up-profile {
           type leafref {
             path "/up:up-profile/up:up-profile/up:id";
-          }          
+          }
           description
             "Link to user plane profile";
         }
         leaf qos-profile {
           type leafref {
             path "/qos:qos-profile/qos:qos-profile/qos:id";
-          }              
+          }
           description
             "Link to qos profile";
         }
@@ -129,7 +134,7 @@ module aether-subscriber {
           leaf access-profile {
             type leafref {
               path "/ap:access-profile/ap:access-profile/ap:id";
-            }            
+            }
 //            type ap:access-profile-id;
             description
                 "Link to access profile";
@@ -140,8 +145,10 @@ module aether-subscriber {
             description
               "Allow or disallow this ue to use this access profile";
           }
+          description "The list for access-profile";
         }
+        description "The container for profiles";
       }
     }
-  } 
+  }
 }

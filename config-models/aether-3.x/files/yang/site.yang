@@ -12,7 +12,7 @@ module site {
 
   organization "Open Networking Foundation.";
   contact "Scott Baker";
-  description 
+  description
     "An Aether site is a location where resources are deployed.";
 
   revision "2021-06-02" {
@@ -24,6 +24,7 @@ module site {
         type yg:yang-identifier {
             length 1..32;
         }
+    description "The typedef for site-id";
   }
 
   container site {
@@ -49,27 +50,27 @@ module site {
       leaf enterprise {
         type leafref {
           path "/ent:enterprise/ent:enterprise/ent:id";
-        }              
+        }
+        mandatory true;
         description
           "Link to enterprise that owns this site";
-        mandatory true;          
       }
 
       container imsi-definition {
         leaf mcc {
           type at:mcc;
+	  mandatory true;
           description "mobile country code";
-          mandatory true;
         }
         leaf mnc {
           type at:mnc;
+	  mandatory true;
           description "mobile network code";
-          mandatory true;
         }
         leaf enterprise {
           type at:ent;
+	  mandatory true;
           description "enterprise-specific identifier";
-          mandatory true;
         }
         leaf format {
           type string {
@@ -89,12 +90,13 @@ module site {
           //   3 digit enterprise ID
           //   5 digit subscriber ID
         }
+        description "The container for imsi-definition";
       }
 
       leaf description {
         type at:description;
         description "description of this site";
-      }         
+      }
     }
-  } 
+  }
 }

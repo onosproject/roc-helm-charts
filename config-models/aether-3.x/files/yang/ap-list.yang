@@ -13,7 +13,7 @@ module ap-list {
 
   organization "Open Networking Foundation.";
   contact "Scott Baker";
-  description 
+  description
     "An Aether AP List is a named list of access points.";
 
   revision "2021-06-02" {
@@ -25,6 +25,7 @@ module ap-list {
         type yg:yang-identifier {
             length 1..32;
         }
+    description "The typedef ap-list-id";
   }
 
   container ap-list {
@@ -52,7 +53,7 @@ module ap-list {
           mandatory true;
           description
               "Type Allocation Code";
-        }        
+        }
         leaf enable {
           type boolean;
           default true;
@@ -61,14 +62,14 @@ module ap-list {
         }
         description
           "List of access point addresses";
-      }        
+      }
 
       leaf display-name {
         type string {
             length 1..80;
         }
         description "display name to use in GUI or CLI";
-      }     
+      }
 
       leaf description {
         type at:description;
@@ -85,7 +86,7 @@ module ap-list {
         mandatory true;
         description
           "Link to enterprise that owns this Access Point List";
-      }       
+      }
     }
-  } 
+  }
 }

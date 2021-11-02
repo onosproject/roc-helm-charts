@@ -34,6 +34,7 @@ module onf-device-group {
         type yg:yang-identifier {
             length 1..32;
         }
+    description "The typedef for device-group-id";
   }
 
   container device-group {
@@ -71,9 +72,13 @@ module onf-device-group {
         }
         leaf imsi-range-from {
           type uint64;
+          description
+              "value of imsi-range-from";
         }
         leaf imsi-range-to {
           type uint64;
+          description
+              "value of imsi-range-to";
         }
         leaf display-name {
           type string {
@@ -102,24 +107,24 @@ module onf-device-group {
           leaf uplink {
             type at:bitrate;
             units bps;
-            description "Per-device MBR uplink data rate in bps";
             mandatory true;
+            description "Per-device MBR uplink data rate in bps";
           }
 
           leaf downlink {
             type at:bitrate;
             units bps;
-            description "Per-device MBR downlink data rate in bps";
             mandatory true;
+            description "Per-device MBR downlink data rate in bps";
           }
         }
         leaf traffic-class {
           type leafref {
             path "/tc:traffic-class/tc:traffic-class/tc:id";
           }
+          mandatory true;
           description
             "Link to traffic class";
-          mandatory true;
         }
       }
 
@@ -127,9 +132,9 @@ module onf-device-group {
         type leafref {
           path "/st:site/st:site/st:id";
         }
+        mandatory true;
         description
           "Link to site";
-        mandatory true;
       }
     }
   }

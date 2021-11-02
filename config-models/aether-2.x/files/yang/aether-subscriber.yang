@@ -11,7 +11,7 @@ module aether-subscriber {
   import up-profile{ prefix up; }
   import access-profile{ prefix ap; }
   import security-profile{ prefix sec; }
-  import enterprise{ prefix ent; }  
+  import enterprise{ prefix ent; }
   import ietf-yang-types{ prefix ietf; }
 
   organization "Open Networking Foundation.";
@@ -29,18 +29,21 @@ module aether-subscriber {
       type uint32 {
         range 0..999;
       }
+    description "The typedef for mmc";
   }
 
   typedef mnc {
       type uint32 {
         range 0..999;
       }
+    description "The typedef for mnc";
   }
 
   typedef tac {
       type uint32 {
         range 0..99999999;
       }
+    description "The typedef for tac";
   }
 
   container subscriber {
@@ -52,8 +55,8 @@ module aether-subscriber {
         "List of subscriber devices";
 
       leaf id {
-        description "identifier for this subscriber, typically a UUID";
         type ietf:uuid;
+        description "identifier for this subscriber, typically a UUID";
       }
 
       leaf display-name {
@@ -61,7 +64,7 @@ module aether-subscriber {
             length 1..80;
         }
         description "display name to use in GUI or CLI";
-      }      
+      }
 
       choice imsi {
         case wildcard {
@@ -69,16 +72,20 @@ module aether-subscriber {
             type string {
               length 1..15;
             }
+            description "The typedef for imsi-wildcard";
           }
         }
         case range {
           leaf imsi-range-from {
             type uint64;
+            description "The typedef for imsi-range-from";
           }
           leaf imsi-range-to {
             type uint64;
+            description "The typedef for imsi-range-to";
           }
         }
+        description "The choice for imsi";
       }
 
       container serving-plmn {
@@ -94,6 +101,7 @@ module aether-subscriber {
           type tac;
           description "type allocation code";
         }
+        description "The container for serving-plmn";
       }
 
       leaf requested-apn {
@@ -122,7 +130,7 @@ module aether-subscriber {
       leaf enterprise {
         type leafref {
           path "/ent:enterprise/ent:enterprise/ent:id";
-        }              
+        }
         description
           "Link to enterprise that owns this UE range";
       }
@@ -138,14 +146,14 @@ module aether-subscriber {
         leaf up-profile {
           type leafref {
             path "/up:up-profile/up:up-profile/up:id";
-          }          
+          }
           description
             "Link to user plane profile";
         }
         leaf qos-profile {
           type leafref {
             path "/qos:qos-profile/qos:qos-profile/qos:id";
-          }              
+          }
           description
             "Link to qos profile";
         }
@@ -154,7 +162,7 @@ module aether-subscriber {
           leaf access-profile {
             type leafref {
               path "/ap:access-profile/ap:access-profile/ap:id";
-            }            
+            }
             description
                 "Link to access profile";
           }
@@ -164,15 +172,17 @@ module aether-subscriber {
             description
               "Allow or disallow this ue to use this access profile";
           }
+          description "The list for access-profile";
         }
         leaf security-profile {
           type leafref {
             path "/sec:security-profile/sec:security-profile/sec:id";
-          }              
+          }
           description
             "Link to security profile";
         }
+        description "The container for profiles";
       }
     }
-  } 
+  }
 }

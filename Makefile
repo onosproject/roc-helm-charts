@@ -7,7 +7,7 @@
 all: test
 
 test: # @HELP run the acceptance tests
-test: deps
+test: deps yang-lint
 
 roc-test: # @HELP run the integration tests
 roc-test: deps # @HELP run the integration tests
@@ -27,3 +27,13 @@ help:
         BEGIN {FS = ": *# *@HELP"}; \
         {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}; \
     '
+
+yang-lint:
+	#pyang --lint ./config-models/*.x/files/yang/*.yang
+	pyang --lint ./config-models/aether-1.x/files/yang/*.yang
+	pyang --lint ./config-models/aether-2.x/files/yang/*.yang
+	pyang --lint ./config-models/aether-2.1.x/files/yang/*.yang
+	pyang --lint ./config-models/aether-2.2.x/files/yang/*.yang
+	pyang --lint ./config-models/aether-3.x/files/yang/*.yang
+	pyang --lint ./config-models/aether-4.x/files/yang/*.yang
+	pyang --lint ./config-models/plproxy-1.x/files/yang/*.yang
