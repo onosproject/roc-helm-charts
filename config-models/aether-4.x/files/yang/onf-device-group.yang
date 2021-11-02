@@ -63,8 +63,8 @@ module onf-device-group {
 
       list imsis {
         // TODO: imsi-range-from cannot be used as a list index
-        key "id";
-        leaf id {
+        key "imsi-id";
+        leaf imsi-id {
           type yg:yang-identifier;
           description
               "Id of this imsi-range";

@@ -5,8 +5,8 @@ module: onf-application
         +--rw display-name?   string
         +--rw description?    at:description
         +--rw address         ietf:host
-        +--rw endpoint* [id]
-        |  +--rw id               yg:yang-identifier
+        +--rw endpoint* [endpoint-id]
+        |  +--rw endpoint-id      yg:yang-identifier
         |  +--rw port-start       ietf:port-number
         |  +--rw port-end?        ietf:port-number
         |  +--rw protocol?        at:protocol
@@ -35,8 +35,8 @@ module: onf-device-group
         +--rw id              device-group-id
         +--rw description?    at:description
         +--rw display-name?   string
-        +--rw imsis* [id]
-        |  +--rw id                 yg:yang-identifier
+        +--rw imsis* [imsi-id]
+        |  +--rw imsi-id            yg:yang-identifier
         |  +--rw imsi-range-from?   uint64
         |  +--rw imsi-range-to?     uint64
         |  +--rw display-name?      string
@@ -77,19 +77,19 @@ module: onf-site
      +--rw site* [id]
         +--rw id                 site-id
         +--rw display-name?      string
-        +--rw small-cell* [id]
-        |  +--rw id              yg:yang-identifier
-        |  +--rw address?        inet:host
-        |  +--rw tac             at:tac
-        |  +--rw enable?         boolean
-        |  +--rw display-name?   string
+        +--rw small-cell* [small-cell-id]
+        |  +--rw small-cell-id    yg:yang-identifier
+        |  +--rw address?         inet:host
+        |  +--rw tac              at:tac
+        |  +--rw enable?          boolean
+        |  +--rw display-name?    string
         +--rw monitoring
         |  +--rw edge-cluster-prometheus-url?      inet:uri
         |  +--rw edge-monitoring-prometheus-url?   inet:uri
-        |  +--rw edge-device* [id]
-        |     +--rw id              yg:yang-identifier
-        |     +--rw display-name?   string
-        |     +--rw description?    at:description
+        |  +--rw edge-device* [edge-device-id]
+        |     +--rw edge-device-id    yg:yang-identifier
+        |     +--rw display-name?     string
+        |     +--rw description?      at:description
         +--rw enterprise         -> /ent:enterprise/enterprise/id
         +--rw imsi-definition
         |  +--rw mcc           at:mcc

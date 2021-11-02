@@ -63,8 +63,8 @@ module onf-application {
       }
 
       list endpoint {
-        key "id";
-        leaf id {
+        key "endpoint-id";
+        leaf endpoint-id {
           type yg:yang-identifier;
           description
               "Id of this endpoint";
