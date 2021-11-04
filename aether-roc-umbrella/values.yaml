@@ -66,6 +66,11 @@ import:
       enabled: true # controls its plproxy too
     ace:
       enabled: true
+  prom-label-proxy:
+    acc:
+      enabled: true
+    amp:
+      enabled: true
 
 # ONOS-TOPO
 onos-topo:
