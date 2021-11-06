@@ -71,6 +71,8 @@ import:
       enabled: true
     amp:
       enabled: true
+  demo-exporter:
+    enabled: true
 
 # ONOS-TOPO
 onos-topo:
@@ -273,11 +275,11 @@ prometheus-acc:
                summary: 'VCS {{ $labels.vcs_id }} jitter high'
     prometheus.yml:
       scrape_configs:
-        - job_name: sdcore-exporter
+        - job_name: demo-exporter
           scrape_interval: 2s
           static_configs:
             - targets:
-                - sdcore-adapter-v4-exporter:2112
+                - demo-exporter:2112
 
 prometheus-amp:
   pushgateway:
@@ -291,11 +293,11 @@ prometheus-amp:
   serverFiles:
     prometheus.yml:
       scrape_configs:
-        - job_name: sdcore-exporter
+        - job_name: demo-exporter
           scrape_interval: 2s
           static_configs:
             - targets:
-                - sdcore-adapter-v4-exporter:2112
+                - demo-exporter:2112
   
 prometheus-ace:
   pushgateway:
@@ -309,11 +311,11 @@ prometheus-ace:
   serverFiles:
     prometheus.yml:
       scrape_configs:
-        - job_name: sdcore-exporter
+        - job_name: demo-exporter
           scrape_interval: 2s
           static_configs:
             - targets:
-                - sdcore-adapter-v4-exporter:2112
+                - demo-exporter:2112
         - job_name: kube-state-metrics
           scrape_interval: 2s
           static_configs:

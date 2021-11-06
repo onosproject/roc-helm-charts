@@ -14,7 +14,6 @@ allowed[config] {
     device_group := devicegroups
     enterprise := enterprises
     ip_domain := ip_domains
-    network := networks
     site := sites
     template := templates
     traffic_class := trafficclasses
@@ -46,11 +45,6 @@ allowed[config] {
                 ip_domain
             ]
         },
-        "network": {
-            "network": [
-                network
-            ]
-        },
         "site": {
             "site": [
                 site
@@ -61,8 +55,8 @@ allowed[config] {
                 template
             ]
         },
-        "traffic_class": {
-            "traffic_class": {
+        "traffic-class": {
+            "traffic-class": {
                 traffic_class
             }
         },
@@ -102,11 +96,6 @@ enterprises[enterprise] {
 ip_domains[ip_domain] {
     ip_domain := input.ip_domain.ip_domain[_]
     ["AetherROCAdmin", ip_domain.enterprise][_] == input.groups[i]
-}
-
-networks[network] {
-    network := input.network.network[_]
-    ["AetherROCAdmin", network.enterprise][_] == input.groups[i]
 }
 
 sites[site] {
