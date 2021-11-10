@@ -190,31 +190,43 @@ grafana:
     log:
       level: debug
     server:
-      domain: aether-roc-gui
-      root_url: "%(protocol)s://%(domain)s:%(http_port)s/grafana/"
+      domain: aether-roc-gui:8183
+      root_url: "%(protocol)s://%(domain)s/grafana/"
       serve_from_sub_path: true
+    security:
+      allow_embedding: true
+    auth:
+     disable_login_form: true
+     oauth_auto_login: true
     auth.anonymous:
+      enabled: false
+      hide_version: false
+# Disabled other auth types for the moment - see aether-roc-gui/docs/grafana.md
+    auth.proxy:
+      enabled: false
+      header_name: X-WEBAUTH-USER
+      header_property: username
+      auto_sign_up: true
+      enable_login_token: true
+    auth.jwt:
+      enabled: false
+      header_name: X-JWT-Assertion
+      username_claim: name
+      email_claim: email
+      jwk_set_url: "https://keycloak.opennetworking.org/auth/realms/master/protocol/openid-connect/certs"
+      cache_ttl: 60m  
+    auth.generic_oauth:
       enabled: true
-      hide_version: true
-# Commented out for the moment - see aether-roc-gui/docs/grafana.md
-#    auth.jwt:
-#      enabled: true
-#      header_name: X-JWT-Assertion
-#      username_claim: name
-#      email_claim: email
-#      jwk_set_url: https://dex.aetherproject.org/dex/keys
-#      cache_ttl: 60m
-#    auth.generic_oauth:
-#      enabled: true
-#      client_id: aether-roc-gui
-##      client_secret: YWV0aGVyLXJvYy1ndWkK
-#      scopes: "openid profile email groups"
-#      empty_scopes: false
-#      auth_url: "http://dex-ldap-umbrella:5556/auth"
-#      token_url: "http://dex-ldap-umbrella:5556/token"
-#      api_url: "http://dex-ldap-umbrella:5556/userinfo"
-#      allowed_domains: opennetworking.org
-#      allow_sign_up: true
+      client_id: aether-roc-gui
+#      client_secret: YWV0aGVyLXJvYy1ndWkK
+      scopes: "openid profile email groups"
+      empty_scopes: false
+      auth_url: "http://k3u-keycloak:5557/auth/realms/master/protocol/openid-connect/auth"
+      token_url: "http://k3u-keycloak:5557/auth/realms/master/protocol/openid-connect/token"
+      api_url: "http://k3u-keycloak:5557/auth/realms/master/protocol/openid-connect/userinfo"
+      allowed_domains: opennetworking.org
+      allow_sign_up: true
+      name: KeyCloak
 
 prometheus-acc:
   pushgateway:
