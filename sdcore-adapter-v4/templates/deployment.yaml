@@ -51,7 +51,6 @@ spec:
             - "-ca=/etc/sdcore-adapter/certs/tls.cacert"
             - "-alsologtostderr"
             - "-hostCheckDisabled"
-            - "-model_version={{ .Values.model.version }}"
             {{ if .Values.initialConfig }}
             - "-config={{ .Values.initialConfig }}"
             {{ end }}
