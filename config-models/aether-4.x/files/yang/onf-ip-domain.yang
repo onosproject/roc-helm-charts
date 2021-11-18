@@ -51,8 +51,9 @@ module onf-ip-domain {
 
       leaf dnn {
         type at:dnn;
+        mandatory true;
         description "DNN/APN";
-      }      
+      }
 
       leaf dns-primary {
         type inet:ip-address;
@@ -80,7 +81,7 @@ module onf-ip-domain {
       leaf mtu {
         type at:mtu;
         description "maximum transmission unit";
-      }           
+      }
 
       leaf description {
         type at:description;
@@ -96,7 +97,7 @@ module onf-ip-domain {
         mandatory true;
         description
           "Link to enterprise that owns this IP-Domain";
-      }         
+      }
     }
-  } 
+  }
 }

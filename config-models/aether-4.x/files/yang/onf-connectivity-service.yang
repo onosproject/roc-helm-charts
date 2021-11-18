@@ -12,7 +12,7 @@ module onf-connectivity-service {
 
   organization "Open Networking Foundation.";
   contact "Scott Baker";
-  description 
+  description
     "An Aether Connectivity service is the linkage between the
      ROC and a core that provides connectivity.";
 
@@ -50,24 +50,6 @@ module onf-connectivity-service {
       leaf description {
         type at:description;
         description "description of this connectivity service";
-      }
-
-      // deprecated
-      leaf spgwc-endpoint {
-        type inet:uri;
-        description "url of the spgwc service";
-      }
-
-      // deprecated
-      leaf hss-endpoint {
-        type inet:uri;
-        description "url of the hss service";
-      }
-
-      // deprecated
-      leaf pcrf-endpoint {
-        type inet:uri;
-        description "url of the pcrf service";
       }
 
       leaf core-5g-endpoint {

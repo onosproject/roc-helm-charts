@@ -11,7 +11,6 @@ module onf-vcs {
   import onf-application{ prefix app; }
   import onf-device-group{ prefix dg; }
   import onf-enterprise{ prefix ent; }
-  import onf-template{ prefix vt; }
   import onf-upf { prefix upf; }
   import onf-site{ prefix st; }
 
