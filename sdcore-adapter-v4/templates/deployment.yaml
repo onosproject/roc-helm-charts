@@ -60,6 +60,9 @@ spec:
             {{ if .Values.spgwEndpoint }}
             - "-spgw_endpoint={{ .Values.spgwEndpoint }}"
             {{ end }}
+            {{ if not .Values.partialUpdateEnabled }}
+            - "-partial_update_disable"
+            {{ end }}
           ports:
             {{- range $key, $port := .Values.ports.gnmi }}
             - name: gnmi{{ $key }}
