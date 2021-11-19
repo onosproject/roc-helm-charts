@@ -133,6 +133,7 @@ sdcore-adapter:
 
 sdcore-adapter-v4:
   prometheusEnabled: false
+  partialUpdateEnabled: false
 
 # Subscriber Proxy
 subscriber-proxy:
