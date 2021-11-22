@@ -20,6 +20,7 @@ spec:
         name: {{ template "subscriber-proxy.fullname" . }}
         {{- include "subscriber-proxy.selectorLabels" . | nindent 8 }}
     spec:
+      serviceAccountName: subscriber-proxy
     {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
         {{- toYaml . | nindent 6 }}
@@ -43,26 +44,28 @@ spec:
               valueFrom:
                 fieldRef:
                   fieldPath: spec.nodeName
+            - name: OIDC_SERVER_URL
+              value: {{ .Values.config.openidc.issuer }}
           args:
             - "/usr/local/bin/subscriber-proxy"
-            - "-bind_port=:{{ .Values.ports.port }}"
+            - "-bind_port=:{{ .Values.config.port }}"
             - "-client_key=/etc/subscriber-proxy/certs/tls.key"
             - "-client_crt=/etc/subscriber-proxy/certs/tls.crt"
             - "-ca_crt=/etc/subscriber-proxy/certs/tls.cacert"
             - "-alsologtostderr"
             - "-hostCheckDisabled"
-            - "-webconsole_url=http://{{ .Values.ports.webui_endpt.addr}}:{{ .Values.ports.webui_endpt.port}}"
-            - "-onos_config_url={{ .Values.ports.aether_config_endpt.addr}}:{{ .Values.ports.aether_config_endpt.port}}"
+            - "-webconsole_url=http://{{ .Values.config.webui_endpt.addr}}:{{ .Values.config.webui_endpt.port}}"
+            - "-onos_config_url={{ .Values.config.aether_config_endpt.addr}}:{{ .Values.config.aether_config_endpt.port}}"
           ports:
-            - containerPort: {{.Values.ports.port}}
+            - containerPort: {{.Values.config.port}}
           readinessProbe:
             tcpSocket:
-              port: {{ .Values.ports.port }}
+              port: {{ .Values.config.port }}
             initialDelaySeconds: 5
             periodSeconds: 10
           livenessProbe:
             tcpSocket:
-              port: {{ .Values.ports.port }}
+              port: {{ .Values.config.port }}
             initialDelaySeconds: 15
             periodSeconds: 20
           volumeMounts:

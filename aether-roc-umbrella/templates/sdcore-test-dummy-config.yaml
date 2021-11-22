@@ -35,6 +35,10 @@ data:
         rewrite ^/v1/config/5g/.* /v1/config/5g break;
         proxy_pass http://127.0.0.1:8080/post_dummy;
       }
+      location /api/subscriber {
+        rewrite ^/api/subscriber/.* /api/subscriber break;
+        proxy_pass http://127.0.0.1:8080/post_dummy;
+      }
       location = /post_dummy {
         # turn off logging here to avoid double logging
         access_log off;

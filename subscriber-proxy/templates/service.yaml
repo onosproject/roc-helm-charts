@@ -19,6 +19,6 @@ spec:
     name: {{ template "subscriber-proxy.fullname" . }}
   ports:
     - name: sub-proxy
-      port: {{.Values.ports.port}}
+      port: {{.Values.config.port}}
       protocol: TCP
 

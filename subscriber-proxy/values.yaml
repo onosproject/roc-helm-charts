@@ -10,7 +10,7 @@ annotations: {}
 
 image:
   repository: onosproject/sdcore-adapter
-  tag: v0.2.2
+  tag: v0.2.17
   pullPolicy: IfNotPresent
   pullSecrets: []
 
@@ -26,18 +26,20 @@ model:
   version: v3
 
 secure: true
-initialConfig: ""
-output: ""
-spgwEndpoint: ""
 
-ports:
-  port: 5001
+config:  
+  port: 5000
   webui_endpt:
-    addr: webui.omec.svc.cluster.local
-    port: 5000
+    addr: aether-roc-umbrella-sdcore-test-dummy
+    port: 80
   aether_config_endpt:
     addr: onos-config
     port: 5150
+  openidc:
+    issuer:
+    credentials:
+      username: "YWxpY2VhQG9wZW5uZXR3b3JraW5nLm9yZw=="
+      password: "cGFzc3dvcmQ="
 
 prometheusEnabled: true
 
