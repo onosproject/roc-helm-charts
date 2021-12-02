@@ -7,7 +7,7 @@ module: onf-application
         +--rw address         ietf:host
         +--rw endpoint* [endpoint-id]
         |  +--rw endpoint-id      yg:yang-identifier
-        |  +--rw port-start       ietf:port-number
+        |  +--rw port-start?      ietf:port-number
         |  +--rw port-end?        ietf:port-number
         |  +--rw protocol?        at:protocol
         |  +--rw mbr

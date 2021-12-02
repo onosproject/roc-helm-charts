@@ -72,7 +72,6 @@ module onf-application {
         }
         leaf port-start {
           type ietf:port-number;
-          mandatory true;
           description
               "First port in range";
         }
