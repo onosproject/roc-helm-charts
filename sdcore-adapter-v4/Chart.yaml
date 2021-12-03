@@ -6,7 +6,7 @@ apiVersion: v2
 name: sdcore-adapter-v4
 kubeVersion: ">=1.17.0"
 type: application
-version: 4.0.15
+version: 4.0.16
 appVersion: v4.0.0
 description: Aether SD-Core Adapter
 keywords:
