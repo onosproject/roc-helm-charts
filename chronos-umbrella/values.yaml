@@ -1,0 +1,108 @@
+# SPDX-FileCopyrightText: 2020-present Open Networking Foundation <info@opennetworking.org>
+#
+# SPDX-License-Identifier: LicenseRef-ONF-Member-Only-1.0
+
+# Default values for all Aether Helm charts.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+global:
+  fullnameOverride: "onos"
+  nameOverride: ""
+
+import:
+  grafana:
+    enabled: true
+  prometheus:
+    chronos:
+      enabled: true
+  chronos-exporter:
+    enabled: true
+
+#chronos-exporter:
+    #image:
+    #repository: onosproject/chronos-exporter
+    #tag: v0.0.1
+    #pullPolicy: IfNotPresent
+    #pullSecrets: []
+
+grafana:
+  sidecar:
+    dashboards:
+       enabled: true
+       label: chronos_dashboard
+       labelValue: chronos-exporter-gui
+    datasources:
+       enabled: true
+       label: chronos_datasource
+       labelValue: chronos-exporter-gui
+  source:
+  - name: chronos
+    protocol: http
+    service: chronos-umbrella-prometheus-chronos-server
+    port: 80
+  grafana.ini:
+    log:
+      level: debug
+    server:
+      domain: aether-roc-gui:8183
+      root_url: "%(protocol)s://%(domain)s/grafana/"
+      serve_from_sub_path: true
+    security:
+      allow_embedding: true
+    auth:
+     disable_login_form: false
+     oauth_auto_login: false
+    auth.anonymous:
+      enabled: true
+      hide_version: false
+# Disabled other auth types for the moment - see aether-roc-gui/docs/grafana.md
+    auth.proxy:
+      enabled: false
+      header_name: X-WEBAUTH-USER
+      header_property: username
+      auto_sign_up: true
+      enable_login_token: true
+    auth.jwt:
+      enabled: false
+      header_name: X-JWT-Assertion
+      username_claim: name
+      email_claim: email
+      jwk_set_url: "https://keycloak.opennetworking.org/auth/realms/master/protocol/openid-connect/certs"
+      cache_ttl: 60m  
+    auth.generic_oauth:
+      enabled: false
+      client_id: aether-roc-gui
+#      client_secret: YWV0aGVyLXJvYy1ndWkK
+      scopes: "openid profile email groups"
+      empty_scopes: false
+      auth_url: "http://k3u-keycloak:5557/auth/realms/master/protocol/openid-connect/auth"
+      token_url: "http://k3u-keycloak:5557/auth/realms/master/protocol/openid-connect/token"
+      api_url: "http://k3u-keycloak:5557/auth/realms/master/protocol/openid-connect/userinfo"
+      allowed_domains: opennetworking.org
+      allow_sign_up: true
+      name: KeyCloak
+
+prometheus-chronos:
+  alertmanager:
+    persistentVolume:
+      enabled: false
+  server:
+    persistentVolume:
+      enabled: false
+  pushgateway:
+    enabled: false
+  nodeExporter:
+    enabled: false
+  kubeStateMetrics:
+    enabled: false
+  alertmanager:
+    enabled: false
+  serverFiles:
+    prometheus.yml:
+      scrape_configs:
+        - job_name: chronos-exporter
+          scrape_interval: 2s
+          static_configs:
+            - targets:
+                - chronos-exporter:2112

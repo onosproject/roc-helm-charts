@@ -1,0 +1,18 @@
+# SPDX-FileCopyrightText: 2021-present Open Networking Foundation <info@opennetworking.org>
+#
+# SPDX-License-Identifier: LicenseRef-ONF-Member-Only-1.0
+
+nameOverride: ""
+fullnameOverride: "chronos-exporter"
+
+replicaCount: 1
+annotations: {}
+
+image:
+  repository: onosproject/chronos-exporter
+  tag: latest
+  pullPolicy: IfNotPresent
+  pullSecrets: []
+
+service:
+  type: ClusterIP

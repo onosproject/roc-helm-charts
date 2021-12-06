@@ -1,0 +1,18 @@
+# SPDX-FileCopyrightText: 2021-present Open Networking Foundation <info@opennetworking.org>
+#
+# SPDX-License-Identifier: LicenseRef-ONF-Member-Only-1.0
+
+apiVersion: v2
+name: chronos-exporter
+description: Chronos Exporter
+kubeVersion: ">=1.15.0"
+type: application
+version: 0.0.1
+appVersion: v0.0.0
+keywords:
+  - aether
+  - exporter
+home: https://www.opennetworking.org/aether/
+maintainers:
+  - name: Aether Ops team
+    email: support@opennetworking.org

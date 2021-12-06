@@ -1,0 +1,147 @@
+{
+ 
+    "annotations": {
+      "list": [
+        {
+          "builtIn": 1,
+          "datasource": "-- Grafana --",
+          "enable": true,
+          "hide": true,
+          "iconColor": "rgba(0, 211, 255, 1)",
+          "name": "Annotations & Alerts",
+          "type": "dashboard"
+        }
+      ]
+    },
+    "editable": false,
+    "gnetId": null,
+    "graphTooltip": 0,
+    "links": [],
+    "panels": [
+      {
+        "datasource": "$ds",
+        "description": "UE Connectivity",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "drawStyle": "line",
+              "fillOpacity": 0,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "lineInterpolation": "linear",
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "auto",
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 0,
+          "y": 0
+        },
+        "id": 1,
+        "options": {
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom"
+          },
+          "tooltip": {
+            "mode": "single"
+          }
+        },
+        "targets": [
+          {
+            "exemplar": true,
+            "expr": "subscribers_info{imsi=\"$imsi\"}",
+            "interval": "",
+            "legendFormat": "Connectivity",
+            "queryType": "randomWalk",
+            "refId": "A"
+          }
+        ],
+        "title": "UE $imsi Connectivity",
+        "type": "timeseries"
+      }
+    ],
+    "refresh": "",
+    "schemaVersion": 30,
+    "style": "light",
+    "tags": [],
+    "templating": {
+      "list": [
+          {
+                    "label" : "IMSI",
+                    "multi" : false,
+                    "name" : "imsi",
+                    "type" : "query",
+                    "datasource": "$ds",
+                    "definition": "label_values(subscribers_info, imsi)",
+                    "query": {
+                        "query": "label_values(subscribers_info, imsi)",
+                        "refId": "StandardVariableQuery"
+                    },
+                    "refresh": 1,  
+                    "sort" : 1
+        },
+	{
+                    "label" : "Datasource",
+                    "multi" : false,
+                    "name" : "ds",
+                    "type" : "datasource",
+                    "query": "prometheus",
+                    "queryValue": "",
+                    "refresh": 1,
+                    "regex": ""
+        }
+      ]
+    },
+    "time": {
+      "from": "now-15m",
+      "to": "now"
+    },
+    "timepicker": {},
+    "timezone": "",
+    "title": "UE Connectivity",
+    "uid": "ue-conn",
+    "version": 1
+  }
+
