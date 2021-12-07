@@ -91,9 +91,9 @@
         "targets": [
           {
             "exemplar": true,
-            "expr": "subscribers_info{imsi=\"$imsi\"}",
+            "expr": "sum by (imsi) (subscribers_info{imsi=\"$imsi\"})",
             "interval": "",
-            "legendFormat": "Connectivity",
+            "legendFormat": "IMSI {{imsi}}",
             "queryType": "randomWalk",
             "refId": "A"
           }
