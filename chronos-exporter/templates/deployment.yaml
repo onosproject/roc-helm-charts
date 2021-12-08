@@ -45,6 +45,8 @@ spec:
                   fieldPath: spec.nodeName
           args:
             - "/usr/local/bin/chronos-exporter"
+            - "--config"
+            - {{ .Values.configfile }}
           ports:
             - name: metrics
               containerPort: 2112
@@ -60,7 +62,14 @@ spec:
               port: 2112
             initialDelaySeconds: 15
             periodSeconds: 20
+          volumeMounts:
+            - name: exporter-config
+              mountPath: /etc/chronos-exporter/configs
+              readOnly: true
       volumes:
         - name: secret
           secret:
             secretName: {{ template "chronos-exporter.fullname" . }}-secret
+        - name: exporter-config
+          configMap:
+            name: {{ template "chronos-exporter.fullname" . }}-config
