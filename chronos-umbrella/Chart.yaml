@@ -7,7 +7,7 @@ name: chronos-umbrella
 description: Chronos Umbrella chart to deploy all Aether ROC
 kubeVersion: ">=1.18.0"
 type: application
-version: 0.0.2
+version: 0.0.3
 appVersion: v0.0.0
 keywords:
   - aether
@@ -29,4 +29,4 @@ dependencies:
   - name: chronos-exporter
     condition: import.chronos-exporter.enabled
     repository: "file://../chronos-exporter"
-    version: 0.0.2
+    version: 0.0.3

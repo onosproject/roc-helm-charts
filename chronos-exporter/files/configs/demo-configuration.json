@@ -28,6 +28,9 @@
           "display-name": "Cameras Slice",
           "device-groups": [
             "cameras"
+          ],
+          "applications": [
+            "nvr"
           ]
         },
         {
@@ -177,6 +180,12 @@
           "display-name": "Sim 1"
         }
       ]
+    }
+  ],
+  "applications": [
+    {
+      "application-id": "nvr-application",
+      "display-name": "Network Video Recorder"
     }
   ]
 }

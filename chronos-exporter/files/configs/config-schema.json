@@ -1,0 +1,213 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aetheropennetworking.org/roc/chronos-schema.json",
+  "title": "Chronos Config Schema",
+  "description": "A schema for validating the intermediate format for Chronos configuration",
+  "type": "object",
+  "properties": {
+    "sites": {
+      "description": "a collection of sites",
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "properties": {
+          "site-id": {
+            "type": "string",
+            "pattern": "^([a-zA-Z0-9\\-\\.-])*$",
+            "minLength": 3
+          },
+          "display-name": {
+            "type": "string",
+            "maxLength": 50
+          },
+          "image": {
+            "type": "string"
+          },
+          "small-cells": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+              "type": "object",
+              "properties": {
+                "small-cell-id": {
+                  "type": "string",
+                  "pattern": "^([a-zA-Z0-9\\-\\.-])*$",
+                  "minLength": 3
+                },
+                "display-name": {
+                  "type": "string",
+                  "maxLength": 50
+                }
+              },
+              "required": [
+                "small-cell-id",
+                "display-name"
+              ]
+            }
+          },
+          "slices": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+              "type": "object",
+              "properties": {
+                "slice-id": {
+                  "type": "string",
+                  "pattern": "^([a-zA-Z0-9\\-\\.-])*$",
+                  "minLength": 3
+                },
+                "display-name": {
+                  "type": "string",
+                  "maxLength": 50
+                },
+                "device-groups": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "uniqueItems": true
+                  }
+                },
+                "applications": {
+                  "type": "array",
+                  "uniqueItems": true,
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          },
+          "device-groups": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+              "type": "object",
+              "properties": {
+                "device-group-id": {
+                  "type": "string",
+                  "pattern": "^([a-zA-Z0-9\\-\\.-])*$",
+                  "minLength": 3
+                },
+                "display-name": {
+                  "type": "string",
+                  "maxLength": 50
+                },
+                "devices": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "uniqueItems": true
+                  }
+                }
+              },
+              "required": [
+                "device-group-id",
+                "display-name"
+              ]
+            }
+          },
+          "devices": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+              "type": "object",
+              "properties": {
+                "serial-number": {
+                  "type": "string",
+                  "pattern": "^([a-zA-Z0-9\\-\\.-])*$",
+                  "minLength": 3
+                },
+                "imei": {
+                  "type": "string",
+                  "maxLength": 20
+                },
+                "display-name": {
+                  "type": "string",
+                  "maxLength": 50
+                },
+                "location": {
+                  "type": "string",
+                  "maxLength": 50
+                },
+                "type": {
+                  "type": "string"
+                },
+                "sim": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "serial-number",
+                "imei",
+                "display-name",
+                "type"
+              ]
+            }
+          },
+          "sims": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+              "type": "object",
+              "properties": {
+                "iccid": {
+                  "type": "string",
+                  "pattern": "^([a-zA-Z0-9\\-\\.-])*$",
+                  "minLength": 3
+                },
+                "display-name": {
+                  "type": "string",
+                  "maxLength": 50
+                }
+              },
+              "required": [
+                "iccid"
+              ]
+            }
+          }
+        },
+        "required": [
+          "site-id",
+          "small-cells",
+          "slices",
+          "device-groups",
+          "devices",
+          "sims"
+        ]
+      }
+    },
+    "applications": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "properties": {
+          "application-id": {
+            "type": "string",
+            "pattern": "^([a-zA-Z0-9\\-\\.-])*$",
+            "minLength": 3
+          },
+          "display-name": {
+            "type": "string",
+            "maxLength": 50
+          }
+        },
+        "required": [
+          "application-id",
+          "display-name"
+        ]
+      }
+    }
+  },
+  "required": [
+    "sites",
+    "applications"
+  ]
+}
