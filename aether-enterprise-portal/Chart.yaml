@@ -1,0 +1,20 @@
+# SPDX-FileCopyrightText: 2021-present Open Networking Foundation <info@opennetworking.org>
+#
+# SPDX-License-Identifier: LicenseRef-ONF-Member-Only-1.0
+
+apiVersion: v2
+name: aether-enterprise-portal
+description: Aether Enterprise Portal
+kubeVersion: ">=1.15.0"
+type: application
+version: 0.0.1
+appVersion: 0.0.1
+keywords:
+  - aether
+  - roc
+  - enterprise
+  - portal
+home: https://www.opennetworking.org/aether/
+maintainers:
+  - name: Aether Ops team
+    email: support@opennetworking.org

@@ -18,13 +18,16 @@ import:
       enabled: true
   chronos-exporter:
     enabled: true
+  aether-enterprise-portal:
+    enabled: true
 
-#chronos-exporter:
-    #image:
-    #repository: onosproject/chronos-exporter
-    #tag: v0.0.1
-    #pullPolicy: IfNotPresent
-    #pullSecrets: []
+aether-enterprise-portal:
+  grafana:
+    proxyEnabled: true
+    service: chronos-umbrella-grafana
+  prometheus:
+    proxyEnabled: true
+    service: chronos-umbrella-prometheus-chronos-server
 
 grafana:
   sidecar:
