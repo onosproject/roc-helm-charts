@@ -30,15 +30,16 @@ aether-enterprise-portal:
     service: chronos-umbrella-prometheus-chronos-server
 
 grafana:
+  adminPassword: admin@123
   sidecar:
     dashboards:
        enabled: true
        label: chronos_dashboard
-       labelValue: chronos-exporter-gui
+       labelValue: chronos-dashboard
     datasources:
        enabled: true
        label: chronos_datasource
-       labelValue: chronos-exporter-gui
+       labelValue: chronos-datasource
   source:
   - name: chronos
     protocol: http
@@ -57,7 +58,7 @@ grafana:
      disable_login_form: false
      oauth_auto_login: false
     auth.anonymous:
-      enabled: true
+      enabled: false
       hide_version: false
 # Disabled other auth types for the moment - see aether-roc-gui/docs/grafana.md
     auth.proxy:
