@@ -10,11 +10,11 @@ annotations: {}
 
 image:
   repository: onosproject/chronos-exporter
-  tag: v0.0.2
+  tag: v0.0.3
   pullPolicy: IfNotPresent
   pullSecrets: []
 
 service:
   type: ClusterIP
 
-configfile: /etc/chronos-exporter/configs/demo-configuration.json
+configfile: /etc/chronos-exporter/configs/demo-configuration.yaml
