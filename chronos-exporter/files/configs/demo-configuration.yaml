@@ -177,65 +177,65 @@ sites:
         type: iPhone 11
         sim: 123-671-788
       - serial-number: 18876873
-        imei: 123-671-7892
+        imei: 123-671-7893
         display-name: Phone 3
         location: Somewhere
         type: iPhone 11
-        sim: 123-671-788
+        sim: 123-671-787
       - serial-number: 18876874
-        imei: 123-671-7892
+        imei: 123-671-7894
         display-name: Phone 4
         location: Somewhere
         type: iPhone 11
-        sim: 123-671-788
+        sim: 123-671-786
       - serial-number: 18876875
-        imei: 123-671-7892
+        imei: 123-671-7895
         display-name: Phone 5
         location: Somewhere
         type: iPhone 11
-        sim: 123-671-788
+        sim: 123-671-785
       - serial-number: 18876881
-        imei: 123-671-7893
+        imei: 123-671-7896
         display-name: Camera 1
         location: Front entrance
         type: Camera
-        sim: 123-671-787
+        sim: 123-671-784
       - serial-number: 18876882
-        imei: 123-671-7894
+        imei: 123-671-7897
         display-name: Camera 2
         location: South Gate
         type: Camera
-        sim: 123-671-786
+        sim: 123-671-783
       - serial-number: 18876883
-        imei: 123-671-7895
+        imei: 123-671-7898
         display-name: Camera 3
         location: Store Room 1
         type: Camera
-        sim: 123-671-785
+        sim: 123-671-782
       - serial-number: 18876884
-        imei: 123-671-7896
+        imei: 123-671-7899
         display-name: Camera 4
         location: Store Room 2
         type: Camera
-        sim: 123-671-784
+        sim: 123-671-781
       - serial-number: 18876885
-        imei: 123-671-7897
+        imei: 123-671-7900
         display-name: Camera 5
         location: Corridor 1
         type: Camera
-        sim: 123-671-783
+        sim: 123-671-780
       - serial-number: 18876886
-        imei: 123-671-7898
+        imei: 123-671-7901
         display-name: Camera 6
         location: Corridor 2
         type: Camera
-        sim: 123-671-782
+        sim: 123-671-779
       - serial-number: 18876887
-        imei: 123-671-7899
+        imei: 123-671-7902
         display-name: Camera 7
         location: Atrium
         type: Camera
-        sim: 123-671-781
+        sim: 123-671-778
     sims:
       - iccid: 123-671-789
         display-name: Sim 9
@@ -255,6 +255,12 @@ sites:
         display-name: Sim 2
       - iccid: 123-671-781
         display-name: Sim 1
+      - iccid: 123-671-780
+        display-name: Sim 1a
+      - iccid: 123-671-779
+        display-name: Sim 1b
+      - iccid: 123-671-778
+        display-name: Sim 1c
 applications:
   - application-id: nvr-application
     display-name: Network Video Recorder
