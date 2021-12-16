@@ -7,7 +7,7 @@ name: chronos-umbrella
 description: Chronos Umbrella chart to deploy all Aether ROC
 kubeVersion: ">=1.18.0"
 type: application
-version: 0.0.7
+version: 0.0.8
 appVersion: v0.0.0
 keywords:
   - aether
