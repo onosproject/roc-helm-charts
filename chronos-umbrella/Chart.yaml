@@ -7,7 +7,7 @@ name: chronos-umbrella
 description: Chronos Umbrella chart to deploy all Aether ROC
 kubeVersion: ">=1.18.0"
 type: application
-version: 0.0.8
+version: 0.0.9
 appVersion: v0.0.0
 keywords:
   - aether
@@ -20,7 +20,7 @@ dependencies:
   - name: grafana
     condition: import.grafana.enabled
     repository: https://grafana.github.io/helm-charts
-    version: 6.16.6
+    version: 6.16.6 # See also image.tag override for 8.1.8
   - name: prometheus
     condition: import.prometheus.chronos.enabled
     repository: https://prometheus-community.github.io/helm-charts
@@ -29,7 +29,7 @@ dependencies:
   - name: chronos-exporter
     condition: import.chronos-exporter.enabled
     repository: "file://../chronos-exporter"
-    version: 0.0.5
+    version: 0.0.6
   - name: aether-enterprise-portal
     condition: import.aether-enterprise-portal.enabled
     repository: "file://../aether-enterprise-portal"

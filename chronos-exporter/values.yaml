@@ -10,7 +10,7 @@ annotations: {}
 
 image:
   repository: onosproject/chronos-exporter
-  tag: v0.0.3
+  tag: v0.0.5
   pullPolicy: IfNotPresent
   pullSecrets: []
 

@@ -30,6 +30,8 @@ aether-enterprise-portal:
     service: chronos-umbrella-prometheus-chronos-server
 
 grafana:
+  image:
+    tag: 8.1.8
   adminPassword: admin@123
   sidecar:
     dashboards:

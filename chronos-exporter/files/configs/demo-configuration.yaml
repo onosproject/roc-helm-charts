@@ -1,6 +1,10 @@
 # SPDX-FileCopyrightText: 2021-present Open Networking Foundation <info@opennetworking.org>
 #
 # SPDX-License-Identifier: LicenseRef-ONF-Member-Only-1.0
+enterprise:
+  enterprise-id: tesla
+  display-name: Tesla
+  image: https://en.wikipedia.org/wiki/File:Tesla_Motors.svg
 sites:
   - site-id: freemont
     display-name: Freemont, CA
