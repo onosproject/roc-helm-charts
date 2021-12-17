@@ -7,7 +7,7 @@ name: demo-exporter
 description: Aether ROC Demo Exporter
 kubeVersion: ">=1.15.0"
 type: application
-version: 0.0.1
+version: 0.1.0
 appVersion: v0.0.0
 keywords:
   - aether
