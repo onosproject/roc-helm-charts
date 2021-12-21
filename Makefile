@@ -20,6 +20,11 @@ deps: # @HELP build dependencies for ROC Umbrella local charts.
 deps: clean
 	helm dep build aether-roc-umbrella
 
+deps-chronos: # @HELP build dependencies for Chronos Umbrella local charts.
+deps-chronos: clean
+	rm -rf chronos-umbrella/Chart.lock chronos-umbrella/charts
+	helm dep build chronos-umbrella
+
 help:
 	@grep -E '^.*: *# *@HELP' $(MAKEFILE_LIST) \
     | sort \
