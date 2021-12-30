@@ -33,7 +33,10 @@ help:
         {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}; \
     '
 
-yang-lint:
+pyang:
+	pyang -v || pip install pyang
+
+yang-lint: pyang
 	#pyang --lint ./config-models/*.x/files/yang/*.yang
 	pyang --lint ./config-models/aether-1.x/files/yang/*.yang
 	pyang --lint ./config-models/aether-2.x/files/yang/*.yang
