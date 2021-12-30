@@ -22,10 +22,11 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": 1,
-  "iteration": 1639996601166,
+  "iteration": 1640856276003,
   "links": [],
   "panels": [
     {
+      "collapsed": false,
       "datasource": null,
       "gridPos": {
         "h": 1,
@@ -36,7 +37,7 @@
       "id": 12,
       "panels": [],
       "repeat": "datasource",
-      "title": "Chronos",
+      "title": "Site Status",
       "type": "row"
     },
     {
@@ -443,92 +444,22 @@
       "type": "timeseries"
     },
     {
-      "datasource": "${datasource}",
-      "description": "",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "drawStyle": "line",
-            "fillOpacity": 0,
-            "gradientMode": "none",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "lineInterpolation": "stepBefore",
-            "lineWidth": 1,
-            "pointSize": 5,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "auto",
-            "spanNulls": false,
-            "stacking": {
-              "group": "A",
-              "mode": "none"
-            },
-            "thresholdsStyle": {
-              "mode": "off"
-            }
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
+      "collapsed": false,
+      "datasource": null,
       "gridPos": {
-        "h": 8,
+        "h": 1,
         "w": 24,
         "x": 0,
         "y": 19
       },
-      "id": 14,
-      "options": {
-        "legend": {
-          "calcs": [],
-          "displayMode": "list",
-          "placement": "bottom"
-        },
-        "tooltip": {
-          "mode": "single"
-        }
-      },
-      "pluginVersion": "8.1.2",
-      "targets": [
-        {
-          "exemplar": true,
-          "expr": "device_connection_event_core{site=\"$site\"}",
-          "interval": "",
-          "legendFormat": "{{iccid}}",
-          "queryType": "randomWalk",
-          "refId": "A"
-        }
-      ],
-      "title": "Device Connection Event Core",
-      "type": "timeseries"
+      "id": 20,
+      "panels": [],
+      "repeat": "device",
+      "title": "Device-$device Throughput and Packet Loss Status",
+      "type": "row"
     },
     {
       "datasource": "${datasource}",
-      "description": "",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -539,14 +470,14 @@
             "axisPlacement": "auto",
             "barAlignment": 0,
             "drawStyle": "line",
-            "fillOpacity": 0,
+            "fillOpacity": 25,
             "gradientMode": "none",
             "hideFrom": {
               "legend": false,
               "tooltip": false,
               "viz": false
             },
-            "lineInterpolation": "stepBefore",
+            "lineInterpolation": "linear",
             "lineWidth": 1,
             "pointSize": 5,
             "scaleDistribution": {
@@ -580,12 +511,174 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 8,
+        "h": 7,
+        "w": 12,
+        "x": 0,
+        "y": 20
+      },
+      "id": 22,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "per_device_per_application_throughput_bytes{site=\"$site\", serial_number=\"$device\"}",
+          "interval": "",
+          "legendFormat": "{{serial_number}}, {{application}},{{slice}}",
+          "refId": "A"
+        }
+      ],
+      "title": "Device per Application Throughput Bytes",
+      "type": "timeseries"
+    },
+    {
+      "datasource": "${datasource}",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 35,
+            "gradientMode": "hue",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 12,
+        "x": 12,
+        "y": 20
+      },
+      "id": 24,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "per_device_per_application_throughput_packets{site=\"$site\", serial_number=\"$device\"}",
+          "interval": "",
+          "legendFormat": "{{serial_number}},{{application}},{{slice}}",
+          "refId": "A"
+        }
+      ],
+      "title": "Device per application Throughput Packets",
+      "type": "timeseries"
+    },
+    {
+      "datasource": "${datasource}",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 33,
+            "gradientMode": "opacity",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "smooth",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
         "w": 24,
         "x": 0,
         "y": 27
       },
-      "id": 15,
+      "id": 26,
       "options": {
         "legend": {
           "calcs": [],
@@ -596,55 +689,39 @@
           "mode": "single"
         }
       },
-      "pluginVersion": "8.1.2",
       "targets": [
         {
           "exemplar": true,
-          "expr": "device_connection_event_ran{site=\"$site\"}",
-          "hide": false,
+          "expr": "per_device_per_application_loss_packets{site=\"$site\", serial_number=\"$device\"}",
           "interval": "",
-          "legendFormat": "{{iccid}}",
-          "refId": "B"
+          "legendFormat": "{{serial_number}},{{application}},{{slice}}",
+          "refId": "A"
         }
       ],
-      "title": "Device Connection Event Ran",
+      "title": "Device per Application  Packets Loss",
       "type": "timeseries"
     },
     {
+      "collapsed": false,
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 187
+      },
+      "id": 28,
+      "panels": [],
+      "repeat": "device",
+      "title": "Device-$device Connection Event",
+      "type": "row"
+    },
+    {
       "datasource": "${datasource}",
-      "description": "",
       "fieldConfig": {
         "defaults": {
           "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "drawStyle": "line",
-            "fillOpacity": 0,
-            "gradientMode": "none",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "lineInterpolation": "stepBefore",
-            "lineWidth": 1,
-            "pointSize": 5,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "auto",
-            "spanNulls": false,
-            "stacking": {
-              "group": "A",
-              "mode": "none"
-            },
-            "thresholdsStyle": {
-              "mode": "off"
-            }
+            "mode": "thresholds"
           },
           "mappings": [],
           "thresholds": {
@@ -655,8 +732,12 @@
                 "value": null
               },
               {
+                "color": "#EAB839",
+                "value": 2.5
+              },
+              {
                 "color": "red",
-                "value": 80
+                "value": 5
               }
             ]
           }
@@ -667,32 +748,172 @@
         "h": 8,
         "w": 24,
         "x": 0,
-        "y": 35
+        "y": 188
       },
-      "id": 16,
+      "id": 30,
       "options": {
-        "legend": {
-          "calcs": [],
-          "displayMode": "list",
-          "placement": "bottom"
+        "colorMode": "background",
+        "graphMode": "area",
+        "justifyMode": "center",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
         },
-        "tooltip": {
-          "mode": "single"
-        }
+        "text": {
+          "titleSize": 8,
+          "valueSize": 15
+        },
+        "textMode": "value_and_name"
       },
-      "pluginVersion": "8.1.2",
+      "pluginVersion": "8.1.8",
       "targets": [
         {
           "exemplar": true,
-          "expr": "device_connection_event_fabric{site=\"$site\"}",
-          "hide": false,
+          "expr": "device_connection_event_core{site=\"$site\", serial_number=\"$device\"}",
+          "format": "time_series",
           "interval": "",
-          "legendFormat": "{{iccid}}",
-          "refId": "B"
+          "legendFormat": "{{msg}}",
+          "refId": "A"
+        }
+      ],
+      "title": "Device Connection Event Core",
+      "type": "stat"
+    },
+    {
+      "datasource": "${datasource}",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "#EAB839",
+                "value": 2.5
+              },
+              {
+                "color": "red",
+                "value": 5
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 196
+      },
+      "id": 32,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "area",
+        "justifyMode": "center",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {
+          "titleSize": 8,
+          "valueSize": 15
+        },
+        "textMode": "value_and_name"
+      },
+      "pluginVersion": "8.1.8",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "device_connection_event_ran{site=\"$site\", serial_number=\"$device\"}",
+          "interval": "",
+          "legendFormat": "{{msg}}",
+          "refId": "A"
+        }
+      ],
+      "title": "Device Connection Event Ran",
+      "type": "stat"
+    },
+    {
+      "datasource": "${datasource}",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "#EAB839",
+                "value": 2.5
+              },
+              {
+                "color": "red",
+                "value": 5
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 204
+      },
+      "id": 33,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "area",
+        "justifyMode": "center",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {
+          "titleSize": 8,
+          "valueSize": 15
+        },
+        "textMode": "value_and_name"
+      },
+      "pluginVersion": "8.1.8",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "device_connection_event_fabric{site=\"$site\", serial_number=\"$device\"}",
+          "interval": "",
+          "legendFormat": "{{msg}}",
+          "refId": "A"
         }
       ],
       "title": "Device Connection Event Fabric",
-      "type": "timeseries"
+      "type": "stat"
     }
   ],
   "refresh": "5s",
@@ -726,8 +947,8 @@
         "allValue": null,
         "current": {
           "selected": false,
-          "text": "freemont",
-          "value": "freemont"
+          "text": "berlin",
+          "value": "berlin"
         },
         "datasource": "${datasource}",
         "definition": "label_values(site)",
@@ -741,6 +962,33 @@
         "options": [],
         "query": {
           "query": "label_values(site)",
+          "refId": "StandardVariableQuery"
+        },
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
+      },
+      {
+        "allValue": null,
+        "current": {
+          "selected": true,
+          "text": "All",
+          "value": "$__all"
+        },
+        "datasource": "${datasource}",
+        "definition": "label_values(per_device_per_application_throughput_bytes{site=\"$site\"}, serial_number)",
+        "description": "device per site",
+        "error": null,
+        "hide": 0,
+        "includeAll": true,
+        "label": null,
+        "multi": false,
+        "name": "device",
+        "options": [],
+        "query": {
+          "query": "label_values(per_device_per_application_throughput_bytes{site=\"$site\"}, serial_number)",
           "refId": "StandardVariableQuery"
         },
         "refresh": 1,
