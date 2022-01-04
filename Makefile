@@ -39,7 +39,7 @@ pyang:
 yang-lint: pyang
 	#pyang --lint ./config-models/*.x/files/yang/*.yang
 	pyang --lint ./config-models/aether-1.x/files/yang/*.yang
-	pyang --lint ./config-models/aether-2.x/files/yang/*.yang
+	pyang --lint ./config-models/aether-2.0.x/files/yang/*.yang
 	pyang --lint ./config-models/aether-2.1.x/files/yang/*.yang
 	pyang --lint ./config-models/aether-2.2.x/files/yang/*.yang
 	pyang --lint ./config-models/aether-3.x/files/yang/*.yang

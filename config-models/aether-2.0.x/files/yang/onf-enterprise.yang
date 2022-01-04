@@ -2,28 +2,30 @@
 //
 // SPDX-License-Identifier: LicenseRef-ONF-Member-Only-1.0
 
-module enterprise {
+module onf-enterprise {
   namespace "http://opennetworking.org/aether/enterprise";
   prefix ent;
 
-  import connectivity-service { prefix cs; }
+  import ietf-yang-types{ prefix yg; }
+  import onf-aether-types { prefix at; }
+  import onf-connectivity-service { prefix cs; }
 
   organization "Open Networking Foundation.";
   contact "Scott Baker";
-  description "To generate JSON from this use command
-    pyang -f jtoxx test1.yang | python3 -m json.tool > test1.json
-    Copied from YangUIComponents project";
+  description
+    "An Aether Enterprise is an administration entity that
+     has ownership of resrouces.";
 
-  revision "2020-11-30" {
+  revision "2021-06-02" {
     description "An Aether Enterprise. Used to distinguish ownership of devices and other resources as well as a domain of configuration.";
     reference "RFC 6087";
   }
 
   typedef enterprise-id {
-        type string {
+        type yg:yang-identifier {
             length 1..32;
         }
-    description "The typedef for enterprise-id";
+   description "The typedef for enterprise-id";
   }
 
   container enterprise {
@@ -47,9 +49,7 @@ module enterprise {
       }
 
       leaf description {
-        type string {
-          length 1..100;
-        }
+        type at:description;
         description "description of this enterprise";
       }
 
@@ -68,7 +68,7 @@ module enterprise {
           description
             "Allow or disallow pushes to this connectivity service";
         }
-        description "The container for connectivity-service";
+        description "The list for connectivity-service";
       }
     }
   }
