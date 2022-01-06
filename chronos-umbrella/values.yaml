@@ -24,10 +24,10 @@ import:
 aether-enterprise-portal:
   grafana:
     proxyEnabled: true
-    service: chronos-umbrella-grafana
+    service: chronos-grafana
   prometheus:
     proxyEnabled: true
-    service: chronos-umbrella-prometheus-chronos-server
+    service: chronos-prometheus-chronos-server
 
 grafana:
   image:

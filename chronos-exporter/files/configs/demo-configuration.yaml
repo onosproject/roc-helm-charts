@@ -4,11 +4,11 @@
 enterprise:
   enterprise-id: tesla
   display-name: Tesla
-  image: https://en.wikipedia.org/wiki/File:Tesla_Motors.svg
+  image: /chronos-exporter/images/tesla-logo.png
 sites:
   - site-id: freemont
     display-name: Freemont, CA
-    image: https://en.wikipedia.org/wiki/File:Mission_Peak_over_Lake_Elizabeth,_in_Fremont,_California_(cropped).JPG
+    image: chronos-exporter/images/los-angeles-us.png
     small-cells:
       - small-cell-id: freemont-sc-north
         display-name: North Cell
@@ -122,9 +122,42 @@ sites:
         display-name: Sim 2
       - iccid: 123-456-781
         display-name: Sim 1
+    site-plans:
+      isometric: true
+      origin: ORIGIN_TOP_LEFT
+      layers:
+        - layer-id: Small-Cells
+        - layer-id: Beams
+        - layer-id: Devices
+        - layer-id: Text
+      site-plan-list:
+        - id: floor-0
+          svg-file: /chronos-exporter/site-plans/freemont/floor-0.svg
+          offsets:
+            x-offset: 0
+            y-offset: 0
+            z-offset: 0
+        - id: floor-1
+          svg-file: /chronos-exporter/site-plans/freemont/floor-1.svg
+          offsets:
+            x-offset: 0
+            y-offset: 0
+            z-offset: 100
+        - id: floor-2
+          svg-file: /chronos-exporter/site-plans/freemont/floor-2.svg
+          offsets:
+            x-offset: 0
+            y-offset: 0
+            z-offset: 200
+        - id: floor-3
+          svg-file: /chronos-exporter/site-plans/freemont/floor-3.svg
+          offsets:
+            x-offset: 0
+            y-offset: 0
+            z-offset: 300
   - site-id: berlin
     display-name: Berlin, DE
-    image: https://en.wikipedia.org/wiki/Berlin#/media/File:Brandenburger_Tor_abends.jpg
+    image: /chronos-exporter/images/berlin-deutschland.png
     small-cells:
       - small-cell-id: berlin-sc-north
         display-name: North Cell
