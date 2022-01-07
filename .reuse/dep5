@@ -18,3 +18,8 @@ License: BSD-2-Clause
 Files: */files/certs/tls.* */files/certs/aether-roc-gui* */files/certs/aether-enterprise-portal*
 Copyright: 2021 Open Networking Foundation
 License: CC0-1.0
+
+# source: https://unsplash.com/ https://unsplash.com/license (also images are modified)
+Files: chronos-exporter/files/images/*.png
+Copyright: 2022 Open Networking Foundation
+License: LicenseRef-ONF-Member-Only-1.0
