@@ -7,7 +7,7 @@ name: aether-roc-umbrella
 description: Aether ROC Umbrella chart to deploy all Aether ROC
 kubeVersion: ">=1.18.0"
 type: application
-version: 2.0.0
+version: 2.0.1
 appVersion: v0.0.0
 keywords:
   - aether
@@ -94,9 +94,9 @@ dependencies:
   - name: prom-label-proxy
     condition: import.prom-label-proxy.acc.enabled
     repository: "file://../prom-label-proxy"
-    version: 0.1.0
+    version: 0.1.1
     alias: prom-label-proxy-acc
   - name: demo-exporter
     condition: import.demo-exporter.enabled
     repository: "file://../demo-exporter"
-    version: 0.1.0
+    version: 0.1.1

@@ -6,8 +6,8 @@ apiVersion: v2
 name: prom-label-proxy
 kubeVersion: ">=1.17.0"
 type: application
-version: 0.1.0
-appVersion: v0.3.4
+version: 0.1.1
+appVersion: v0.3.6
 description: Prom Label Proxy
 keywords:
   - onos
