@@ -11,19 +11,19 @@ spec:
   aspects: {}
 
 ---
-# The 4G/5G v4.0.0 sdcore-adapter
+# The 4G/5G v2.0.0 sdcore-adapter
 apiVersion: topo.onosproject.org/v1beta1
 kind: Entity
 metadata:
-  name: connectivity-service-v4
+  name: connectivity-service-v2
 spec:
-  uri: connectivity-service-v4
+  uri: connectivity-service-v2
   kind:
     name: aether
   aspects:
     onos.topo.Configurable:
-      address: sdcore-adapter-v4:5150
-      version: 4.0.0
+      address: sdcore-adapter-v2:5150
+      version: 2.0.0
       type: Aether
     onos.topo.Location:
       lat: 52.5150
