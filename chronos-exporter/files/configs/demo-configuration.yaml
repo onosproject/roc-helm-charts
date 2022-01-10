@@ -126,9 +126,7 @@ sites:
       isometric: true
       origin: ORIGIN_TOP_LEFT
       layers:
-        - layer-id: Small-Cells
-        - layer-id: Beams
-        - layer-id: Devices
+        - layer-id: Structures
         - layer-id: Text
       site-plan-list:
         - id: floor-0

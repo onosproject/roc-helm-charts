@@ -37,11 +37,13 @@ pyang:
 	pyang -v || pip install pyang
 
 yang-lint: pyang
-	#pyang --lint ./config-models/*.x/files/yang/*.yang
 	pyang --lint ./config-models/aether-1.x/files/yang/*.yang
-	pyang --lint ./config-models/aether-2.0.x/files/yang/*.yang
+	pyang --lint --lint-ensure-hyphenated-names -W error ./config-models/aether-2.0.x/files/yang/*.yang -p ./config-models/aether-2.0.x/files/yang
 	pyang --lint ./config-models/aether-2.1.x/files/yang/*.yang
 	pyang --lint ./config-models/aether-2.2.x/files/yang/*.yang
 	pyang --lint ./config-models/aether-3.x/files/yang/*.yang
 	pyang --lint --lint-ensure-hyphenated-names -W error ./config-models/aether-4.x/files/yang/*.yang -p ./config-models/aether-4.x/files/yang
 	pyang --lint --lint-ensure-hyphenated-names -W error ./config-models/plproxy-1.x/files/yang/*.yang -p ./config-models/plproxy-1.x/files/yang
+
+reuse-lint:
+	reuse --root . lint
