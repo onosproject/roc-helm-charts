@@ -32,6 +32,7 @@ aether-enterprise-portal:
 grafana:
   image:
     tag: 8.1.8
+  fullnameOverride: chronos-grafana
   adminPassword: admin@123
   sidecar:
     dashboards:
@@ -45,7 +46,7 @@ grafana:
   source:
   - name: chronos
     protocol: http
-    service: chronos-umbrella-prometheus-chronos-server
+    service: chronos-prometheus-chronos-server
     port: 80
   grafana.ini:
     log:
@@ -96,6 +97,7 @@ prometheus-chronos:
   server:
     persistentVolume:
       enabled: false
+    fullnameOverride: chronos-prometheus-chronos-server
   pushgateway:
     enabled: false
   nodeExporter:
