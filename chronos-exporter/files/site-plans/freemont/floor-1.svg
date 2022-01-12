@@ -21,65 +21,6 @@
    sodipodi:docname="floor-1.svg">
   <title
      id="title952">Floor Plan sample - floor-1</title>
-  <defs
-     id="defs2">
-    <linearGradient
-       inkscape:collect="always"
-       id="linearGradient4711">
-      <stop
-         style="stop-color:#f61616;stop-opacity:0.86764705"
-         offset="0"
-         id="stop4707" />
-      <stop
-         style="stop-color:#9494ed;stop-opacity:0"
-         offset="1"
-         id="stop4709" />
-    </linearGradient>
-    <radialGradient
-       inkscape:collect="always"
-       xlink:href="#linearGradient4711"
-       id="radialGradient4713"
-       cx="113.68472"
-       cy="86.872292"
-       fx="113.68472"
-       fy="86.872292"
-       r="50.583138"
-       gradientUnits="userSpaceOnUse"
-       gradientTransform="translate(-1.4961514,-3.7403785)" />
-    <radialGradient
-       inkscape:collect="always"
-       xlink:href="#linearGradient4711"
-       id="radialGradient4713-2"
-       cx="113.68472"
-       cy="86.872292"
-       fx="113.68472"
-       fy="86.872292"
-       r="50.583138"
-       gradientUnits="userSpaceOnUse"
-       gradientTransform="translate(-102.32096,29.548991)" />
-    <radialGradient
-       inkscape:collect="always"
-       xlink:href="#linearGradient4711"
-       id="radialGradient4713-0"
-       cx="113.68472"
-       cy="86.872292"
-       fx="113.68472"
-       fy="86.872292"
-       r="50.583138"
-       gradientUnits="userSpaceOnUse"
-       gradientTransform="translate(119.39259,25.391358)" />
-    <radialGradient
-       inkscape:collect="always"
-       xlink:href="#linearGradient4711"
-       id="radialGradient4713-09"
-       cx="113.68472"
-       cy="86.872292"
-       fx="113.68472"
-       fy="86.872292"
-       r="50.583138"
-       gradientUnits="userSpaceOnUse"
-       gradientTransform="translate(30.364119,100.10057)" />
-  </defs>
   <sodipodi:namedview
      id="base"
      pagecolor="#ffffff"
@@ -127,14 +68,13 @@
      inkscape:groupmode="layer"
      id="layerStructure"
      inkscape:label="Structure"
-     transform="translate(0,-97)"
      style="display:inline">
     <rect
        id="rect3715"
        width="285.75"
        height="185.20833"
        x="5.2916665"
-       y="106.5"
+       y="9.5"
        style="fill:none;stroke:#000000;stroke-width:0.5;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
     <rect
        style="fill:none;stroke:#000000;stroke-width:0.5;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
@@ -142,35 +82,35 @@
        width="100.54166"
        height="95.25"
        x="5.2916665"
-       y="106.5" />
+       y="9.5" />
     <rect
        style="fill:none;stroke:#000000;stroke-width:0.5;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="rect4524"
        width="127"
        height="63.5"
        x="5.2916665"
-       y="228.20833" />
+       y="131.20833" />
     <rect
        style="fill:none;stroke:#000000;stroke-width:0.5;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="rect4526"
        width="68.791664"
        height="68.791664"
        x="105.83333"
-       y="106.5" />
+       y="9.5" />
     <rect
        style="fill:none;stroke:#000000;stroke-width:0.5;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="rect4530"
        width="63.5"
        height="95.25"
        x="174.625"
-       y="106.5" />
+       y="9.5" />
     <rect
        style="fill:none;stroke:#000000;stroke-width:0.35355338;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="rect4532"
        width="26.45833"
        height="68.791664"
        x="264.58334"
-       y="106.5" />
+       y="9.5" />
     <rect
        y="106.5"
        x="238.12512"
@@ -179,7 +119,6 @@
        id="rect4616"
        style="fill:none;stroke:#000000;stroke-width:0.35355338;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
     <rect
-       transform="translate(0,97)"
        style="display:inline;fill:none;stroke:#000000;stroke-width:0.21152854;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="rect4534-36"
        width="55.562489"
@@ -187,7 +126,6 @@
        x="235.47862"
        y="170.8959" />
     <rect
-       transform="translate(0,97)"
        style="display:inline;fill:none;stroke:#000000;stroke-width:0.21152855;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="rect4534-3"
        width="55.562489"

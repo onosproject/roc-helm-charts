@@ -12,12 +12,28 @@ sites:
     small-cells:
       - small-cell-id: freemont-sc-north
         display-name: North Cell
+        position:
+          position-x: 100
+          position-y: 50
+          site-plan: floor-0
       - small-cell-id: freemont-sc-south
         display-name: South Cell
+        position:
+          position-x: 100
+          position-y: 150
+          site-plan: floor-1
       - small-cell-id: freemont-sc-east
         display-name: East Cell
+        position:
+          position-x: 200
+          position-y: 100
+          site-plan: floor-2
       - small-cell-id: freemont-sc-west
         display-name: West Cell
+        position:
+          position-x: 10
+          position-y: 100
+          site-plan: floor-0
     slices:
       - slice-id: freemont-slice-cameras
         display-name: Cameras Slice
@@ -55,18 +71,30 @@ sites:
         location: Somewhere
         type: Pixel 5 Phone
         sim: 123-456-789
+        position:
+          position-x: 110
+          position-y: 50
+          site-plan: floor-0
       - serial-number: 752908B
         imei: 123-456-7892
         display-name: Phone 2
         location: Somewhere
         type: iPhone 11
         sim: 123-456-788
+        position:
+          position-x: 120
+          position-y: 60
+          site-plan: floor-0
       - serial-number: 7568111
         imei: 123-456-7893
         display-name: Camera 1
         location: Front entrance
         type: Camera
         sim: 123-456-787
+        position:
+          position-x: 130
+          position-y: 70
+          site-plan: floor-0
       - serial-number: 7568112
         imei: 123-456-7894
         display-name: Camera 2
