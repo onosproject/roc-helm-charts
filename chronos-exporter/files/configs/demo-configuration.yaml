@@ -154,7 +154,7 @@ sites:
       isometric: true
       origin: ORIGIN_TOP_LEFT
       layers:
-        - layer-id: Structures
+        - layer-id: Structure
         - layer-id: Text
       site-plan-list:
         - id: floor-0
