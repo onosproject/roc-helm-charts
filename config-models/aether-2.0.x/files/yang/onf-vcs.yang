@@ -2,23 +2,26 @@
 //
 // SPDX-License-Identifier: LicenseRef-ONF-Member-Only-1.0
 
-module onf-vcs {
-  namespace "http://opennetworking.org/aether/vcs";
-  prefix sl;
+submodule onf-vcs {
+  belongs-to onf-enterprise { prefix ent; }
 
   import ietf-yang-types{ prefix yg; }
   import onf-aether-types{ prefix at; }
-  import onf-application{ prefix app; }
-  import onf-device-group{ prefix dg; }
-  import onf-enterprise{ prefix ent; }
-  import onf-upf { prefix upf; }
-  import onf-site{ prefix st; }
+
+  include onf-upf;
+  include onf-device-group;
+  include onf-application;
 
   organization "Open Networking Foundation.";
   contact "Scott Baker";
   description
     "An Aether Virtual Cellular Service (VCS) is
      used to connect devices with applications";
+
+  revision "2022-01-14" {
+    description "Refactored as submodule";
+    reference "RFC 6020";
+  }
 
   revision "2021-09-10" {
     description "An Aether Virtual Cellular Service";
@@ -32,15 +35,15 @@ module onf-vcs {
     description "The typedef for vcs-id";
   }
 
-  container vcs {
-    description "The top level container";
+  grouping vcs {
+    description "The vcs grouping";
 
     list vcs {
-      key "id";
+      key "vcs-id";
       description
         "List of virtual cellular services";
 
-      leaf id {
+      leaf vcs-id {
         type vcs-id;
         description "ID for this vcs.";
       }
@@ -56,7 +59,7 @@ module onf-vcs {
         key "device-group";
         leaf device-group {
           type leafref {
-            path "/dg:device-group/dg:device-group/dg:id";
+            path "../../../device-group/dg-id";
           }
           description
             "Link to device group";
@@ -83,7 +86,7 @@ module onf-vcs {
         key "application";
         leaf application {
           type leafref {
-            path "/app:application/app:application/app:id";
+            path "../../../../application/app-id";
           }
           mandatory true;
           description
@@ -109,7 +112,7 @@ module onf-vcs {
 
       leaf upf {
         type leafref {
-          path "/upf:upf/upf:upf/upf:id";
+          path "../../upf/upf-id";
         }
         description
           "Link to user plane that implements this vcf";
@@ -118,24 +121,6 @@ module onf-vcs {
       leaf description {
         type at:description;
         description "description of this vcs";
-      }
-
-      leaf enterprise {
-        type leafref {
-          path "/ent:enterprise/ent:enterprise/ent:id";
-        }
-        mandatory true;
-        description
-          "Link to enterprise that owns this VCS";
-      }
-
-      leaf site {
-        type leafref {
-          path "/st:site/st:site/st:id";
-        }
-	mandatory true;
-        description
-          "Link to site where this VCS is deployed";
       }
 
       // the following are populated from the template

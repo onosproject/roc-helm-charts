@@ -2,15 +2,14 @@
 //
 // SPDX-License-Identifier: LicenseRef-ONF-Member-Only-1.0
 
-module onf-device-group {
-  namespace "http://opennetworking.org/aether/device-group";
-  prefix dg;
+submodule onf-device-group {
+  belongs-to onf-enterprise { prefix ent; }
 
   import ietf-yang-types{ prefix yg; }
   import onf-aether-types { prefix at; }
-  import onf-ip-domain{ prefix ipd; }
-  import onf-site{ prefix st; }
-  import onf-traffic-class{ prefix tc; }
+
+  include onf-ip-domain;
+  include onf-traffic-class;
 
   organization "Open Networking Foundation.";
   contact "Scott Baker";
@@ -25,6 +24,11 @@ module onf-device-group {
      and DNS settings that apply to devices within the
      group";
 
+  revision "2022-01-14" {
+    description "Refactored as submodule";
+    reference "RFC 6020";
+  }
+
   revision "2021-06-02" {
     description "An Aether Device Group";
     reference "RFC 6087";
@@ -37,15 +41,15 @@ module onf-device-group {
     description "The typedef for device-group-id";
   }
 
-  container device-group {
-    description "The top level container";
+  grouping device-group {
+    description "The device-group grouping";
 
     list device-group {
-      key "id";
+      key "dg-id";
       description
         "List of device groups";
 
-      leaf id {
+      leaf dg-id {
         type device-group-id;
         description "ID for this device group.";
       }
@@ -93,7 +97,7 @@ module onf-device-group {
 
       leaf ip-domain {
         type leafref {
-          path "/ipd:ip-domain/ipd:ip-domain/ipd:id";
+          path "../../ip-domain/ip-id";
         }
         description
           "Link to ip-domain settings that determine the pool of IP addresses,
@@ -120,21 +124,12 @@ module onf-device-group {
         }
         leaf traffic-class {
           type leafref {
-            path "/tc:traffic-class/tc:traffic-class/tc:id";
+            path "../../../../traffic-class/tc-id";
           }
           mandatory true;
           description
             "Link to traffic class";
         }
-      }
-
-      leaf site {
-        type leafref {
-          path "/st:site/st:site/st:id";
-        }
-        mandatory true;
-        description
-          "Link to site";
       }
     }
   }

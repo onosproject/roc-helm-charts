@@ -2,9 +2,8 @@
 //
 // SPDX-License-Identifier: LicenseRef-ONF-Member-Only-1.0
 
-module onf-template {
-  namespace "http://opennetworking.org/aether/template";
-  prefix tp;
+submodule onf-template {
+  belongs-to onf-enterprise { prefix ent; }
 
   import ietf-yang-types{ prefix yg; }
   import onf-aether-types{ prefix at; }
@@ -15,6 +14,11 @@ module onf-template {
     "The aether vcs-template holds common parameters used
      by a virtual connectivity service. Templates are used to
      populate a VCS.";
+
+  revision "2022-01-14" {
+    description "Refactored as submodule";
+    reference "RFC 6020";
+  }
 
   revision "2021-09-10" {
     description "An Aether Virtual Cellular Service Template";
@@ -28,15 +32,15 @@ module onf-template {
     description "The typedef for template-id";
   }
 
-  container template {
-    description "The top level container";
+  grouping template {
+    description "The template grouping";
 
     list template {
-      key "id";
+      key "tp-id";
       description
         "List of vcs templates";
 
-      leaf id {
+      leaf tp-id {
         type template-id;
         description "ID for this vcs template.";
       }

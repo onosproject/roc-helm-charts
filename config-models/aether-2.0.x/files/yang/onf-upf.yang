@@ -2,19 +2,21 @@
 //
 // SPDX-License-Identifier: LicenseRef-ONF-Member-Only-1.0
 
-module onf-upf {
-  namespace "http://opennetworking.org/aether/upf";
-  prefix upf;
+submodule onf-upf {
+  belongs-to onf-enterprise { prefix ent; }
 
   import ietf-inet-types { prefix inet; }
   import ietf-yang-types{ prefix yg; }
   import onf-aether-types { prefix at; }
-  import onf-enterprise{ prefix ent; }
-  import onf-site{ prefix st; }
 
   organization "Open Networking Foundation.";
   contact "Scott Baker";
   description "A Aether UPF List is a named User Plane Function.";
+
+  revision "2022-01-14" {
+    description "Refactored as submodule";
+    reference "RFC 6020";
+  }
 
   revision "2021-09-16" {
     description "An Aether User Plane Function";
@@ -28,15 +30,15 @@ module onf-upf {
    description "The typedef for upf-id";
   }
 
-  container upf {
-    description "The top level container";
+  grouping upf {
+    description "The upf grouping";
 
     list upf {
-      key "id";
+      key "upf-id";
       description
         "A list of named upfs.";
 
-      leaf id {
+      leaf upf-id {
         type upf-id;
         description "ID for this upf.";
       }
@@ -70,28 +72,6 @@ module onf-upf {
       leaf description {
         type at:description;
         description "description of this UPF";
-      }
-
-      // UPFs are always owned by an Enterprise, since they typically exist on the
-      // Enterprise's edge.
-      leaf enterprise {
-        type leafref {
-          path "/ent:enterprise/ent:enterprise/ent:id";
-        }
-        mandatory true;
-        description
-          "Link to enterprise that owns this Access Point List";
-      }
-
-      // UPFs always reside at a site, as the exist on physical infrastructure. GUI
-      // will ensure that the tuple (DG, VCS, UPF) all exist on the same site.
-      leaf site {
-        type leafref {
-          path "/st:site/st:site/st:id";
-        }
-        mandatory true;
-        description
-          "Link to site";
       }
     }
   }

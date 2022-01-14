@@ -16,6 +16,11 @@ module onf-connectivity-service {
     "An Aether Connectivity service is the linkage between the
      ROC and a core that provides connectivity.";
 
+  revision "2022-01-14" {
+    description "Renamed top level container as plural";
+    reference "RFC 6020";
+  }
+
   revision "2021-10-21" {
     description "An Aether Connectivity Service. Specifies the endpoints where the sdcore-adapter should push configuration to. A single connectivity service may be attached to multiple Enterprises.";
     reference "RFC 6087";
@@ -28,8 +33,8 @@ module onf-connectivity-service {
    description "The typedef for connectivity-service-id";
   }
 
-  container connectivity-service {
-    description "The top level container";
+  container connectivity-services {
+    description "The connectivity-services top level container";
 
     list connectivity-service {
       key "id";

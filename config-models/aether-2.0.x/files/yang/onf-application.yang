@@ -2,15 +2,14 @@
 //
 // SPDX-License-Identifier: LicenseRef-ONF-Member-Only-1.0
 
-module onf-application {
-  namespace "http://opennetworking.org/enterprise/application";
-  prefix app;
+submodule onf-application {
+  belongs-to onf-enterprise { prefix ent; }
 
   import ietf-inet-types{ prefix ietf; }
   import ietf-yang-types{ prefix yg; }
   import onf-aether-types{ prefix at; }
-  import onf-enterprise{ prefix ent; }
-  import onf-traffic-class{ prefix tc; }
+
+  include onf-traffic-class;
 
   organization "Open Networking Foundation.";
   contact "Scott Baker";
@@ -18,6 +17,11 @@ module onf-application {
     "An Aether Application is an application that devices may
      connect to. Includes a set of endpoints where services are
      provided.";
+
+  revision "2022-01-14" {
+    description "Refactored as submodule";
+    reference "RFC 6020";
+  }
 
   revision "2021-09-10" {
     description "Aether Application.";
@@ -31,15 +35,15 @@ module onf-application {
     description "The typedef for application-id";
   }
 
-  container application {
-    description "The top level container";
+  grouping application {
+    description "The application grouping";
 
     list application {
-      key "id";
+      key "app-id";
       description
         "List of applications";
 
-      leaf id {
+      leaf app-id {
         type application-id;
         description "ID for this application.";
       }
@@ -101,7 +105,7 @@ module onf-application {
         }
         leaf traffic-class {
           type leafref {
-            path "/tc:traffic-class/tc:traffic-class/tc:id";
+            path "../../../traffic-class/tc-id";
           }
           description
             "Link to traffic class";
@@ -113,15 +117,6 @@ module onf-application {
           description "display name to use in GUI or CLI";
         }
         description "list for endpoint";
-      }
-
-      leaf enterprise {
-        type leafref {
-          path "/ent:enterprise/ent:enterprise/ent:id";
-        }
-        mandatory true;
-        description
-          "Link to enterprise that owns this Application. May be set to None if the application is global to all Enterprises.";
       }
     }
   }

@@ -14,50 +14,14 @@ spec:
     type: Aether
     version: {{ .Chart.AppVersion | quote }}
   modules:
-  - name: connectivity-service
+  - name: onf-connectivity-service
     organization: Open Networking Foundation
-    revision: 2021-10-21
+    revision: 2022-01-14
     file: onf-connectivity-service.yang
-  - name: enterprise
+  - name: onf-enterprise
     organization: Open Networking Foundation
-    revision: 2021-06-02
+    revision: 2022-01-14
     file: onf-enterprise.yang
-  - name: aether-types
-    organization: Open Networking Foundation
-    revision: 2021-09-10
-    file: onf-aether-types.yang
-  - name: application
-    organization: Open Networking Foundation
-    revision: 2021-09-10
-    file: onf-application.yang
-  - name: device-group
-    organization: Open Networking Foundation
-    revision: 2021-06-02
-    file: onf-device-group.yang
-  - name: ip-domain
-    organization: Open Networking Foundation
-    revision: 2021-06-02
-    file: onf-ip-domain.yang
-  - name: site
-    organization: Open Networking Foundation
-    revision: 2021-09-10
-    file: onf-site.yang
-  - name: upf-list
-    organization: Open Networking Foundation
-    revision: 2021-09-16
-    file: onf-upf.yang
-  - name: vcs
-    organization: Open Networking Foundation
-    revision: 2021-09-10
-    file: onf-vcs.yang
-  - name: template
-    organization: Open Networking Foundation
-    revision: 2021-09-10
-    file: onf-template.yang
-  - name: traffic-class
-    organization: Open Networking Foundation
-    revision: 2021-06-02
-    file: onf-traffic-class.yang    
   files:
     {{- range $path, $_  := $.Files.Glob "files/yang/*.yang" }}
     {{ base $path }}: |

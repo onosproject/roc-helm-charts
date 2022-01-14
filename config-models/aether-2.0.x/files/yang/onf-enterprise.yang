@@ -10,11 +10,25 @@ module onf-enterprise {
   import onf-aether-types { prefix at; }
   import onf-connectivity-service { prefix cs; }
 
+  include onf-site;
+  include onf-upf;
+  include onf-vcs;
+  include onf-device-group;
+  include onf-ip-domain;
+  include onf-application;
+  include onf-traffic-class;
+  include onf-template;
+
   organization "Open Networking Foundation.";
   contact "Scott Baker";
   description
     "An Aether Enterprise is an administration entity that
      has ownership of resrouces.";
+
+  revision "2022-01-14" {
+    description "Refactored to work with submodules";
+    reference "RFC 6020";
+  }
 
   revision "2021-06-02" {
     description "An Aether Enterprise. Used to distinguish ownership of devices and other resources as well as a domain of configuration.";
@@ -28,15 +42,15 @@ module onf-enterprise {
    description "The typedef for enterprise-id";
   }
 
-  container enterprise {
-    description "The top level container";
+  container enterprises {
+    description "The top level enterprises container";
 
     list enterprise {
-      key "id";
+      key "ent-id";
       description
         "List of enterprises";
 
-      leaf id {
+      leaf ent-id {
         type enterprise-id;
         description "ID for this enterprise.";
       }
@@ -57,7 +71,7 @@ module onf-enterprise {
         key "connectivity-service";
         leaf connectivity-service {
           type leafref {
-            path "/cs:connectivity-service/cs:connectivity-service/cs:id";
+            path "/cs:connectivity-services/cs:connectivity-service/cs:id";
           }
           description
             "Link to connectivity services where configuration should be pushed for this enterprise's devices";
@@ -70,6 +84,14 @@ module onf-enterprise {
         }
         description "The list for connectivity-service";
       }
+
+      uses application;
+
+      uses traffic-class;
+
+      uses template;
+
+      uses site;
     }
   }
 }

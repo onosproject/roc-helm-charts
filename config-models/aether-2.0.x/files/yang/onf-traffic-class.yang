@@ -2,9 +2,8 @@
 //
 // SPDX-License-Identifier: LicenseRef-ONF-Member-Only-1.0
 
-module onf-traffic-class {
-  namespace "http://opennetworking.org/aether/traffic-class";
-  prefix tp;
+submodule onf-traffic-class {
+  belongs-to onf-enterprise { prefix ent; }
 
   import ietf-yang-types{ prefix yg; }
   import onf-aether-types{ prefix at; }
@@ -14,6 +13,11 @@ module onf-traffic-class {
   description
     "The aether traffic class associates qos constants
      with a named class of service";
+
+  revision "2022-01-14" {
+    description "Refactored as submodule";
+    reference "RFC 6020";
+  }
 
   revision "2021-09-10" {
     description "An Aether Traffic Class";
@@ -27,15 +31,15 @@ module onf-traffic-class {
     description "The typedef for traffic-class-id";
   }
 
-  container traffic-class {
-    description "The top level container";
+  grouping traffic-class {
+    description "The traffic-class grouping";
 
     list traffic-class {
-      key "id";
+      key "tc-id";
       description
         "List of traffic class";
 
-      leaf id {
+      leaf tc-id {
         type traffic-class-id;
         description "ID for this traffic class.";
       }
