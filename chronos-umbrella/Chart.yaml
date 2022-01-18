@@ -7,7 +7,7 @@ name: chronos-umbrella
 description: Chronos Umbrella chart to deploy all Aether ROC
 kubeVersion: ">=1.18.0"
 type: application
-version: 0.1.13
+version: 0.1.14
 appVersion: v0.0.0
 keywords:
   - aether
@@ -34,3 +34,7 @@ dependencies:
     condition: import.aether-enterprise-portal.enabled
     repository: "file://../aether-enterprise-portal"
     version: 0.0.4
+  - name: rasa-model-server
+    condition: import.rasa-model-server.enabled
+    repository: "file://../rasa-model-server"
+    version: 0.0.1

@@ -1,0 +1,18 @@
+# SPDX-FileCopyrightText: 2022-present Open Networking Foundation <info@opennetworking.org>
+#
+# SPDX-License-Identifier: LicenseRef-ONF-Member-Only-1.0
+
+apiVersion: v2
+name: rasa-model-server
+description: Rasa Model Server
+kubeVersion: ">=1.15.0"
+type: application
+version: 0.0.1
+appVersion: v0.0.11
+keywords:
+  - aether
+  - exporter
+home: https://www.opennetworking.org/aether/
+maintainers:
+  - name: Aether Ops team
+    email: support@opennetworking.org
