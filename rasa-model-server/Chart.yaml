@@ -7,8 +7,8 @@ name: rasa-model-server
 description: Rasa Model Server
 kubeVersion: ">=1.15.0"
 type: application
-version: 0.0.1
-appVersion: v0.0.11
+version: 0.0.2
+appVersion: v0.0.12
 keywords:
   - aether
   - exporter

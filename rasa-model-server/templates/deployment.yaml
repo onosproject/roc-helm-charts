@@ -52,13 +52,13 @@ spec:
               containerPort: 8080
           readinessProbe:
             httpGet:
-              path: /models/sample1
+              path: /models/
               port: 8080
             initialDelaySeconds: 5
             periodSeconds: 10
           livenessProbe:
             httpGet:
-              path: /models/sample1
+              path: /models/
               port: 8080
             initialDelaySeconds: 15
             periodSeconds: 20
