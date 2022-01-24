@@ -7,8 +7,8 @@ name: chronos-exporter
 description: Chronos Exporter
 kubeVersion: ">=1.15.0"
 type: application
-version: 0.0.15
-appVersion: v0.0.10
+version: 0.0.16
+appVersion: v0.0.13
 keywords:
   - aether
   - exporter

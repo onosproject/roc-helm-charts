@@ -8,7 +8,7 @@ enterprise:
 sites:
   - site-id: freemont
     display-name: Freemont, CA
-    image: chronos-exporter/images/los-angeles-us.png
+    image: /chronos-exporter/images/los-angeles-us.png
     small-cells:
       - small-cell-id: freemont-sc-north
         display-name: North Cell
@@ -354,7 +354,7 @@ sites:
         display-name: Sim 1f
   - site-id: bengaluru
     display-name: Bengaluru, INDIA
-    image: chronos-exporter/images/bengaluru-india.png
+    image: /chronos-exporter/images/bengaluru-india.png
     small-cells:
       - small-cell-id: bengaluru-north
         display-name: North Cell
