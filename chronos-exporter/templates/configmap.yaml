@@ -44,7 +44,7 @@ metadata:
     heritage: "{{ .Release.Service }}"
 binaryData:
   {{ $root := . }}
-  {{ range $path, $bytes := .Files.Glob "files/site-plans/freemont/*.svg" }}
+  {{ range $path, $bytes := .Files.Glob "files/site-plans/fremont/*.svg" }}
   {{ base $path }}: '{{ $root.Files.Get $path | b64enc }}'
   {{ end }}
 

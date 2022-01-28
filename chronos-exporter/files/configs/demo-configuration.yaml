@@ -6,43 +6,43 @@ enterprise:
   display-name: Tesla
   image: /chronos-exporter/images/tesla-logo.png
 sites:
-  - site-id: freemont
-    display-name: Freemont, CA
+  - site-id: fremont
+    display-name: Fremont, CA
     image: /chronos-exporter/images/los-angeles-us.png
     small-cells:
-      - small-cell-id: freemont-sc-north
+      - small-cell-id: fremont-sc-north
         display-name: North Cell
         position:
           position-x: 100
           position-y: 50
           site-plan: floor-0
-      - small-cell-id: freemont-sc-south
+      - small-cell-id: fremont-sc-south
         display-name: South Cell
         position:
           position-x: 100
           position-y: 150
           site-plan: floor-1
-      - small-cell-id: freemont-sc-east
+      - small-cell-id: fremont-sc-east
         display-name: East Cell
         position:
           position-x: 200
           position-y: 100
           site-plan: floor-2
-      - small-cell-id: freemont-sc-west
+      - small-cell-id: fremont-sc-west
         display-name: West Cell
         position:
           position-x: 10
           position-y: 100
           site-plan: floor-0
     slices:
-      - slice-id: freemont-slice-cameras
+      - slice-id: fremont-slice-cameras
         display-name: Cameras Slice
         device-groups:
           - cameras
         applications:
           - nvr-application
           - occupant-counter
-      - slice-id: freemont-slice-phones
+      - slice-id: fremont-slice-phones
         display-name: Phones Slice
         device-groups:
           - phones
@@ -174,25 +174,25 @@ sites:
         - layer-id: Text
       site-plan-list:
         - id: floor-0
-          svg-file: /chronos-exporter/site-plans/freemont/floor-0.svg
+          svg-file: /chronos-exporter/site-plans/fremont/floor-0.svg
           offsets:
             x-offset: 0
             y-offset: 0
             z-offset: 0
         - id: floor-1
-          svg-file: /chronos-exporter/site-plans/freemont/floor-1.svg
+          svg-file: /chronos-exporter/site-plans/fremont/floor-1.svg
           offsets:
             x-offset: 0
             y-offset: 0
             z-offset: 100
         - id: floor-2
-          svg-file: /chronos-exporter/site-plans/freemont/floor-2.svg
+          svg-file: /chronos-exporter/site-plans/fremont/floor-2.svg
           offsets:
             x-offset: 0
             y-offset: 0
             z-offset: 200
         - id: floor-3
-          svg-file: /chronos-exporter/site-plans/freemont/floor-3.svg
+          svg-file: /chronos-exporter/site-plans/fremont/floor-3.svg
           offsets:
             x-offset: 0
             y-offset: 0

@@ -112,7 +112,7 @@
        x="264.58334"
        y="9.5" />
     <rect
-       y="106.5"
+       y="9.5"
        x="238.12512"
        height="68.791664"
        width="26.45833"
@@ -147,7 +147,7 @@
        id="text4574"><tspan
          sodipodi:role="line"
          id="tspan4572"
-         x="57.558613"
+         x="37.558613"
          y="143.16763"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.81944466px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.26458332">Office 1A</tspan></text>
     <text
@@ -203,7 +203,7 @@
        xml:space="preserve"><tspan
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.81944466px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.26458332"
          y="140.54936"
-         x="205.6776"
+         x="185.6776"
          id="tspan4643"
          sodipodi:role="line">Office 1C</tspan></text>
     <text
@@ -215,11 +215,11 @@
        id="text4649"><tspan
          sodipodi:role="line"
          id="tspan4647"
-         x="140.59502"
+         x="130.59502"
          y="132.69456"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.81944466px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.26458332">Copier</tspan><tspan
          sodipodi:role="line"
-         x="140.59502"
+         x="130.59502"
          y="145.92374"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.81944466px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.26458332"
          id="tspan4651">Room</tspan></text>
@@ -232,7 +232,7 @@
          style="stroke-width:0.26458332"
          sodipodi:role="line"
          id="tspan1340"
-         x="207.48129"
+         x="197.48129"
          y="185.43088">Lifts</tspan></text>
     <text
        xml:space="preserve"
@@ -243,7 +243,7 @@
          style="stroke-width:0.26458332"
          sodipodi:role="line"
          id="tspan1360"
-         x="260.4614"
+         x="250.4614"
          y="185.50815">Stairs</tspan></text>
   </g>
 </svg>
