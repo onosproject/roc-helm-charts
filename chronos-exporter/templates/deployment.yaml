@@ -47,6 +47,8 @@ spec:
             - "/usr/local/bin/chronos-exporter"
             - "--config"
             - {{ .Values.configfile }}
+            - "--alert"
+            - {{ .Values.alertfile }}
           ports:
             - name: metrics
               containerPort: 2112
@@ -72,6 +74,9 @@ spec:
             - name: exporter-site-plans
               mountPath: /opt/site-plans/fremont
               readOnly: true
+            - name: exporter-alert
+              mountPath: /etc/chronos-exporter/alerts
+              readOnly: true
       volumes:
         - name: secret
           secret:
@@ -85,3 +90,6 @@ spec:
         - name: exporter-site-plans
           configMap:
             name: {{ template "chronos-exporter.fullname" . }}-site-plans
+        - name: exporter-alert
+          configMap:
+            name: {{ template "chronos-exporter.fullname" . }}-alert

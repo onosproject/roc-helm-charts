@@ -48,3 +48,15 @@ binaryData:
   {{ base $path }}: '{{ $root.Files.Get $path | b64enc }}'
   {{ end }}
 
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ template "chronos-exporter.fullname" . }}-alert
+  labels:
+    app: {{ template "chronos-exporter.fullname" . }}
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+    release: "{{ .Release.Name }}"
+    heritage: "{{ .Release.Service }}"
+data:
+{{ (.Files.Glob "files/alerts/*.yaml").AsConfig | indent 2 }}
