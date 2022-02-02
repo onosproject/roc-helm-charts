@@ -380,7 +380,7 @@ sites:
         display-name: Phones Slice
         device-groups:
           - phones-north
-          - phone-south
+          - phones-south
         applications:
           - expenses-application
       - slice-id: bengaluru-slice-drones
