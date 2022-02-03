@@ -39,26 +39,16 @@ submodule onf-application {
     description "The application grouping";
 
     list application {
-      key "app-id";
+      key "application-id";
       description
         "List of applications";
 
-      leaf app-id {
+      leaf application-id {
         type application-id;
         description "ID for this application.";
       }
 
-      leaf display-name {
-        type string {
-            length 1..80;
-        }
-        description "display name to use in GUI or CLI";
-      }
-
-      leaf description {
-        type at:description;
-        description "description of this application";
-      }
+      uses at:desc-display-name;
 
       leaf address {
         type ietf:host;
@@ -74,6 +64,9 @@ submodule onf-application {
           description
               "Id of this endpoint";
         }
+
+        uses at:desc-display-name;
+
         leaf port-start {
           type ietf:port-number;
           description
@@ -105,17 +98,12 @@ submodule onf-application {
         }
         leaf traffic-class {
           type leafref {
-            path "../../../traffic-class/tc-id";
+            path "../../../traffic-class/traffic-class-id";
           }
           description
             "Link to traffic class";
         }
-        leaf display-name {
-          type string {
-              length 1..80;
-          }
-          description "display name to use in GUI or CLI";
-        }
+
         description "list for endpoint";
       }
     }
