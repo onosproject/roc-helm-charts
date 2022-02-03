@@ -22,10 +22,10 @@ allowed[config] {
 
 enterprise_rule[enterprise] {
     enterprise := input.enterprises.enterprise[_]
-    ["AetherROCAdmin", enterprise.ent_id][_] == input.groups[i]
+    ["AetherROCAdmin", enterprise.enterprise_id][_] == input.groups[i]
 }
 
 can_update_enterprise = true {
     update_enterprise := input.updates.enterprises.enterprise[_]
-    ["AetherROCAdmin", update_enterprise.ent_id][_] == input.groups[i]
+    ["AetherROCAdmin", update_enterprise.enterprise_id][_] == input.groups[i]
 }
