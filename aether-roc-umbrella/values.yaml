@@ -44,7 +44,7 @@ import:
   aether-roc-websocket:
     enabled: true
   aether-roc-gui:
-    v3:
+    v2:
       enabled: false
     v4:
       enabled: true
