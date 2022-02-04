@@ -7,7 +7,7 @@
 all: test
 
 test: # @HELP run the acceptance tests
-test: deps yang-lint
+test: deps
 
 roc-test: # @HELP run the integration tests
 roc-test: deps # @HELP run the integration tests
@@ -32,18 +32,6 @@ help:
         BEGIN {FS = ": *# *@HELP"}; \
         {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}; \
     '
-
-pyang:
-	pyang -v || pip install pyang
-
-yang-lint: pyang
-	pyang --lint ./config-models/aether-1.x/files/yang/*.yang
-	pyang --lint --lint-ensure-hyphenated-names -W error ./config-models/aether-2.0.x/files/yang/*.yang -p ./config-models/aether-2.0.x/files/yang
-	pyang --lint ./config-models/aether-2.1.x/files/yang/*.yang
-	pyang --lint ./config-models/aether-2.2.x/files/yang/*.yang
-	pyang --lint ./config-models/aether-3.x/files/yang/*.yang
-	pyang --lint --lint-ensure-hyphenated-names -W error ./config-models/aether-4.x/files/yang/*.yang -p ./config-models/aether-4.x/files/yang
-	pyang --lint --lint-ensure-hyphenated-names -W error ./config-models/plproxy-1.x/files/yang/*.yang -p ./config-models/plproxy-1.x/files/yang
 
 reuse-lint:
 	reuse --root . lint

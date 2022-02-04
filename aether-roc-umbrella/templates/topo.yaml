@@ -23,8 +23,8 @@ spec:
   aspects:
     onos.topo.Configurable:
       address: sdcore-adapter-v2:5150
-      version: 2.0.0
-      type: Aether
+      version: 2.0.x
+      type: aether
     onos.topo.Location:
       lat: 52.5150
       lng: 13.3885
@@ -47,8 +47,8 @@ spec:
   aspects:
     onos.topo.Configurable:
       address: sdcore-adapter-v4:5150
-      version: 4.0.0
-      type: Aether
+      version: 4.0.18
+      type: aether
     onos.topo.Location:
       lat: 52.5150
       lng: 13.3885

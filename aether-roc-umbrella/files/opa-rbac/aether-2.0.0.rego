@@ -2,7 +2,7 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 
-package aether_2_0_0
+package aether_2_0_x
 
 echo[config] {
     config := input
