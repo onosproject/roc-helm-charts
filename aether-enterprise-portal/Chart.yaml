@@ -1,13 +1,13 @@
 # SPDX-FileCopyrightText: 2021-present Open Networking Foundation <info@opennetworking.org>
 #
-# SPDX-License-Identifier: LicenseRef-ONF-Member-Only-1.0
+# SPDX-License-Identifier: Apache-2.0
 
 apiVersion: v2
 name: aether-enterprise-portal
 description: Aether Enterprise Portal
 kubeVersion: ">=1.15.0"
 type: application
-version: 0.0.6
+version: 0.0.7
 appVersion: 0.0.6
 keywords:
   - aether

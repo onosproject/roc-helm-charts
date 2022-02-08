@@ -6,7 +6,7 @@ License: Apache-2.0
 
 Files: config-models/*/files/*.tree */files/configs/*.json */dashboards/*/*.json */files/opa-rbac/test/*.json go.mod go.sum
 Copyright: 2021 Open Networking Foundation
-License: LicenseRef-ONF-Member-Only-1.0
+License: Apache-2.0
 
 
 # per https://trustee.ietf.org/documents/trust-legal-provisions/copyright-policy-and-tlp-faq/
@@ -22,4 +22,4 @@ License: CC0-1.0
 # source: https://unsplash.com/ https://unsplash.com/license (also images are modified)
 Files: chronos-exporter/files/images/*.png
 Copyright: 2022 Open Networking Foundation
-License: LicenseRef-ONF-Member-Only-1.0
+License: Apache-2.0

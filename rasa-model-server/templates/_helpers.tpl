@@ -1,7 +1,7 @@
 {{/* vim: set filetype=mustache: */}}
 {{/*
 SPDX-FileCopyrightText: 2022-present Open Networking Foundation <info@opennetworking.org>
-SPDX-License-Identifier: LicenseRef-ONF-Member-Only-1.0
+SPDX-License-Identifier: Apache-2.0
 
 Expand the name of the chart.
 */}}

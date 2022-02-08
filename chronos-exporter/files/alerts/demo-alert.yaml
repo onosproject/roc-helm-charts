@@ -1,6 +1,6 @@
 # SPDX-FileCopyrightText: 2021-present Open Networking Foundation <info@opennetworking.org>
 #
-# SPDX-License-Identifier: LicenseRef-ONF-Member-Only-1.0
+# SPDX-License-Identifier: Apache-2.0
 ---
   - alert-id: 21e43108-8c6b-4c92-b80a-b1f365ae14ea
     configpath: "/sites/site[site-id=fremont]/devices/device[serial-number=752365A]"

@@ -1,10 +1,10 @@
 # SPDX-FileCopyrightText: 2021-present Open Networking Foundation <info@opennetworking.org>
 #
-# SPDX-License-Identifier: LicenseRef-ONF-Member-Only-1.0
+# SPDX-License-Identifier: Apache-2.0
 
 apiVersion: v2
 name: config-model-aether-2
-version: 2.0.7
+version: 2.0.8
 kubeVersion: ">=1.18.0"
 appVersion: 2.0.0
 description: Aether config model
