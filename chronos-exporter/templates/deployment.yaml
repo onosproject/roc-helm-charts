@@ -49,6 +49,8 @@ spec:
             - {{ .Values.configfile }}
             - "--alert"
             - {{ .Values.alertfile }}
+            - "--aether"
+            - {{ .Values.aetherfile }}
           ports:
             - name: metrics
               containerPort: 2112
