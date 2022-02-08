@@ -20,7 +20,7 @@ module: onf-enterprise
         |  +--rw application-id    application-id
         |  +--rw display-name?     string
         |  +--rw description?      description
-        |  +--rw address           ietf:host
+        |  +--rw address           at:host-or-network
         |  +--rw endpoint* [endpoint-id]
         |     +--rw endpoint-id      yg:yang-identifier
         |     +--rw display-name?    string
@@ -153,3 +153,4 @@ module: onf-enterprise
               +--rw subnet           inet:ipv4-prefix
               +--rw admin-status?    at:admin-status
               +--rw mtu?             at:mtu
+

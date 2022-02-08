@@ -51,7 +51,7 @@ submodule onf-application {
       uses at:desc-display-name;
 
       leaf address {
-        type ietf:host;
+        type at:host-or-network;
         mandatory true;
         description
             "Address of this application. Either a hostname, an IP, or a subnet.";
