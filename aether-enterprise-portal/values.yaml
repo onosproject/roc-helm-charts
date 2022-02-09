@@ -10,7 +10,7 @@ replicaCount: 1
 
 image:
   repository: onosproject/aether-enterprise-portal
-  tag: v0.0.6
+  tag: v0.0.7
   pullPolicy: IfNotPresent
   pullSecrets: []
 
