@@ -9,8 +9,8 @@ replicaCount: 1
 annotations: {}
 
 image:
-  repository: onosproject/chronos-exporter
-  tag: v0.0.12
+  repository: onosproject/rasa-model-server
+  tag: v0.0.13
   pullPolicy: IfNotPresent
   pullSecrets: []
 

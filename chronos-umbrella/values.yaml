@@ -123,7 +123,7 @@ rasa:
     endpoints:
       models:
         enabled: true
-        url: http://rasa-model-server:8080/models/20220113-154251-nuclear-radian
+        url: http://rasa-model-server:8080/models/20220101-000000-aether-trained
         token: chronos-rasa-model-server-token
       trackerStore:
         enabled: false
