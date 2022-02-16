@@ -45,9 +45,9 @@ import:
     enabled: true
   aether-roc-gui:
     v2:
-      enabled: false
-    v4:
       enabled: true
+    v4:
+      enabled: false
   sdcore-adapter:
     v2:
       enabled: true

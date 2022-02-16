@@ -10,7 +10,7 @@ replicaCount: 1
 
 image:
   repository: onosproject/aether-roc-gui
-  tag: v0.9.0
+  tag: v0.9.1
   pullPolicy: IfNotPresent
   pullSecrets: []
 
