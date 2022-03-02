@@ -10,13 +10,17 @@ replicaCount: 1
 
 image:
   repository: onosproject/aether-roc-api
-  tag: v0.9.9
+  tag: "{{ .Chart.AppVersion }}"
   pullPolicy: IfNotPresent
   pullSecrets: []
 
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: "aether-roc-api"
+
+gnmiEndpoint: onos-config:5150
+gnmiTimeout: 10s
+port: 8181
 
 # Needed for development only - set to blank otherwise
 corsOrigins:

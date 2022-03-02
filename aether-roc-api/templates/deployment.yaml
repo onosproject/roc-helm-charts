@@ -36,7 +36,7 @@ spec:
       {{- end }}
       containers:
         - name: {{ .Chart.Name }}
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          image: "{{ .Values.image.repository }}:{{ tpl .Values.image.tag . }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
             - name: NAMESPACE
@@ -46,8 +46,14 @@ spec:
             - name: OIDC_SERVER_URL
               value: {{ .Values.openidc.issuer }}
           args:
+            - "-gnmiEndpoint={{ .Values.gnmiEndpoint }}"
+            # TODO add support for certificates
+            - "-gnmiTimeout={{ .Values.gnmiTimeout }}"
+            - "-port={{ .Values.port }}"
+            - "-logLevel={{ .Values.logging.loggers.root.level }}"
             {{- range $key, $corsorigin := .Values.corsOrigins }}
-            - {{ printf "-allowCorsOrigin=%s" $corsorigin }}{{end}}
+            - {{ printf "-allowCorsOrigin=%s" $corsorigin }}
+            {{end}}
           ports:
             - name: http
               containerPort: 8181
