@@ -141,11 +141,11 @@ aether-roc-gui-v4:
 # SD-Core Adapter
 sdcore-adapter-v2:
   prometheusEnabled: false
-  partialUpdateEnabled: false
+  partialUpdateEnabled: true
 
 sdcore-adapter-v4:
   prometheusEnabled: false
-  partialUpdateEnabled: false
+  partialUpdateEnabled: true
 
 # Subscriber Proxy
 subscriber-proxy:
