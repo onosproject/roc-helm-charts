@@ -10,7 +10,7 @@ annotations: {}
 
 image:
   repository: onosproject/sdcore-adapter
-  tag: v0.3.8
+  tag: v0.3.9
   pullPolicy: IfNotPresent
   pullSecrets: []
 
