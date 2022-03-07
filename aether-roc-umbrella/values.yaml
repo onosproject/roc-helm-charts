@@ -361,7 +361,7 @@ onos-config:
       enabled: false
   modelPlugins:
     - name: aether-2
-      image: onosproject/aether-2.0.x:2.0.1-dev-aether-2.0.x
+      image: onosproject/aether-2.0.x:2.0.2-aether-2.0.x
       endpoint: localhost
       port: 5152
     - name: aether-4
