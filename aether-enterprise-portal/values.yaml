@@ -81,6 +81,9 @@ prometheus:
   service: prometheus
   protocol: http
   port: 80
+  credentials:
+    username: toBeOverridden
+    password: toBeOverridden
 
 Nginx:
   port: 80

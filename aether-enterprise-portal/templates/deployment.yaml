@@ -46,6 +46,11 @@ spec:
                   fieldPath: metadata.namespace
             - name: OPENIDCISSUER
               value: {{ .Values.openidc.issuer }}
+            - name: ONFLOGIN
+              valueFrom:
+                secretKeyRef:
+                  name: aether-enterprise-portal-api
+                  key: credentials
           stdin : true
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
@@ -70,7 +75,6 @@ spec:
             - name: secret
               mountPath: /usr/share/certs
               readOnly: true
-
       volumes:
         - name: config
           configMap:

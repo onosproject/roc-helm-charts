@@ -7,8 +7,8 @@ name: aether-enterprise-portal
 description: Aether Enterprise Portal
 kubeVersion: ">=1.15.0"
 type: application
-version: 0.0.10
-appVersion: 0.0.10
+version: 0.1.0
+appVersion: 0.1.0
 keywords:
   - aether
   - roc
