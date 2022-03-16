@@ -35,19 +35,19 @@ spec:
     onos.topo.MastershipState: {}
 
 ---
-# The 4G/5G v4.0.0 sdcore-adapter
+# The 4G/5G v2.1.0 sdcore-adapter
 apiVersion: topo.onosproject.org/v1beta1
 kind: Entity
 metadata:
-  name: connectivity-service-v4
+  name: connectivity-service-v2-1
 spec:
-  uri: connectivity-service-v4
+  uri: connectivity-service-v2-1
   kind:
     name: aether
   aspects:
     onos.topo.Configurable:
-      address: sdcore-adapter-v4:5150
-      version: 4.0.18
+      address: sdcore-adapter-v2-1:5150
+      version: 2.1.x
       type: aether
     onos.topo.Location:
       lat: 52.5150
@@ -56,53 +56,4 @@ spec:
       insecure: true
     onos.topo.Asset:
       name: 5G Core
-    onos.topo.MastershipState: {}
-
----
-apiVersion: topo.onosproject.org/v1beta1
-kind: Kind
-metadata:
-  name: plproxy
-spec:
-  aspects: {}
-
----
-# Prom-label-proxy
-apiVersion: topo.onosproject.org/v1beta1
-kind: Entity
-metadata:
-  name: plproxy-amp
-spec:
-  uri: plproxy-amp
-  kind:
-    name: plproxy
-  aspects:
-    onos.topo.Configurable:
-      address: prom-label-proxy-amp:5150
-      version: 1.0.0
-      type: PLProxy
-    onos.topo.TLSOptions:
-      insecure: true
-    onos.topo.Asset:
-      name: Prom Label Proxy
-    onos.topo.MastershipState: {}
----
-# Prom-label-proxy
-apiVersion: topo.onosproject.org/v1beta1
-kind: Entity
-metadata:
-  name: plproxy-acc
-spec:
-  uri: plproxy-acc
-  kind:
-    name: plproxy
-  aspects:
-    onos.topo.Configurable:
-      address: prom-label-proxy-acc:5150
-      version: 1.0.0
-      type: PLProxy
-    onos.topo.TLSOptions:
-      insecure: true
-    onos.topo.Asset:
-      name: Prom Label Proxy
     onos.topo.MastershipState: {}
