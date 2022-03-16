@@ -51,6 +51,7 @@ spec:
             - "-gnmiTimeout={{ .Values.gnmiTimeout }}"
             - "-port={{ .Values.port }}"
             - "-logLevel={{ .Values.logging.loggers.root.level }}"
+            - "-analyticsEndpoint={{ .Values.analyticsEndpoint }}"
             {{- range $key, $corsorigin := .Values.corsOrigins }}
             - {{ printf "-allowCorsOrigin=%s" $corsorigin }}
             {{end}}
