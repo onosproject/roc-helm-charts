@@ -10,7 +10,7 @@ annotations: {}
 
 image:
   repository: onosproject/subscriber-proxy
-  tag: v0.3.1
+  tag: v0.3.2
   pullPolicy: IfNotPresent
   pullSecrets: []
 
