@@ -1,0 +1,40 @@
+[
+  {
+    "connectivity_services": {
+      "connectivity_service": [
+        {
+          "acc_prometheus_url": "./prometheus_acc",
+          "core_5g_endpoint": "http://aether_roc_umbrella_sdcore_test_dummy/v1/config/5g",
+          "description": "5G Test",
+          "display_name": "ROC 5G Test Connectivity Service",
+          "id": "cs5gtest"
+        },
+        {
+          "description": "ROC 4G Test Connectivity Service",
+          "display_name": "4G Test",
+          "hss_endpoint": "http://aether_roc_umbrella_sdcore_test_dummy/v1/config/imsis",
+          "id": "cs4gtest",
+          "pcrf_endpoint": "http://aether_roc_umbrella_sdcore_test_dummy/v1/config/policies",
+          "spgwc_endpoint": "http://aether_roc_umbrella_sdcore_test_dummy/v1/config"
+        }
+      ]
+    },
+    "enterprises": {
+      "enterprise": [
+        [
+          {
+            "connectivity_service": [
+              {
+                "connectivity_service": "cs5gtest",
+                "enabled": true
+              }
+            ],
+            "description": "ACME Corporation",
+            "display_name": "ACME Corp",
+            "enterprise_id": "acme"
+          }
+        ]
+      ]
+    }
+  }
+]

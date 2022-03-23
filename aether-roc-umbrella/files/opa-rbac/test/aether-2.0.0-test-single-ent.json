@@ -1,0 +1,60 @@
+{
+  "groups": [
+    "mixedGroup",
+    "acme"
+  ],
+  "connectivity_services": {
+    "connectivity_service": [
+      {
+        "core_5g_endpoint": "http://aether_roc_umbrella_sdcore_test_dummy/v1/config/5g",
+        "description": "5G Test",
+        "display_name": "ROC 5G Test Connectivity Service",
+        "acc_prometheus_url": "./prometheus_acc",
+        "id": "cs5gtest"
+      },
+      {
+        "description": "ROC 4G Test Connectivity Service",
+        "display_name": "4G Test",
+        "hss_endpoint": "http://aether_roc_umbrella_sdcore_test_dummy/v1/config/imsis",
+        "id": "cs4gtest",
+        "pcrf_endpoint": "http://aether_roc_umbrella_sdcore_test_dummy/v1/config/policies",
+        "spgwc_endpoint": "http://aether_roc_umbrella_sdcore_test_dummy/v1/config"
+      }
+    ]
+  },
+  "enterprises": {
+    "enterprise": [
+      {
+        "description": "This Enterprise holds discovered IMSIs that cannot be associated elsewhere.",
+        "display_name": "Default Enterprise",
+        "enterprise_id": "defaultent"
+      },
+      {
+        "connectivity_service": [
+          {
+            "connectivity_service": "cs5gtest",
+            "enabled": true
+          }
+        ],
+        "description": "ACME Corporation",
+        "display_name": "ACME Corp",
+        "enterprise_id": "acme"
+      },
+      {
+        "connectivity_service": [
+          {
+            "connectivity_service": "cs5gtest",
+            "enabled": true
+          },
+          {
+            "connectivity_service": "cs4gtest",
+            "enabled": false
+          }
+        ],
+        "description": "Starbucks Corporation",
+        "display_name": "Starbucks Inc.",
+        "enterprise_id": "starbucks"
+      }
+    ]
+  }
+}

@@ -1,7 +1,6 @@
 {
   "groups": [
-    "mixedGroup",
-    "acme"
+    "AetherROCAdmin"    
   ],
   "connectivity_services": {
     "connectivity_service": [
@@ -27,7 +26,7 @@
       {
         "description": "This Enterprise holds discovered IMSIs that cannot be associated elsewhere.",
         "display_name": "Default Enterprise",
-        "ent_id": "defaultent"
+        "enterprise_id": "defaultent"
       },
       {
         "connectivity_service": [
@@ -38,7 +37,7 @@
         ],
         "description": "ACME Corporation",
         "display_name": "ACME Corp",
-        "ent_id": "acme"
+        "enterprise_id": "acme"
       },
       {
         "connectivity_service": [
@@ -53,7 +52,7 @@
         ],
         "description": "Starbucks Corporation",
         "display_name": "Starbucks Inc.",
-        "ent_id": "starbucks"
+        "enterprise_id": "starbucks"
       }
     ]
   }

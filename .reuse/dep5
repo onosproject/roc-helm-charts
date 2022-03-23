@@ -4,7 +4,7 @@ Files: VERSION .gitreview .gitignore CODE_OF_CONDUCT.md
 Copyright: 2021 Open Networking Foundation
 License: Apache-2.0
 
-Files: config-models/*/files/*.tree */files/configs/*.json */dashboards/*/*.json */files/opa-rbac/test/*.json go.mod go.sum
+Files: config-models/*/files/*.tree */files/configs/*.json */dashboards/*/*.json */files/opa-rbac/test/*.json */files/opa-rbac/test/out/*.out go.mod go.sum
 Copyright: 2021 Open Networking Foundation
 License: Apache-2.0
 

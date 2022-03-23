@@ -1,0 +1,297 @@
+[
+  {
+    "application": {
+      "application": [
+        [
+          {
+            "address": "da.acme.com",
+            "description": "Data Acquisition",
+            "display_name": "DA",
+            "endpoint": [
+              {
+                "display_name": "data acquisition endpoint",
+                "endpoint_id": "da",
+                "mbr": {
+                  "downlink": 1000000,
+                  "uplink": 2000000
+                },
+                "port_end": 7588,
+                "port_start": 7585,
+                "protocol": "TCP",
+                "traffic_class": "class_2"
+              }
+            ],
+            "enterprise": "acme",
+            "id": "acme_dataacquisition"
+          }
+        ]
+      ]
+    },
+    "connectivity-service": {
+      "connectivity-service": [
+        [
+          {
+            "acc_prometheus_url": "./prometheus_acc",
+            "core_5g_endpoint": "http://aether_roc_umbrella_sdcore_test_dummy/v1/config/5g",
+            "description": "5G Test",
+            "display_name": "ROC 5G Test Connectivity Service",
+            "id": "cs5gtest"
+          },
+          {
+            "description": "ROC 4G Test Connectivity Service",
+            "display_name": "4G Test",
+            "hss_endpoint": "http://aether_roc_umbrella_sdcore_test_dummy/v1/config/imsis",
+            "id": "cs4gtest",
+            "pcrf_endpoint": "http://aether_roc_umbrella_sdcore_test_dummy/v1/config/policies",
+            "spgwc_endpoint": "http://aether_roc_umbrella_sdcore_test_dummy/v1/config"
+          }
+        ]
+      ]
+    },
+    "device-group": {
+      "device-group": [
+        [
+          {
+            "display_name": "ACME Default",
+            "id": "acme_chicago_default",
+            "ip_domain": "acme_chicago",
+            "site": "acme_chicago"
+          },
+          {
+            "device": {
+              "mbr": {
+                "downlink": 1000000,
+                "uplink": 5000000
+              },
+              "traffic_class": "class_1"
+            },
+            "display_name": "ACME Robots",
+            "id": "acme_chicago_robots",
+            "imsis": [
+              {
+                "display_name": "production robots",
+                "imsi_id": "production",
+                "imsi_range_from": 0,
+                "imsi_range_to": 3
+              },
+              {
+                "display_name": "warehouse robots",
+                "imsi_id": "warehouse",
+                "imsi_range_from": 10,
+                "imsi_range_to": 12
+              }
+            ],
+            "ip_domain": "acme_chicago",
+            "site": "acme_chicago"
+          }
+        ]
+      ]
+    },
+    "enterprise": {
+      "enterprise": [
+        [
+          {
+            "connectivity_service": [
+              {
+                "connectivity_service": "cs5gtest",
+                "enabled": true
+              }
+            ],
+            "description": "ACME Corporation",
+            "display_name": "ACME Corp",
+            "id": "acme"
+          }
+        ]
+      ]
+    },
+    "ip-domain": {
+      "ip-domain": [
+        [
+          {
+            "admin_status": "DISABLE",
+            "description": "Chicago IP Domain",
+            "display_name": "Chicago",
+            "dns_primary": "8.8.8.4",
+            "dns_secondary": "8.8.8.4",
+            "enterprise": "acme",
+            "id": "acme_chicago",
+            "mtu": 12690,
+            "subnet": "163.25.44.0/31"
+          }
+        ]
+      ]
+    },
+    "site": {
+      "site": [
+        [
+          {
+            "description": "ACME HQ",
+            "display_name": "Chicago",
+            "enterprise": "acme",
+            "id": "acme_chicago",
+            "imsi_definition": {
+              "enterprise": 1,
+              "format": "CCCNNNEEESSSSSS",
+              "mcc": "123",
+              "mnc": "456"
+            },
+            "monitoring": {
+              "edge_cluster_prometheus_url": "prometheus_ace1",
+              "edge_device": [
+                {
+                  "description": "monitoring device placed near the sprocket manufacturing machine",
+                  "display_name": "sprocket monitoring pi",
+                  "edge_device_id": "acme_chicago_monitoring_pi_1"
+                },
+                {
+                  "description": "monitoring device placed near the widget refinisher",
+                  "display_name": "widget monitoring pi",
+                  "edge_device_id": "acme_chicago_monitoring_pi_2"
+                }
+              ],
+              "edge_monitoring_prometheus_url": "prometheus_amp"
+            },
+            "small_cell": [
+              {
+                "address": "ap2.chicago.acme.com",
+                "display_name": "cell number one",
+                "enable": true,
+                "small_cell_id": "cell1",
+                "tac": "8002"
+              }
+            ]
+          }
+        ]
+      ]
+    },
+    "template": {
+      "template": [
+        [
+          {
+            "default_behavior": "DENY_ALL",
+            "description": "VCS Template 1",
+            "display_name": "Template 1",
+            "id": "template_1",
+            "sd": 10886763,
+            "slice": {
+              "mbr": {
+                "downlink": 5000000,
+                "downlink_burst_size": 600000,
+                "uplink": 10000000,
+                "uplink_burst_size": 600000
+              }
+            },
+            "sst": 158
+          },
+          {
+            "default_behavior": "DENY_ALL",
+            "description": "VCS Template 2",
+            "display_name": "Template 2",
+            "id": "template_2",
+            "sd": 16619900,
+            "slice": {
+              "mbr": {
+                "downlink": 5000000,
+                "uplink": 10000000,
+                "uplink_burst_size": 500000
+              }
+            },
+            "sst": 157
+          }
+        ]
+      ]
+    },
+    "traffic-class": {
+      "traffic-class": [
+        [
+          {
+            "arp": 1,
+            "description": "High Priority TC",
+            "display_name": "Class 1",
+            "id": "class_1",
+            "pdb": 100,
+            "pelr": 10,
+            "qci": 10
+          },
+          {
+            "arp": 1,
+            "description": "Medium Priority TC",
+            "display_name": "Class 2",
+            "id": "class_2",
+            "pdb": 100,
+            "pelr": 10,
+            "qci": 20
+          },
+          {
+            "arp": 1,
+            "description": "Low Priority TC",
+            "display_name": "Class 3",
+            "id": "class_3",
+            "pdb": 100,
+            "pelr": 10,
+            "qci": 30
+          }
+        ]
+      ]
+    },
+    "upf": {
+      "upf": [
+        [
+          {
+            "address": "entry1.upfpool.chicago.acme.com",
+            "description": "Chicago UPF Pool _ Entry 1",
+            "display_name": "Chicago Pool 1",
+            "enterprise": "acme",
+            "id": "acme_chicago_pool_entry1",
+            "port": 6161,
+            "site": "acme_chicago"
+          },
+          {
+            "address": "entry2.upfpool.chicago.acme.com",
+            "description": "Chicago UPF Pool _ Entry 2",
+            "display_name": "Chicago Pool 2",
+            "enterprise": "acme",
+            "id": "acme_chicago_pool_entry2",
+            "port": 6161,
+            "site": "acme_chicago"
+          }
+        ]
+      ]
+    },
+    "vcs": {
+      "vcs": [
+        [
+          {
+            "default_behavior": "DENY_ALL",
+            "description": "Chicago Robots",
+            "device_group": [
+              {
+                "device_group": "acme_chicago_robots",
+                "enable": true
+              }
+            ],
+            "display_name": "Chicago Robots VCS",
+            "enterprise": "acme",
+            "filter": [
+              {
+                "allow": false,
+                "application": "acme_dataacquisition"
+              }
+            ],
+            "id": "acme_chicago_robots",
+            "sd": 2973238,
+            "site": "acme_chicago",
+            "slice": {
+              "mbr": {
+                "downlink": 5000000,
+                "downlink_burst_size": 600000
+              }
+            },
+            "sst": 79,
+            "upf": "acme_chicago_pool_entry1"
+          }
+        ]
+      ]
+    }
+  }
+]

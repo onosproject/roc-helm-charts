@@ -7,7 +7,23 @@
 all: test
 
 test: # @HELP run the acceptance tests
-test: deps
+test: deps opa-test
+
+opa-test: #@HELP run the rego rule tests
+opa-test:
+	@cd aether-roc-umbrella/files/opa-rbac && for test_file in test/*; do \
+	trimmed=`basename $$test_file .json`;\
+	case "$$trimmed" in \
+	*2.0.0*) docker run -v $$(pwd):/opa-rbac openpolicyagent/opa:0.29.4 eval -f pretty -b /opa-rbac \
+	--input opa-rbac/test/$$trimmed.json data.aether_2_0_x.allowed > /tmp/$$trimmed.out;;\
+	*3.0.0*) docker run -v $$(pwd):/opa-rbac openpolicyagent/opa:0.29.4 eval -f pretty -b /opa-rbac \
+	--input opa-rbac/test/$$trimmed.json data.aether_3_0_0.allowed > /tmp/$$trimmed.out;;\
+	*4.0.0*) docker run -v $$(pwd):/opa-rbac openpolicyagent/opa:0.29.4 eval -f pretty -b /opa-rbac \
+	--input opa-rbac/test/$$trimmed.json data.aether_4_0_18.allowed > /tmp/$$trimmed.out;;\
+	*) continue;;esac;\
+	cmp -s /tmp/$$trimmed.out test/out/$$trimmed.out \
+	&& echo "[TEST] $$trimmed.json : PASS"|| echo "[TEST] $$trimmed.json : FAIL";\
+	done;
 
 roc-test: # @HELP run the integration tests
 roc-test: deps # @HELP run the integration tests

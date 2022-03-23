@@ -1,0 +1,83 @@
+[
+  {
+    "ap-list": {
+      "ap-list": [
+        []
+      ]
+    },
+    "application": {
+      "application": [
+        []
+      ]
+    },
+    "connectivity-service": {
+      "connectivity-service": [
+        []
+      ]
+    },
+    "device-group": {
+      "device-group": [
+        []
+      ]
+    },
+    "enterprise": {
+      "enterprise": [
+        []
+      ]
+    },
+    "ip-domain": {
+      "ip-domain": [
+        []
+      ]
+    },
+    "network": {
+      "network": [
+        []
+      ]
+    },
+    "site": {
+      "site": [
+        []
+      ]
+    },
+    "template": {
+      "template": [
+        [
+          {
+            "description": "do",
+            "display-name": "laborum fugiat",
+            "downlink": 322694552,
+            "id": "aliquip",
+            "sd": 14628949,
+            "sst": 1,
+            "uplink": 1607714163
+          },
+          {
+            "description": "do",
+            "display-name": "quattro fugiat",
+            "downlink": 322694552,
+            "id": "quattro",
+            "sd": 14628949,
+            "sst": 1,
+            "uplink": 1607714163
+          }
+        ]
+      ]
+    },
+    "traffic_class": {
+      "traffic_class": [
+        []
+      ]
+    },
+    "upf": {
+      "upf": [
+        []
+      ]
+    },
+    "vcs": {
+      "vcs": [
+        []
+      ]
+    }
+  }
+]
