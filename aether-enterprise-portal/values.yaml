@@ -10,7 +10,7 @@ replicaCount: 1
 
 image:
   repository: onosproject/aether-enterprise-portal
-  tag: v0.0.10
+  tag: v0.1.1
   pullPolicy: IfNotPresent
   pullSecrets: []
 
@@ -63,6 +63,18 @@ aetherservices:
     http: 2112
     protocol: http
     streamTimeout: 3600
+
+rasa:
+  proxyEnabled: false
+  service: rasa
+  protocol: http
+  port: 5005
+
+mailhog:
+  proxyEnabled: false
+  service: mailhog
+  protocol: http
+  port: 8025
 
 websocket:
   proxyEnabled: false

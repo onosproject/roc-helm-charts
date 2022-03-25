@@ -3,13 +3,13 @@
 # SPDX-License-Identifier: Apache-2.0
 
 nameOverride: ""
-fullnameOverride: "rasa-model-server"
+fullnameOverride: "rasa-action-server"
 
 replicaCount: 1
 annotations: {}
 
 image:
-  repository: onosproject/rasa-model-server
+  repository: onosproject/rasa-action-server
   tag: v0.1.7
   pullPolicy: IfNotPresent
   pullSecrets: []
@@ -17,4 +17,6 @@ image:
 service:
   type: ClusterIP
 
-modelfiles: /opt/rasa-models/
+smtp:
+  server: mailhog
+  port: 1025

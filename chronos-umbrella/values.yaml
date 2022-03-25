@@ -12,7 +12,7 @@ global:
 
 import:
   grafana:
-    enabled: true
+    enabled: false
   prometheus:
     chronos:
       enabled: true
@@ -25,11 +25,17 @@ import:
 
 aether-enterprise-portal:
   grafana:
-    proxyEnabled: true
+    proxyEnabled: false
     service: chronos-grafana
   prometheus:
     proxyEnabled: true
     service: chronos-prometheus-chronos-server
+  rasa:
+    proxyEnabled: true
+    service: chronos-umbrella-rasa
+  mailhog:
+    proxyEnabled: true
+    service: chronos-umbrella
 
 grafana:
   image:
@@ -118,6 +124,9 @@ prometheus-chronos:
                 - chronos-exporter:2112
 
 rasa:
+  image:
+    repository: onosproject/rasa-sanic
+    tag: v0.1.4
   applicationSettings:
     token: chronos-rasa-token
     endpoints:
@@ -125,13 +134,22 @@ rasa:
         enabled: true
         url: http://rasa-model-server:8080/models/20220101-000000-aether-trained
         token: chronos-rasa-model-server-token
+        wait_time_between_pulls: 60
       trackerStore:
         enabled: false
-      credientials:
-        enabled: true
-        additionalChannelCredentials:
-          rest:
-      telemetry:
-        enabled: false
+    credentials:
+      enabled: true
+      additionalChannelCredentials:
+        rest:
+        socketio:
+          user_message_evt: user_uttered
+          bot_message_evt: bot_uttered
+          session_persistence: true/false
+    telemetry:
+      enabled: false
   postgresql:
     install: false
+
+rasa-action-server:
+  smtp:
+    server: chronos-umbrella

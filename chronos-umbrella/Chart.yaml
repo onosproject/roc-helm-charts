@@ -7,7 +7,7 @@ name: chronos-umbrella
 description: Chronos Umbrella chart to deploy all Aether ROC
 kubeVersion: ">=1.18.0"
 type: application
-version: 0.1.29
+version: 0.1.30
 appVersion: v0.0.0
 keywords:
   - aether
@@ -29,16 +29,25 @@ dependencies:
   - name: chronos-exporter
     condition: import.chronos-exporter.enabled
     repository: "file://../chronos-exporter"
-    version: 0.0.25
+    version: 0.1.0
   - name: aether-enterprise-portal
     condition: import.aether-enterprise-portal.enabled
     repository: "file://../aether-enterprise-portal"
-    version: 0.1.0
+    version: 0.1.1
   - name: rasa-model-server
-    condition: import.rasa-model-server.enabled
+    condition: import.rasa.enabled
     repository: "file://../rasa-model-server"
-    version: 0.0.4
+    version: 0.1.0
+  - name: rasa-action-server
+    condition: import.rasa.enabled
+    repository: "file://../rasa-action-server"
+    version: 0.1.0
   - name: rasa
     condition: import.rasa.enabled
     repository: https://helm.rasa.com
     version: 1.16.0
+  - name: mailhog
+    condition: import.rasa.enabled
+    alias: chronos-umbrella-mailhog
+    version: 1.0.2
+    repository: https://sitepilot.github.io/helm-charts
