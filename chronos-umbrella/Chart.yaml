@@ -7,7 +7,7 @@ name: chronos-umbrella
 description: Chronos Umbrella chart to deploy all Aether ROC
 kubeVersion: ">=1.18.0"
 type: application
-version: 0.1.30
+version: 0.1.31
 appVersion: v0.0.0
 keywords:
   - aether
@@ -48,6 +48,5 @@ dependencies:
     version: 1.16.0
   - name: mailhog
     condition: import.rasa.enabled
-    alias: chronos-umbrella-mailhog
-    version: 1.0.2
-    repository: https://sitepilot.github.io/helm-charts
+    version: 5.0.5
+    repository: https://codecentric.github.io/helm-charts

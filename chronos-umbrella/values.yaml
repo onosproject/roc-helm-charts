@@ -7,7 +7,7 @@
 # Declare variables to be passed into your templates.
 
 global:
-  fullnameOverride: "onos"
+  fullnameOverride: "chronos"
   nameOverride: ""
 
 import:
@@ -29,13 +29,13 @@ aether-enterprise-portal:
     service: chronos-grafana
   prometheus:
     proxyEnabled: true
-    service: chronos-prometheus-chronos-server
+    service: chronos-prometheus
   rasa:
     proxyEnabled: true
     service: chronos-umbrella-rasa
   mailhog:
     proxyEnabled: true
-    service: chronos-umbrella
+    service: chronos-mailhog
 
 grafana:
   image:
@@ -54,7 +54,7 @@ grafana:
   source:
   - name: chronos
     protocol: http
-    service: chronos-prometheus-chronos-server
+    service: chronos-prometheus
     port: 80
   grafana.ini:
     log:
@@ -100,19 +100,18 @@ grafana:
 
 prometheus-chronos:
   alertmanager:
+    enabled: false
     persistentVolume:
       enabled: false
   server:
     persistentVolume:
       enabled: false
-    fullnameOverride: chronos-prometheus-chronos-server
+    fullnameOverride: chronos-prometheus
   pushgateway:
     enabled: false
   nodeExporter:
     enabled: false
   kubeStateMetrics:
-    enabled: false
-  alertmanager:
     enabled: false
   serverFiles:
     prometheus.yml:
@@ -127,6 +126,7 @@ rasa:
   image:
     repository: onosproject/rasa-sanic
     tag: v0.1.4
+#  fullnameOverride: "chronos-rasa"
   applicationSettings:
     token: chronos-rasa-token
     endpoints:
@@ -152,4 +152,7 @@ rasa:
 
 rasa-action-server:
   smtp:
-    server: chronos-umbrella
+    server: chronos-mailhog
+
+mailhog:
+  fullnameOverride: chronos-mailhog

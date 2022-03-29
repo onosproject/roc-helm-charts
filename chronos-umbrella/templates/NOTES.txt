@@ -12,3 +12,6 @@ To learn more about the release, try:
   $ helm -n {{.Release.Namespace}} get all {{ .Release.Name }}
   $ watch kubectl -n {{.Release.Namespace}} get pods
 
+NOTE: if you're deploying this with a name other than "chronos-umbrella" you will have to add
+`--set aether-enterprise-portal.rasa.service=<name>-rasa`. This is because RASA Helm Chart can utilize `fullnameOverride`
+See https://github.com/RasaHQ/helm-charts/issues/69
