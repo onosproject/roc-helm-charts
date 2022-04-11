@@ -1,0 +1,46 @@
+{
+  "groups": [
+    "AetherROCAdmin"
+  ],
+  "target": "starbucks",
+  "site": [
+    {
+      "site_id": "site_1",
+      "display_name": "Site 1",
+      "small_cell": [
+        {
+          "small_cell_id": "sc_1_1",
+          "display_name": "SC 1_1"
+        },
+        {
+          "small_cell_id": "sc_1_2",
+          "display_name": "SC 1_2"
+        }
+      ]
+    },
+    {
+      "site_id": "site_2",
+      "display_name": "Site 2",
+      "small_cell": [
+        {
+          "small_cell_id": "sc_2_1",
+          "display_name": "SC 2_1"
+        },
+        {
+          "small_cell_id": "sc_2_2",
+          "display_name": "SC 2_2"
+        }
+      ]
+    }
+  ],
+  "template": [
+    {
+      "template_id": "template_1",
+      "display_name": "Template 1"
+    },
+    {
+      "template_id": "template_1",
+      "display_name": "Template 1"
+    }
+  ]
+}

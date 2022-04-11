@@ -33,15 +33,14 @@ spec:
     onos.topo.Asset:
       name: 5G Core
     onos.topo.MastershipState: {}
-
 ---
 # The 4G/5G v2.1.0 sdcore-adapter
 apiVersion: topo.onosproject.org/v1beta1
 kind: Entity
 metadata:
-  name: connectivity-service-v2-1
+  name: starbucks
 spec:
-  uri: connectivity-service-v2-1
+  uri: starbucks
   kind:
     name: aether
   aspects:
@@ -55,5 +54,51 @@ spec:
     onos.topo.TLSOptions:
       insecure: true
     onos.topo.Asset:
-      name: 5G Core
+      name: Starbucks Enterprise
+    onos.topo.MastershipState: {}
+---
+# The 4G/5G v2.1.0 sdcore-adapter
+apiVersion: topo.onosproject.org/v1beta1
+kind: Entity
+metadata:
+  name: acme
+spec:
+  uri: acme
+  kind:
+    name: aether
+  aspects:
+    onos.topo.Configurable:
+      address: sdcore-adapter-v2-1:5150
+      version: 2.1.x
+      type: aether
+    onos.topo.Location:
+      lat: 52.5150
+      lng: 13.3885
+    onos.topo.TLSOptions:
+      insecure: true
+    onos.topo.Asset:
+      name: ACME Enterprise
+    onos.topo.MastershipState: {}
+---
+# The 4G/5G v2.1.0 sdcore-adapter
+apiVersion: topo.onosproject.org/v1beta1
+kind: Entity
+metadata:
+  name: defaultent
+spec:
+  uri: defaultent
+  kind:
+    name: aether
+  aspects:
+    onos.topo.Configurable:
+      address: sdcore-adapter-v2-1:5150
+      version: 2.1.x
+      type: aether
+    onos.topo.Location:
+      lat: 52.5150
+      lng: 13.3885
+    onos.topo.TLSOptions:
+      insecure: true
+    onos.topo.Asset:
+      name: Default Enterprise
     onos.topo.MastershipState: {}

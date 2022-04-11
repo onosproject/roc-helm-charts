@@ -9,20 +9,36 @@ echo[config] {
 }
 
 allowed[config] {
-    enterprise := enterprise_rule
+    application := application_rule
+    site := site_rule
+    template := template_rule
+    traffic_class := traffic_class_rule
     config := {
-        "connectivity_services": object.get(input, "connectivity_services", {}),
-        "enterprises": {
-            "enterprise": [
-                enterprise
-            ]
-        }
+        "application": application,
+        "site": site,
+        "template": template,
+        "traffic_class": traffic_class
     }
 }
 
-enterprise_rule[enterprise] {
-    enterprise := input.enterprises.enterprise[_]
-    ["AetherROCAdmin", enterprise.enterprise_id][_] == input.groups[i]
+application_rule[application] {
+    ["AetherROCAdmin", input.target][_] == input.groups[i]
+    application := input.application
+}
+
+site_rule[site] {
+    ["AetherROCAdmin", input.target][_] == input.groups[i]
+    site := input.site
+}
+
+template_rule[template] {
+    ["AetherROCAdmin", input.target][_] == input.groups[i]
+    template := input.template
+}
+
+traffic_class_rule[traffic_class] {
+    ["AetherROCAdmin", input.target][_] == input.groups[i]
+    traffic_class := input.traffic_class
 }
 
 can_update_enterprise = true {
