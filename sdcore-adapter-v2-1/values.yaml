@@ -3,14 +3,14 @@
 # SPDX-License-Identifier: Apache-2.0
 
 nameOverride: ""
-fullnameOverride: "sdcore-adapter-v4"
+fullnameOverride: "sdcore-adapter-v2-1"
 
 replicaCount: 1
 annotations: {}
 
 image:
   repository: onosproject/sdcore-adapter
-  tag: v0.2.21
+  tag: v0.4.1
   pullPolicy: IfNotPresent
   pullSecrets: []
 
@@ -24,9 +24,6 @@ service:
 
 partialUpdateEnabled: true
 secure: true
-initialConfig: ""
-output: ""
-spgwEndpoint: ""
 
 ports:
   gnmi:

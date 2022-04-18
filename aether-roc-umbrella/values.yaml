@@ -48,9 +48,9 @@ import:
       enabled: false
   sdcore-adapter:
     v2:
-      enabled: true
-    v4:
       enabled: false
+    v2-1:
+      enabled: true
   subscriber-proxy:
     enabled: true
   sdcore-test-dummy:
@@ -143,9 +143,9 @@ sdcore-adapter-v2:
   prometheusEnabled: false
   partialUpdateEnabled: true
 
-sdcore-adapter-v4:
+sdcore-adapter-v2-1:
   prometheusEnabled: false
-  partialUpdateEnabled: true
+  partialUpdateEnabled: true  
 
 # Subscriber Proxy
 subscriber-proxy:

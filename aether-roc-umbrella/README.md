@@ -36,8 +36,17 @@ to [Kubernetes].
 The Aether ROC Umbrella chart controls the Config Model Plugins that are enabled in `onos-config`
 Currently 2 versions of the `Aether` model are loaded:
 
-* aether-2.1.0
-* aether-3.0.0
+* aether-2.0.x
+* aether-2.1.x
+
+## Configuring a default target
+For the 2.1.x models, you may need to set a default target when configuring sdcore-adapter, as onos-config
+does not supply the target at this time. Override the setting "defaultTarget". For example,
+
+```yaml
+sdcore-adapter-v2-1:
+  defaultTarget: acme
+```
 
 ## Deploy with Authentication enabled
 

@@ -51,14 +51,8 @@ spec:
             - "-ca=/etc/sdcore-adapter/certs/tls.cacert"
             - "-alsologtostderr"
             - "-hostCheckDisabled"
-            {{ if .Values.initialConfig }}
-            - "-config={{ .Values.initialConfig }}"
-            {{ end }}
-            {{ if .Values.output }}
-            - "-output={{ .Values.output }}"
-            {{ end }}
-            {{ if .Values.spgwEndpoint }}
-            - "-spgw_endpoint={{ .Values.spgwEndpoint }}"
+            {{ if .Values.defaultTarget }}
+            - "-default_target={{ .Values.defaultTarget }}"
             {{ end }}
             {{ if not .Values.partialUpdateEnabled }}
             - "-partial_update_disable"
@@ -79,9 +73,6 @@ spec:
             initialDelaySeconds: 15
             periodSeconds: 20
           volumeMounts:
-            - name: targetconfig
-              mountPath: /etc/sdcore-adapter/configs
-              readOnly: true
             - name: secret
               mountPath: /etc/sdcore-adapter/certs
               readOnly: true              
@@ -91,10 +82,7 @@ spec:
       volumes:
         - name: logconfig
           configMap:
-            name: {{ template "sdcore-adapter.fullname" . }}-logconfig
-        - name: targetconfig
-          configMap:
-            name: {{ template "sdcore-adapter.fullname" . }}-targetconfig            
+            name: {{ template "sdcore-adapter.fullname" . }}-logconfig      
         - name: secret
           secret:
             secretName: {{ template "sdcore-adapter.fullname" . }}-secret
