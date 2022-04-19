@@ -41,12 +41,17 @@ Currently 2 versions of the `Aether` model are loaded:
 
 ## Configuring a default target
 For the 2.1.x models, you may need to set a default target when configuring sdcore-adapter, as onos-config
-does not supply the target at this time. Override the setting "defaultTarget". For example,
+does not supply the target at this time. Override the setting "defaultTarget". Likely candidates include
+`defaultent` which should be available in all deployments, or `acme` or `starbucks` which are present
+in the 2.1 aether-roc-api mega-patch. For example,
 
 ```yaml
 sdcore-adapter-v2-1:
-  defaultTarget: acme
+  defaultTarget: defaultent
 ```
+
+This setting is intentionally left unconfigured by default, to encourage the developer to choose a default
+target that matches their environment and workflow.
 
 ## Deploy with Authentication enabled
 

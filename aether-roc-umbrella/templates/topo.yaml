@@ -22,7 +22,7 @@ spec:
     name: aether
   aspects:
     onos.topo.Configurable:
-      address: sdcore-adapter-v2:5150
+      address: sdcore-adapter-v2-0:5150
       version: 2.0.x
       type: aether
     onos.topo.Location:

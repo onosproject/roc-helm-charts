@@ -47,7 +47,7 @@ import:
     v4:
       enabled: false
   sdcore-adapter:
-    v2:
+    v2-0:
       enabled: false
     v2-1:
       enabled: true
@@ -139,11 +139,13 @@ aether-roc-gui-v4:
         port: 80
 
 # SD-Core Adapter
-sdcore-adapter-v2:
+sdcore-adapter-v2-0:
+  fullnameOverride: sdcore-adapter-v2-0
   prometheusEnabled: false
   partialUpdateEnabled: true
 
 sdcore-adapter-v2-1:
+  fullnameOverride: sdcore-adapter-v2-1
   prometheusEnabled: false
   partialUpdateEnabled: true  
 
