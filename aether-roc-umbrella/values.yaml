@@ -374,3 +374,17 @@ onos-config:
   openpolicyagent:
     enabled: true
     regoConfigMap: aether-roc-umbrella-opa-rbac
+
+enterprises:
+  - id: starbucks
+    name: Starbucks Enterprise
+    lat: 52.5150
+    long: 13.3885
+  - id: acme
+    name: ACME Enterprise
+    lat: 52.5150
+    long: 13.3885
+  - id: defaultent
+    name: Default Enterprise
+    lat: 52.5150
+    long: 13.3885
