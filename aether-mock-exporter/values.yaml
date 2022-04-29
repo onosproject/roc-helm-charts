@@ -3,14 +3,14 @@
 # SPDX-License-Identifier: Apache-2.0
 
 nameOverride: ""
-fullnameOverride: "demo-exporter"
+fullnameOverride: "aether-mock-exporter"
 
 replicaCount: 1
 annotations: {}
 
 image:
-  repository: onosproject/sdcore-adapter
-  tag: v0.2.12
+  repository: onosproject/aether-mock-exporter
+  tag: v0.4.0
   pullPolicy: IfNotPresent
   pullSecrets: []
 

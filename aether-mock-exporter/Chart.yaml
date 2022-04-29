@@ -3,11 +3,11 @@
 # SPDX-License-Identifier: Apache-2.0
 
 apiVersion: v2
-name: demo-exporter
-description: Aether ROC Demo Exporter
+name: aether-mock-exporter
+description: Aether ROC Mock Exporter
 kubeVersion: ">=1.15.0"
 type: application
-version: 0.1.1
+version: 0.2.0
 appVersion: v0.0.0
 keywords:
   - aether

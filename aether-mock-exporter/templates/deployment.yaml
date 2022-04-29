@@ -44,7 +44,7 @@ spec:
                 fieldRef:
                   fieldPath: spec.nodeName
           args:
-            - "/usr/local/bin/sdcore-exporter"
+            - "/usr/local/bin/aether-mock-exporter"
           ports:
             - name: metrics
               containerPort: 2112
