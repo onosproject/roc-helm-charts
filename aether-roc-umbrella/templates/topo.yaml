@@ -2,11 +2,20 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 
-# A topology kind representing an E2 node
+# A topology kind representing an Aether node
 apiVersion: topo.onosproject.org/v1beta1
 kind: Kind
 metadata:
   name: aether
+spec:
+  aspects: {}
+
+---
+# A topology kind representing an Aether Enterprise node
+apiVersion: topo.onosproject.org/v1beta1
+kind: Kind
+metadata:
+  name: enterprise
 spec:
   aspects: {}
 
@@ -43,7 +52,7 @@ metadata:
 spec:
   uri: {{ .id }}
   kind:
-    name: aether
+    name: enterprise
   aspects:
     onos.topo.Configurable:
       address: sdcore-adapter-v2-1:5150

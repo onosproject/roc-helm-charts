@@ -378,13 +378,13 @@ onos-config:
 enterprises:
   - id: starbucks
     name: Starbucks Enterprise
-    lat: 52.5150
-    long: 13.3885
+    lat: 47.581115
+    long: -122.335692
   - id: acme
     name: ACME Enterprise
-    lat: 52.5150
-    long: 13.3885
+    lat: 41.974568
+    long: -87.782062
   - id: defaultent
     name: Default Enterprise
-    lat: 52.5150
-    long: 13.3885
+    lat: 37.453017
+    long: -122.180708
