@@ -4,16 +4,14 @@
 # SPDX-License-Identifier: Apache-2.0
 
 apiVersion: v2
-name: sdcore-adapter
+name: sdcore-prom-kafka
 kubeVersion: ">=1.17.0"
 type: application
-version: 2.1.3
+version: 1.0.0
 appVersion: v2.1.0
-description: Aether SD-Core Adapter
+description: Poll Prometheus for core changes and push to Kafka
 keywords:
   - aether
-  - sdcore
-  - adapter
 home: https://www.opennetworking.org/aether/
 maintainers:
   - name: Aether Ops team

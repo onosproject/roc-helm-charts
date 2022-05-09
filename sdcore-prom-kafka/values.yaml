@@ -23,18 +23,8 @@ resources:
 service:
   type: ClusterIP
 
-partialUpdateEnabled: true
-secure: true
-
-ports:
-  gnmi:
-    secure: 5150
-  prometheus: 9851
-  diagApi: 8080
-
-kafkaURI: ""
-
-prometheusEnabled: true
+kafkaURI: "kafka-0.kafka-headless:9092"
+prometheusEndpoint: "http://aether-roc-umbrella-prometheus-acc-server:80"
 
 nodeSelector: {}
 

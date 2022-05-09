@@ -1,3 +1,4 @@
+# SPDX-FileCopyrightText: 2022-present Intel Corporation
 # SPDX-FileCopyrightText: 2020-present Open Networking Foundation <info@opennetworking.org>
 #
 # SPDX-License-Identifier: Apache-2.0
@@ -51,6 +52,8 @@ import:
       enabled: false
     v2-1:
       enabled: true
+  sdcore-prom-kafka:
+    enabled: false
   subscriber-proxy:
     enabled: true
   sdcore-test-dummy:

@@ -1,3 +1,4 @@
+# SPDX-FileCopyrightText: 2022-present Intel Corporation
 # SPDX-FileCopyrightText: 2020-present Open Networking Foundation <info@opennetworking.org>
 #
 # SPDX-License-Identifier: Apache-2.0
@@ -56,6 +57,9 @@ spec:
             {{ end }}
             {{ if not .Values.partialUpdateEnabled }}
             - "-partial_update_disable"
+            {{ end }}
+            {{ if .Values.kafkaURI }}
+            - "-kafka_uri={{ .Values.kafkaURI }}"
             {{ end }}
           ports:
             {{- range $key, $port := .Values.ports.gnmi }}
