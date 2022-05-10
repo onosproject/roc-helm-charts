@@ -14,14 +14,12 @@ opa-test:
 	@cd aether-roc-umbrella/files/opa-rbac && for test_file in test/*; do \
 	trimmed=`basename $$test_file .json`;\
 	case "$$trimmed" in \
-	*2.0.0*) docker run -v $$(pwd):/opa-rbac openpolicyagent/opa:0.29.4 eval -f pretty -b /opa-rbac \
+	*2.0.0*) docker run --platform linux/amd64 -v $$(pwd):/opa-rbac openpolicyagent/opa:0.40.0 eval -f pretty -b /opa-rbac \
 	--input opa-rbac/test/$$trimmed.json data.aether_2_0_x.allowed > /tmp/$$trimmed.out;;\
-	*3.0.0*) docker run -v $$(pwd):/opa-rbac openpolicyagent/opa:0.29.4 eval -f pretty -b /opa-rbac \
-	--input opa-rbac/test/$$trimmed.json data.aether_3_0_0.allowed > /tmp/$$trimmed.out;;\
-	*4.0.0*) docker run -v $$(pwd):/opa-rbac openpolicyagent/opa:0.29.4 eval -f pretty -b /opa-rbac \
-	--input opa-rbac/test/$$trimmed.json data.aether_4_0_18.allowed > /tmp/$$trimmed.out;;\
+	*2.1.0*) docker run --platform linux/amd64 -v $$(pwd):/opa-rbac openpolicyagent/opa:0.40.0 eval -f pretty -b /opa-rbac \
+	--input opa-rbac/test/$$trimmed.json data.aether_2_1_x.allowed > /tmp/$$trimmed.out;;\
 	*) continue;;esac;\
-	cmp -s /tmp/$$trimmed.out test/out/$$trimmed.out \
+	cmp -b /tmp/$$trimmed.out test/out/$$trimmed.out \
 	&& echo "[TEST] $$trimmed.json : PASS"|| echo "[TEST] $$trimmed.json : FAIL";\
 	done;
 

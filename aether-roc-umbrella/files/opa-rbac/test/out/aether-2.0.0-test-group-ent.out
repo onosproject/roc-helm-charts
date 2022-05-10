@@ -23,11 +23,6 @@
       "enterprise": [
         [
           {
-            "description": "This Enterprise holds discovered IMSIs that cannot be associated elsewhere.",
-            "display_name": "Default Enterprise",
-            "enterprise_id": "defaultent"
-          },
-          {
             "connectivity_service": [
               {
                 "connectivity_service": "cs5gtest",
@@ -52,6 +47,11 @@
             "description": "Starbucks Corporation",
             "display_name": "Starbucks Inc.",
             "enterprise_id": "starbucks"
+          },
+          {
+            "description": "This Enterprise holds discovered IMSIs that cannot be associated elsewhere.",
+            "display_name": "Default Enterprise",
+            "enterprise_id": "defaultent"
           }
         ]
       ]
