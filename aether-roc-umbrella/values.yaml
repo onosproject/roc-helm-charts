@@ -366,11 +366,11 @@ onos-config:
       enabled: false
   modelPlugins:
     - name: aether-2
-      image: onosproject/aether-2.0.x:2.0.3-aether-2.0.x
+      image: onosproject/aether-2.0.x:2.0.6-aether-2.0.x
       endpoint: localhost
       port: 5152
     - name: aether-2-1
-      image: onosproject/aether-2.1.x:2.1.3-aether-2.1.x
+      image: onosproject/aether-2.1.x:2.1.5-aether-2.1.x
       endpoint: localhost
       port: 5153
 
