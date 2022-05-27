@@ -1,0 +1,129 @@
+# SPDX-FileCopyrightText: 2022-present Intel Corporation
+#
+# SPDX-License-Identifier: Apache-2.0
+
+# Default values for all Aether Helm charts.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+global:
+  fullnameOverride: "onos"
+  nameOverride: ""
+  image:
+    registry: ""
+    tag: ""
+  store:
+    consensus:
+      enabled: true
+      name: ""
+      image:
+        registry: ""
+        repository: atomix/atomix-raft-storage-node
+        tag: ""
+        pullPolicy: IfNotPresent
+        pullSecrets: []
+      clusters: 1
+      replicas: 1
+      partitions: 1
+      raft: {}
+      persistence:
+        storageClass: ""
+        storageSize: 1Gi
+
+import:
+  onos-topo:
+    enabled: true
+  onos-config:
+    enabled: true
+  onos-cli:
+    enabled: true
+  fabric-roc-api:
+    enabled: false
+  fabric-roc-gui:
+    v0-1:
+      enabled: false
+  fabric-adapter:
+    v0-1:
+      enabled: false
+  fabric-test-dummy:
+    enabled: false
+  prometheus:
+    fabric:
+      enabled: false # controls its plproxy too
+  prom-label-proxy:
+    fabric:
+      enabled: false
+  fabric-mock-exporter:
+    enabled: false
+
+# ONOS-TOPO
+onos-topo:
+  store:
+    consensus:
+      enabled: false
+
+# ONOS-CLI
+onos-cli: {}
+
+# Aether ROC API
+fabric-roc-api: {}
+
+# Fabric Adapter
+fabric-adapter-v2-1:
+  fullnameOverride: sdcore-adapter-v2-1
+  prometheusEnabled: false
+  partialUpdateEnabled: true  
+
+# Prom label Proxy
+prom-label-proxy-fabric:
+  nameOverride: prom-label-proxy-fabric
+  fullnameOverride: prom-label-proxy-fabric
+  prometheusEnabled: false
+  config:
+    upstream: http://fabric-umbrella-prometheus-fabric-server
+
+prometheus-fabric:
+  pushgateway:
+    enabled: false
+  nodeExporter:
+    enabled: false
+  kubeStateMetrics:
+    enabled: false
+  alertmanager:
+    enabled: false
+  serverFiles:
+    prometheus.yml:
+      scrape_configs:
+        - job_name: aether-mock-exporter
+          scrape_interval: 2s
+          static_configs:
+            - targets:
+                - aether-mock-exporter:2112
+
+# Fabric Test Dummy
+# proxy_pass has to be added or nginx will not log the $request_body
+fabric-test-dummy:
+  service:
+    type: ClusterIP
+  existingServerBlockConfigmap: fabric-umbrella-fabric-test-dummy
+
+# ONOS-CONFIG
+onos-config:
+  store:
+    consensus:
+      enabled: false
+  modelPlugins:
+    - name: fabric-0-1
+      image: onosproject/sdn-fabric-0.1.x:0.1.0-sdn-fabric-0.1.x
+      endpoint: localhost
+      port: 5152
+
+  openpolicyagent:
+    enabled: false
+    regoConfigMap: fabric-umbrella-opa-rbac
+
+fabrics:
+  - id: mars
+    name: Mars Fabric
+  - id: venus
+    name: Venus Fabric

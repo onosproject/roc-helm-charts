@@ -1,0 +1,21 @@
+#!/bin/bash
+# SPDX-FileCopyrightText: 2022-present Intel Corporation
+#
+# SPDX-License-Identifier: Apache-2.0
+# Script to build and run all of the onos integration tests
+
+set -eu -o pipefail
+
+chart_dir=$(mktemp -d)
+
+#cp -R ../onos-helm-charts/* ${chart_dir}
+cp -R ../roc-helm-charts/* ${chart_dir}
+
+kubectl delete ns fabric-umbrella || true
+kubectl create ns fabric-umbrella
+# This test is currently not working - need to figure out why
+helmit test -n fabric-umbrella ./test -c ${chart_dir} --suite fabric-umbrella
+kubectl delete ns fabric-umbrella
+
+rm -rf ${chart_dir}
+

@@ -1,0 +1,20 @@
+# SPDX-FileCopyrightText: 2022-present Intel Corporation
+#
+# SPDX-License-Identifier: Apache-2.0
+
+Thank you for installing {{ .Chart.Name }} Helm chart.
+
+Your release is named {{ .Release.Name }} in namespace {{.Release.Namespace}}.
+See https://docs.onosproject.org/developers/deploy_with_helm/
+
+To learn more about the release, try:
+  $ helm -n {{.Release.Namespace}} status {{ .Release.Name }}
+  $ helm -n {{.Release.Namespace}} get all {{ .Release.Name }}
+  $ watch kubectl -n {{.Release.Namespace}} get pods
+
+You can attach to:
+* Fabric CLI pod with
+$ kubectl -n {{.Release.Namespace}} exec -it deployment/onos-cli -- /bin/bash
+* Fabric Portal at http://<server_IP>:31194
+
+The fabric-roc-api is then available at http://<server_IP>:31194/aether-roc-api
