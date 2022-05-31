@@ -44,7 +44,7 @@ import:
       enabled: false
   fabric-adapter:
     v0-1:
-      enabled: false
+      enabled: true
   fabric-test-dummy:
     enabled: false
   prometheus:
@@ -69,10 +69,10 @@ onos-cli: {}
 fabric-roc-api: {}
 
 # Fabric Adapter
-fabric-adapter-v2-1:
-  fullnameOverride: sdcore-adapter-v2-1
+fabric-adapter-v0-1:
+  fullnameOverride: fabric-adapter-v0-1
   prometheusEnabled: false
-  partialUpdateEnabled: true  
+  partialUpdateEnabled: true
 
 # Prom label Proxy
 prom-label-proxy-fabric:

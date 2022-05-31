@@ -1,0 +1,92 @@
+# SPDX-FileCopyrightText: 2022-present Intel Corporation
+# SPDX-FileCopyrightText: 2020-present Open Networking Foundation <info@opennetworking.org>
+#
+# SPDX-License-Identifier: Apache-2.0
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ template "fabric-adapter.fullname" . }}
+  namespace: {{ .Release.Namespace }}
+  labels:
+    name: {{ template "fabric-adapter.fullname" . }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      {{- include "fabric-adapter.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        name: {{ template "fabric-adapter.fullname" . }}
+        {{- include "fabric-adapter.selectorLabels" . | nindent 8 }}
+    spec:
+    {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 6 }}
+    {{- end }}
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      containers:
+        - name: {{ .Chart.Name }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          env:
+            - name: POD_NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
+            - name: POD_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+            - name: NODE_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: spec.nodeName
+          args:
+            - "/usr/local/bin/fabric-adapter"
+            - "-bind_address=:{{ .Values.ports.gnmi.secure }}"
+            - "-key=/etc/fabric-adapter/certs/tls.key"
+            - "-cert=/etc/fabric-adapter/certs/tls.crt"
+            - "-ca=/etc/fabric-adapter/certs/tls.cacert"
+            - "-alsologtostderr"
+            - "-hostCheckDisabled"
+            {{ if .Values.defaultTarget }}
+            - "-default_target={{ .Values.defaultTarget }}"
+            {{ end }}
+            {{ if not .Values.partialUpdateEnabled }}
+            - "-partial_update_disable"
+            {{ end }}
+            {{ if .Values.kafkaURI }}
+            - "-kafka_uri={{ .Values.kafkaURI }}"
+            {{ end }}
+          ports:
+            {{- range $key, $port := .Values.ports.gnmi }}
+            - name: gnmi{{ $key }}
+              containerPort: {{ $port }}
+            {{- end}}
+          readinessProbe:
+            tcpSocket:
+              port: {{ .Values.ports.gnmi.secure }}
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          livenessProbe:
+            tcpSocket:
+              port: {{ .Values.ports.gnmi.secure }}
+            initialDelaySeconds: 15
+            periodSeconds: 20
+          volumeMounts:
+            - name: secret
+              mountPath: /etc/fabric-adapter/certs
+              readOnly: true
+            - name: logconfig
+              mountPath: /etc/onos/config
+              readOnly: true
+      volumes:
+        - name: logconfig
+          configMap:
+            name: {{ template "fabric-adapter.fullname" . }}-logconfig
+        - name: secret
+          secret:
+            secretName: {{ template "fabric-adapter.fullname" . }}-secret
