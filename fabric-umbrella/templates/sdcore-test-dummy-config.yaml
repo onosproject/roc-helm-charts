@@ -5,10 +5,10 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: {{ .Release.Name }}-sdcore-test-dummy
+  name: {{ .Release.Name }}-fabric-test-dummy
   namespace: {{ .Release.Namespace }}
 data:
-  sdcore-test-dummy.conf: |-
+  fabric-test-dummy.conf: |-
     log_format client '$remote_addr - $remote_user $request_time $upstream_response_time '
                       '[$time_local] "$request" $status $body_bytes_sent $request_body "$http_referer" '
                       '"$http_user_agent" "$http_x_forwarded_for"';
@@ -37,6 +37,10 @@ data:
       }
       location /api/subscriber {
         rewrite ^/api/subscriber/.* /api/subscriber break;
+        proxy_pass http://127.0.0.1:8080/post_dummy;
+      }
+      location /onos/v1/network/configuration {
+        root /;
         proxy_pass http://127.0.0.1:8080/post_dummy;
       }
       location = /post_dummy {
