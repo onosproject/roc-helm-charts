@@ -38,7 +38,7 @@ import:
   onos-cli:
     enabled: true
   fabric-roc-api:
-    enabled: false
+    enabled: true
   fabric-roc-gui:
     v0-1:
       enabled: false
