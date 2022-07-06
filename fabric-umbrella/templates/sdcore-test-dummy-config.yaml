@@ -5,7 +5,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: {{ .Release.Name }}-fabric-test-dummy
+  name: {{ .Chart.Name }}-fabric-test-dummy
   namespace: {{ .Release.Namespace }}
 data:
   fabric-test-dummy.conf: |-
