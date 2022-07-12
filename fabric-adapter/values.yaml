@@ -11,7 +11,7 @@ annotations: {}
 
 image:
   repository: onosproject/fabric-adapter
-  tag: v0.0.3
+  tag: "{{ .Chart.AppVersion }}"
   pullPolicy: IfNotPresent
   pullSecrets: []
 

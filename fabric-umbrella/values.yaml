@@ -41,7 +41,7 @@ import:
     enabled: true
   fabric-roc-gui:
     v0-1:
-      enabled: false
+      enabled: true
   fabric-adapter:
     v0-1:
       enabled: true
@@ -114,7 +114,7 @@ onos-config:
       enabled: false
   modelPlugins:
     - name: fabric-0-1
-      image: onosproject/sdn-fabric-0.1.x:0.1.3-sdn-fabric-0.1.x
+      image: onosproject/sdn-fabric-0.1.x:0.1.4-sdn-fabric-0.1.x
       endpoint: localhost
       port: 5152
 
