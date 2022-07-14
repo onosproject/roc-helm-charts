@@ -26,6 +26,12 @@ spec:
       address: fabric-adapter-v0-1:5150
       version: 0.1.x
       type: sdn-fabric
+    onos.topo.ControllerInfo:
+      control_endpoint:
+        address: {{ .onos.address }}
+        port: {{ .onos.port }}
+      username: {{ .onos.username }}
+      password: {{ .onos.password }}
     onos.topo.Location:
       lat: {{ .lat }}
       lng: {{ .long }}

@@ -125,5 +125,15 @@ onos-config:
 fabrics:
   - id: mars
     name: Mars Fabric
+    onos:
+      address: netcfg.onos.mars
+      port: 8080
+      username: onos
+      password: rocks
   - id: venus
     name: Venus Fabric
+    onos:
+      address: netcfg.onos.venus
+      port: 8080
+      username: onos
+      password: rocks
