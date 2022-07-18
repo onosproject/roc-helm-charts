@@ -7,7 +7,7 @@ name: aether-roc-umbrella
 description: Aether ROC Umbrella chart to deploy all Aether ROC
 kubeVersion: ">=1.18.0"
 type: application
-version: 2.0.47
+version: 2.0.48
 appVersion: v0.0.0
 keywords:
   - aether
@@ -61,7 +61,7 @@ dependencies:
     alias: sdcore-test-dummy
     condition: import.sdcore-test-dummy.enabled
     repository: https://charts.bitnami.com/bitnami
-    version: 8.9.0
+    version: 12.0.0
   - name: grafana
     condition: import.grafana.enabled
     repository: https://grafana.github.io/helm-charts
