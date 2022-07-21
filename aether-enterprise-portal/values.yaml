@@ -76,12 +76,6 @@ mailhog:
   protocol: http
   port: 8025
 
-websocket:
-  proxyEnabled: false
-  service: aether-roc-websocket
-  protocol: http
-  port: 80
-
 grafana:
   proxyEnabled: false
   service: grafana

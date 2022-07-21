@@ -64,12 +64,6 @@ aetherservices:
     protocol: http
     streamTimeout: 3600
 
-websocket:
-  proxyEnabled: false
-  service: aether-roc-websocket
-  protocol: http
-  port: 80
-
 grafana:
   proxyEnabled: false
   service: grafana
