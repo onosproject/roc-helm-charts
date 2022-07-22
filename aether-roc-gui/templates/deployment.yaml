@@ -46,6 +46,10 @@ spec:
                   fieldPath: metadata.namespace
             - name: OPENIDCISSUER
               value: {{ .Values.openidc.issuer }}
+            - name: FEATUREAETHER
+              value: {{ .Values.feature.aether | quote }}
+            - name: FEATURESDNFABRIC
+              value: {{ .Values.feature.sdnfabric | quote }}
           stdin : true
           resources:
             {{- toYaml .Values.resources | nindent 12 }}

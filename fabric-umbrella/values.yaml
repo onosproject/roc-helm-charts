@@ -68,6 +68,13 @@ onos-cli: {}
 # Aether ROC API
 fabric-roc-api: {}
 
+fabric-roc-gui:
+  nameOverride: fabric-roc-gui
+  fullnameOverride: fabric-roc-gui
+  feature:
+    aether: false
+    sdnfabric: true
+
 # Fabric Adapter
 fabric-adapter-v0-1:
   fullnameOverride: fabric-adapter-v0-1
