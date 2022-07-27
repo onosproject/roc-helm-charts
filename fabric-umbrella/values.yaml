@@ -121,7 +121,7 @@ onos-config:
       enabled: false
   modelPlugins:
     - name: fabric-0-1
-      image: onosproject/sdn-fabric-0.1.x:0.1.4-sdn-fabric-0.1.x
+      image: onosproject/sdn-fabric-0.1.x:0.1.7-sdn-fabric-0.1.x
       endpoint: localhost
       port: 5152
 
