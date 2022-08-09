@@ -55,3 +55,35 @@ Selector labels
 app.kubernetes.io/name: {{ include "fabric-adapter.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end -}}
+
+{{/*
+fabric-adapter consensus image name
+*/}}
+{{- define "fabric-adapter.store.consensus.imagename" -}}
+{{- if or .Values.store.consensus.image.tag .Values.global.store.consensus.image.tag -}}
+{{- if .Values.global.store.consensus.image.registry -}}
+{{- printf "%s/" .Values.global.store.consensus.image.registry -}}
+{{- else if .Values.store.consensus.image.registry -}}
+{{- printf "%s/" .Values.store.consensus.image.registry -}}
+{{- end -}}
+{{- printf "%s:" .Values.store.consensus.image.repository -}}
+{{- if .Values.global.store.consensus.image.tag -}}
+{{- .Values.global.store.consensus.image.tag -}}
+{{- else -}}
+{{- .Values.store.consensus.image.tag -}}
+{{- end -}}
+{{- else -}}
+""
+{{- end -}}
+{{- end -}}
+
+{{/*
+fabric-adapter consensus store name
+*/}}
+{{- define "fabric-adapter.store.consensus.name" -}}
+{{- if .Values.store.consensus.name -}}
+{{- printf "%s" .Values.store.consensus.name -}}
+{{- else -}}
+{{- printf "%s-consensus-store" ( include "fabric-adapter.fullname" . ) -}}
+{{- end -}}
+{{- end -}}

@@ -20,11 +20,15 @@ spec:
       labels:
         name: {{ template "fabric-adapter.fullname" . }}
         {{- include "fabric-adapter.selectorLabels" . | nindent 8 }}
+      annotations:
+        broker.atomix.io/inject: "true"
+        raft.storage.atomix.io/inject: "true"
     spec:
     {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
         {{- toYaml . | nindent 6 }}
     {{- end }}
+      serviceAccountName: {{ template "fabric-adapter.fullname" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       containers:
@@ -90,3 +94,6 @@ spec:
         - name: secret
           secret:
             secretName: {{ template "fabric-adapter.fullname" . }}-secret
+        - name: config
+          configMap:
+            name: {{ template "fabric-adapter.fullname" . }}-config

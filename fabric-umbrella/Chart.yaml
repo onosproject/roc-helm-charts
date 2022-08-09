@@ -7,7 +7,7 @@ name: fabric-umbrella
 description: Fabric ROC Umbrella chart to deploy all Fabric ROC
 kubeVersion: ">=1.18.0"
 type: application
-version: 0.1.12
+version: 0.1.13
 appVersion: v0.0.0
 keywords:
   - aether
@@ -42,7 +42,7 @@ dependencies:
   - name: fabric-adapter
     condition: import.fabric-adapter.v0-1.enabled
     repository: "file://../fabric-adapter"
-    version: 0.1.1
+    version: 0.1.2
     alias: fabric-adapter-v0-1
   - name: nginx
     alias: fabric-test-dummy

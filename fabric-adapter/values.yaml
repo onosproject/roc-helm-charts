@@ -3,6 +3,14 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 
+global:
+  store:
+    consensus:
+      name: ""
+      image:
+        registry: ""
+        tag: ""
+
 nameOverride: ""
 fullnameOverride: ""
 
@@ -53,3 +61,21 @@ logging:
     stdout:
       type: stdout
       stdout: {}
+
+store:
+  consensus:
+    enabled: true
+    name: ""
+    image:
+      registry: ""
+      repository: atomix/atomix-raft-storage-node
+      tag: ""
+      pullPolicy: IfNotPresent
+      pullSecrets: []
+    clusters: 1
+    replicas: 1
+    partitions: 1
+    raft: {}
+    persistence:
+      storageClass: ""
+      storageSize: 1Gi
