@@ -251,7 +251,7 @@ prometheus-acc:
   kubeStateMetrics:
     enabled: false
   alertmanager:
-    configMapOverrideName: alertmanager
+    enabled: false
   serverFiles:
     alerting_rules.yml:
      groups:
