@@ -10,13 +10,13 @@ replicaCount: 1
 
 image:
   repository: onosproject/aether-roc-gui
-  tag: v0.9.24
+  tag: "{{ .Chart.AppVersion }}"
   pullPolicy: IfNotPresent
   pullSecrets: []
 
 imagePullSecrets: []
 nameOverride: ""
-fullnameOverride: "aether-roc-gui-v2"
+fullnameOverride: "aether-roc-gui-v2-1"
 
 ## Client service.
 service:
