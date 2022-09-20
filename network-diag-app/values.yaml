@@ -1,0 +1,13 @@
+# Copyright 2022-present Intel Corporation
+#
+# SPDX-License-Identifier: Apache-2.0
+
+image:
+  repository: registry.aetherproject.org/aether-apps/network-diag-app
+  pullPolicy: Always
+  tag: master
+
+service:
+  name: network-diag-app
+  type: ClusterIP
+  port: 3333

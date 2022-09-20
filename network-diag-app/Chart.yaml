@@ -1,0 +1,8 @@
+# SPDX-FileCopyrightText: 2022-present Intel Corporation
+#
+# SPDX-License-Identifier: Apache-2.0
+
+apiVersion: v2
+appVersion: 0.0.4-dev
+name: network-diag-app
+version: 0.1.0
