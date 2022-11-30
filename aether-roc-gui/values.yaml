@@ -23,7 +23,7 @@ service:
   enabled: true
   ## Service name is user-configurable for maximum service discovery flexibility.
   name: aether-roc-gui
-  type: LoadBalancer
+  type: NodePort
   external:
     nodePort: 31194
 
