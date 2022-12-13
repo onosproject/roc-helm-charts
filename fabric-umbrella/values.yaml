@@ -42,9 +42,6 @@ import:
   fabric-roc-gui:
     v0-1:
       enabled: true
-  fabric-adapter:
-    v0-1:
-      enabled: true
   fabric-test-dummy:
     enabled: false
   prometheus:
@@ -74,12 +71,6 @@ fabric-roc-gui:
   feature:
     aether: false
     sdnfabric: true
-
-# Fabric Adapter
-fabric-adapter-v0-1:
-  fullnameOverride: fabric-adapter-v0-1
-  prometheusEnabled: false
-  partialUpdateEnabled: true
 
 # Prom label Proxy
 prom-label-proxy-fabric:
