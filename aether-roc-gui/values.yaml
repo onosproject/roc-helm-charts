@@ -15,8 +15,6 @@ image:
   pullSecrets: []
 
 imagePullSecrets: []
-nameOverride: ""
-fullnameOverride: "aether-roc-gui-v2-1"
 
 ## Client service.
 service:
@@ -64,6 +62,7 @@ affinity: {}
 
 aetherservices:
   aether-roc-api:
+    service: "{{ .Release.Name }}-aether-roc-api"
     http: 8181
     protocol: http
     streamTimeout: 3600

@@ -106,85 +106,73 @@ aether-roc-api: {}
 
 # Aether ROC GUI
 aether-roc-gui-v2:
-  nameOverride: aether-roc-gui-v2
-  fullnameOverride: aether-roc-gui-v2
   grafana:
     proxyEnabled: true
-    service: aether-roc-umbrella-grafana # the grafana hostname - use FQDN for other namespaces
+    service: "{{ .Release.Name }}-grafana" # the grafana hostname - use FQDN for other namespaces
   prometheus:
     acc:
       proxyEnabled: true
-      service: prom-label-proxy-acc
+      service: "{{ .Release.Name }}-prom-label-proxy-acc"
       protocol: http
       port: 8080
     amp:
       proxyEnabled: true
-      service: prom-label-proxy-amp
+      service: "{{ .Release.Name }}-prom-label-proxy-amp"
       protocol: http
       port: 8080
     site:
       - name: ace1
-        service: aether-roc-umbrella-prometheus-ace-server
+        service: "{{ .Release.Name }}-prometheus-ace-server"
         protocol: http
         port: 80
 
 aether-roc-gui-v2-1:
-  nameOverride: aether-roc-gui-v2-1
-  fullnameOverride: aether-roc-gui-v2-1
   feature:
     aether: true
     sdnfabric: false
   grafana:
     proxyEnabled: true
-    service: aether-roc-umbrella-grafana # the grafana hostname - use FQDN for other namespaces
+    service: "{{ .Release.Name }}-grafana" # the grafana hostname - use FQDN for other namespaces
   prometheus:
     acc:
       proxyEnabled: true
-      service: prom-label-proxy-acc
+      service: "{{ .Release.Name }}-prom-label-proxy-acc"
       protocol: http
       port: 8080
     amp:
       proxyEnabled: true
-      service: prom-label-proxy-amp
+      service: "{{ .Release.Name }}-prom-label-proxy-amp"
       protocol: http
       port: 8080
     site:
       - name: ace1
-        service: aether-roc-umbrella-prometheus-ace-server
+        service: "{{ .Release.Name }}-prometheus-ace-server"
         protocol: http
         port: 80
 
 # SD-Core Adapter
 sdcore-adapter-v2-0:
-  fullnameOverride: sdcore-adapter-v2-0
   prometheusEnabled: false
   partialUpdateEnabled: true
 
 sdcore-adapter-v2-1:
-  fullnameOverride: sdcore-adapter-v2-1
   prometheusEnabled: false
   partialUpdateEnabled: true  
 
 # Subscriber Proxy
 subscriber-proxy:
-  nameOverride: subscriber-proxy
-  fullnameOverride: subscriber-proxy
   prometheusEnabled: false
 
 # Prom label Proxy
 prom-label-proxy-amp:
-  nameOverride: prom-label-proxy-amp
-  fullnameOverride: prom-label-proxy-amp
   prometheusEnabled: false
   config:
-    upstream: http://aether-roc-umbrella-prometheus-amp-server
+    upstream: "http://{{ .Release.Name }}-prometheus-amp-server"
 
 prom-label-proxy-acc:
-  nameOverride: prom-label-proxy-acc
-  fullnameOverride: prom-label-proxy-acc
   prometheusEnabled: false
   config:
-    upstream: http://aether-roc-umbrella-prometheus-acc-server
+    upstream: "http://{{ .Release.Name }}-prometheus-acc-server"
 
 grafana:
   sidecar:
@@ -199,23 +187,23 @@ grafana:
   source:
   - name: acc
     protocol: http
-    service: aether-roc-umbrella-prometheus-acc-server
+    service: "{{ .Release.Name }}-prometheus-acc-server"
     port: 80
   - name: amp
     protocol: http
-    service: aether-roc-umbrella-prometheus-amp-server
+    service: "{{ .Release.Name }}-prometheus-amp-server"
     port: 80
   - name: acme-chicago
     protocol: http
-    service: aether-roc-umbrella-prometheus-ace-server
+    service: "{{ .Release.Name }}-prometheus-ace-server"
     port: 80
   - name: starbucks-newyork
     protocol: http
-    service: aether-roc-umbrella-prometheus-ace-server
+    service: "{{ .Release.Name }}-prometheus-ace-server"
     port: 80
   - name: starbucks-seattle
     protocol: http
-    service: aether-roc-umbrella-prometheus-ace-server
+    service: "{{ .Release.Name }}-prometheus-ace-server"
     port: 80
   grafana.ini:
     log:
@@ -260,11 +248,11 @@ grafana:
       name: KeyCloak
 
 prometheus-acc:
-  pushgateway:
+  prometheus-pushgateway:
     enabled: false
-  nodeExporter:
+  prometheus-node-exporter:
     enabled: false
-  kubeStateMetrics:
+  kube-state-metrics:
     enabled: false
   alertmanager:
     enabled: false
@@ -324,11 +312,11 @@ prometheus-acc:
                 - aether-mock-exporter:2112
 
 prometheus-amp:
-  pushgateway:
+  prometheus-pushgateway:
     enabled: false
-  nodeExporter:
+  prometheus-node-exporter:
     enabled: false
-  kubeStateMetrics:
+  kube-state-metrics:
     enabled: false
   alertmanager:
     enabled: false
@@ -342,11 +330,11 @@ prometheus-amp:
                 - aether-mock-exporter:2112
 
 prometheus-ace:
-  pushgateway:
+  prometheus-pushgateway:
     enabled: false
-  nodeExporter:
+  prometheus-node-exporter:
     enabled: false
-  kubeStateMetrics:
+  kube-state-metrics:
     enabled: true
   alertmanager:
     enabled: false
@@ -362,14 +350,14 @@ prometheus-ace:
           scrape_interval: 2s
           static_configs:
             - targets:
-                - aether-roc-umbrella-kube-state-metrics:8080
+                - kube-state-metrics:8080
 
 # SD-Core Test Dummy
 # proxy_pass has to be added or nginx will not log the $request_body
 sdcore-test-dummy:
   service:
     type: ClusterIP
-  existingServerBlockConfigmap: aether-roc-umbrella-sdcore-test-dummy
+  existingServerBlockConfigmap: "{{ .Release.Name }}-sdcore-test-dummy"
 
 # ONOS-CONFIG
 onos-config:
@@ -383,13 +371,13 @@ onos-config:
       endpoint: localhost
       port: 5152
     - name: aether-2-1
-      image: onosproject/aether-2.1.x:2.1.11-aether-2.1.x
+      image: onosproject/aether-2.1.x:2.1.14-aether-2.1.x
       endpoint: localhost
       port: 5153
 
   openpolicyagent:
-    enabled: true
-    regoConfigMap: aether-roc-umbrella-opa-rbac
+    enabled: false
+    regoConfigMap: opa-rbac
 
 enterprises:
   - id: starbucks

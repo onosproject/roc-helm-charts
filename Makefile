@@ -27,9 +27,6 @@ roc-test: # @HELP run the integration tests
 roc-test: deps # @HELP run the integration tests
 	./build/bin/run-roc-test
 
-fabric-test: deps-fabric # @HELP run the integration tests
-	./build/bin/run-fabric-test
-
 clean: # @HELP clean up temporary files for ROC umbrella.
 	rm -rf aether-roc-umbrella/charts aether-roc-umbrella/Chart.lock chronos-umbrella/charts chronos-umbrella/Chart.lock fabric-umbrella/charts fabric-umbrella/Chart.lock
 
@@ -41,11 +38,6 @@ deps-chronos: # @HELP build dependencies for Chronos Umbrella local charts.
 deps-chronos: clean
 	rm -rf chronos-umbrella/Chart.lock chronos-umbrella/charts
 	helm dep build chronos-umbrella
-
-deps-fabric: # @HELP build dependencies for Fabric Umbrella local charts.
-deps-fabric: clean
-	rm -rf fabric-umbrella/Chart.lock fabric-umbrella/charts
-	helm dep build fabric-umbrella
 
 help:
 	@grep -E '^.*: *# *@HELP' $(MAKEFILE_LIST) \

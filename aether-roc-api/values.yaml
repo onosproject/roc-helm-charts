@@ -15,8 +15,6 @@ image:
   pullSecrets: []
 
 imagePullSecrets: []
-nameOverride: ""
-fullnameOverride: "aether-roc-api"
 
 gnmiEndpoint: onos-config:5150
 analyticsEndpoint: http://aether-roc-umbrella-prometheus-acc-server:9090

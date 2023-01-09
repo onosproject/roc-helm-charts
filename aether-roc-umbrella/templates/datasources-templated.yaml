@@ -15,7 +15,7 @@ data:
      datasources:
      {{- range .Values.grafana.source }}
      - name: datasource-{{ .name }}
-       url: {{ .protocol }}://{{ .service }}:{{ .port }}
+       url: {{ .protocol }}://{{ tpl .service $ }}:{{ .port }}
        type: prometheus
        access: proxy
        jsonData:

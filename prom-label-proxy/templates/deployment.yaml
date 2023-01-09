@@ -53,7 +53,7 @@ spec:
               [
               "-label={{ .Values.config.label }}",
               "-admingroup={{ .Values.config.admingroup }}",
-              "-upstream={{ .Values.config.upstream }}",
+              "-upstream={{ tpl .Values.config.upstream . }}",
               "-insecure-listen-address=0.0.0.0:{{ .Values.config.http.port }}",
               "-config_address=$(POD_IP):{{ .Values.config.gnmi.port }}",
               "-onos_config_url={{ .Values.config.onos_config_url }}",

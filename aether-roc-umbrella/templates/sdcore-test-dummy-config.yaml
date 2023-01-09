@@ -5,7 +5,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: {{ .Release.Name }}-sdcore-test-dummy
+  name: {{ template "sdcore-test-dummy.fullname" . }}
   namespace: {{ .Release.Namespace }}
 data:
   sdcore-test-dummy.conf: |-

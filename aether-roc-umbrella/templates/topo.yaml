@@ -31,7 +31,7 @@ spec:
     name: aether
   aspects:
     onos.topo.Configurable:
-      address: sdcore-adapter-v2-0:5150
+      address: {{ template "sdcore-adapter-v2-0-addr" $ }}
       version: 2.0.x
       type: aether
     onos.topo.Location:
@@ -55,7 +55,7 @@ spec:
     name: enterprise
   aspects:
     onos.topo.Configurable:
-      address: sdcore-adapter-v2-1:5150
+      address: {{ template "sdcore-adapter-v2-1-addr" $ }}
       version: 2.1.x
       type: aether
     onos.topo.Location:

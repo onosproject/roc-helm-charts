@@ -79,3 +79,24 @@ global consensus store name
 {{- printf "%s-consensus-store" ( include "global.fullname" . ) -}}
 {{- end -}}
 {{- end -}}
+
+{{/*
+sdcore-test-dummy
+*/}}
+{{- define "sdcore-test-dummy.fullname" -}}
+{{- printf "%s-sdcore-test-dummy" .Release.Name -}}
+{{- end -}}
+
+{{/*
+sdcore-adapter-v2-0-addr
+*/}}
+{{- define "sdcore-adapter-v2-0-addr" -}}
+{{- printf "%s-sdcore-adapter-v2-0:5150" .Release.Name -}}
+{{- end -}}
+
+{{/*
+sdcore-adapter-v2-1-addr
+*/}}
+{{- define "sdcore-adapter-v2-1-addr" -}}
+{{- printf "%s-sdcore-adapter-v2-1:5150" .Release.Name -}}
+{{- end -}}
