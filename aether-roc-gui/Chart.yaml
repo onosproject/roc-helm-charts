@@ -7,8 +7,8 @@ name: aether-roc-gui
 description: Aether ROC Graphical User Interface
 kubeVersion: ">=1.15.0"
 type: application
-version: 2.1.19
-appVersion: v0.10.1
+version: 2.1.20
+appVersion: v0.10.3
 keywords:
   - aether
   - roc
