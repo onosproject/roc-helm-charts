@@ -13,7 +13,7 @@ It can also act as a Federated [OpenID Connect] provider. It can connect to a va
 In this deployment it is not connected to a backend, and just uses its own internal format
 persisted to a local Postgres DB.
 
-This chart can be deployed alongside [onos-umbrella](../onos-umbrella) or any other umbrella
+This chart can be deployed alongside [aether-roc-umbrella](../aether-roc-umbrella) or any other umbrella
 chart that requires an OpenID provider.
 
 ## Helm install
@@ -26,8 +26,10 @@ helm repo update
 To install the standalone Keycloak server in to a namespace e.g. `aether` use:
 
 ```shell
-helm -n aether install keycloak bitnami/keycloak -f onosproject/onos-helm-charts/keycloak/values.yaml
+helm -n aether install keycloak bitnami/keycloak -f keycloak/values.yaml
 ```
+
+> See the end of this page for uninstall instructions.
 
 This will make it available at http://localhost:80
 
@@ -35,6 +37,13 @@ Now GUI applications with security enabled will redirect to this `localhost:80`
 and when login is successful will redirect to an authenticated GUI.
 
 > To test it, browse to http://localhost/realms/master/.well-known/openid-configuration to see the configuration.
+
+> On KinD installations this LoadBalancer will not work and instead a port-forward will be needed e.g.
+>
+> `kubectl -n aether port-forward service/keycloak 8080:80`
+>
+> and replace `localhost` in instructions below with `localhost:8080`
+
 
 There are 7 users in 8 groups with the LDIF defined in `values.yaml`
 
@@ -44,7 +53,7 @@ User             login                 Group:   mixedGroup      charactersGroup 
 Alice Admin      alicea@opennetworking.org         ✓                                   ✓
 Bob Cratchit     bobc@opennetworking.org           ✓              ✓
 Charlie Brown    charlieb@opennetworking.org                      ✓
-Daisy Duke       daisyd@opennetworking.org                        ✓                                    ✓              ✓                                    ✓                         
+Daisy Duke       daisyd@opennetworking.org                        ✓                                    ✓              ✓                                    ✓
 Elmer Fudd       elmerf@opennetworking.org                        ✓                                                   ✓                                    ✓
 Fred Flintstone  fredf@opennetworking.org                         ✓                                    ✓                          ✓        ✓
 Gandalf The Grey gandalfg@opennetworking.org                      ✓                                                               ✓        ✓
@@ -69,11 +78,15 @@ helm -n aether install aether-roc-umbrella aether/aether-roc-umbrella \
 > Note here that the connection to keycloak is inside the cluster for the backend services at `http://keycloak`
 > whereas the GUI connects to `http://localhost`
 
-> Note also that the `regoConfigMap` value includes the name of the deployment 
-
 ## Administration
 The Keycloak Admin console can be reached at http://localhost `admin/admin`
 
+## Uninstall
+To uninstall:
+```shell
+helm -n aether uninstall keycloak
+kubectl -n aether delete pvc data-keycloak-postgresql-0
+```
 
 [Keycloak]: https://www.keycloak.org/
 [OpenID Connect]: https://openid.net/connect/
