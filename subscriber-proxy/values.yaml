@@ -3,7 +3,7 @@
 # SPDX-License-Identifier: Apache-2.0
 
 nameOverride: ""
-fullnameOverride: ""
+fullnameOverride: "subscriber-proxy"
 
 replicaCount: 1
 annotations: {}

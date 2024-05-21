@@ -4,8 +4,7 @@
 # SPDX-License-Identifier: Apache-2.0
 
 nameOverride: ""
-fullnameOverride: ""
-
+fullnameOverride: "sdcore-adapter-v2-1"
 replicaCount: 1
 annotations: {}
 
