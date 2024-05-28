@@ -1,3 +1,8 @@
+<!--
+SPDX-FileCopyrightText: 2024 Intel Corporation
+SPDX-License-Identifier: Apache-2.0
+
+-->
 # ROC Helm Charts
 
 > This is the new location for `roc-helm-charts` moved from https://gerrit.opencord.org/admin/repos/roc-helm-charts in May 2024.
