@@ -30,5 +30,8 @@ jobs:
   #           fi
   #         done
 
-  license-and-fossa-check:
-    uses: onosproject/.github/.github/workflows/main.yml@main
+  license-check:
+    uses: onosproject/.github/.github/workflows/license-check.yml@main
+
+  fossa-check:
+    uses: onosproject/.github/.github/workflows/fossa-scan.yml@main
