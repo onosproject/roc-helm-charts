@@ -8,7 +8,7 @@ name: aether-roc-umbrella
 description: Aether ROC Umbrella chart to deploy all Aether ROC
 kubeVersion: ">=1.18.0"
 type: application
-version: 2.1.36
+version: 2.1.37
 appVersion: v0.0.0
 keywords:
   - aether
@@ -56,7 +56,7 @@ dependencies:
   - name: sdcore-adapter
     condition: import.sdcore-adapter.v2-1.enabled
     repository: "file://../sdcore-adapter"
-    version: 2.1.4
+    version: 2.1.5
     alias: sdcore-adapter-v2-1
   - name: subscriber-proxy
     condition: import.subscriber-proxy.enabled
