@@ -39,6 +39,15 @@ deps-chronos: clean
 	rm -rf chronos-umbrella/Chart.lock chronos-umbrella/charts
 	helm dep build chronos-umbrella
 
+HELM_CHARTS := $(shell find . -type f -name 'Chart.yaml' -exec dirname {} \;)
+.PHONY: helmlint
+helmlint: ## lint helm charts
+	@echo "Linting helm charts"
+	set -e ;\
+	$(foreach file,$(HELM_CHARTS),\
+		helm lint $(file) ;\
+    )
+
 help:
 	@grep -E '^.*: *# *@HELP' $(MAKEFILE_LIST) \
     | sort \
