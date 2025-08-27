@@ -1,9 +1,5 @@
 aether-roc-umbrella/Chart.lock
 aether-roc-umbrella/charts
-chronos-umbrella/Chart.lock
-chronos-umbrella/charts
-fabric-umbrella/Chart.lock
-fabric-umbrella/charts
 .idea
 .DS_Store
 */.DS_Store
