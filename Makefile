@@ -28,20 +28,15 @@ roc-test: deps # @HELP run the integration tests
 	./build/bin/run-roc-test
 
 clean: # @HELP clean up temporary files for ROC umbrella.
-	rm -rf aether-roc-umbrella/charts aether-roc-umbrella/Chart.lock chronos-umbrella/charts chronos-umbrella/Chart.lock fabric-umbrella/charts fabric-umbrella/Chart.lock
+	rm -rf aether-roc-umbrella/charts aether-roc-umbrella/Chart.lock
 
 deps: # @HELP build dependencies for ROC Umbrella local charts.
 deps: clean
 	helm dep build aether-roc-umbrella
 
-deps-chronos: # @HELP build dependencies for Chronos Umbrella local charts.
-deps-chronos: clean
-	rm -rf chronos-umbrella/Chart.lock chronos-umbrella/charts
-	helm dep build chronos-umbrella
-
 HELM_CHARTS := $(shell find . -type f -name 'Chart.yaml' -exec dirname {} \;)
 .PHONY: helmlint
-helmlint: ## lint helm charts
+helmlint: deps ## lint helm charts
 	@echo "Linting helm charts"
 	set -e ;\
 	$(foreach file,$(HELM_CHARTS),\
