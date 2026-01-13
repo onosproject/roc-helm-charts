@@ -12,7 +12,6 @@ on:
 
 jobs:
   publish-ghcr:
-    if: github.repository_owner == 'onosproject'
     runs-on: ubuntu-latest
     permissions:
       contents: read
