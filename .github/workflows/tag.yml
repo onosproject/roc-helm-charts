@@ -1,7 +1,7 @@
 # SPDX-License-Identifier: Apache-2.0
 # Copyright 2024 Intel Corporation
 
-name: Tag/Publish Release
+name: Version Management
 
 on:
   push:
@@ -12,16 +12,6 @@ jobs:
   # CAUTION: Other actions depend on this name "tag-github"
   tag-github:
     uses: onosproject/.github/.github/workflows/tag-github.yml@main
-    secrets: inherit
-
-  publish:
-    needs: tag-github
-    if: github.repository_owner == 'onosproject'
-    uses: onosproject/.github/.github/workflows/helm-publish-umbrella.yml@main
-    with:
-      umbrella_charts: ./aether-roc-umbrella
-      remote_host: static.opennetworking.org
-      remote_path: /srv/sites/charts.aetherproject.org/
     secrets: inherit
 
   update-version:
