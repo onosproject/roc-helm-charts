@@ -7,7 +7,7 @@
 # Declare variables to be passed into your templates.
 
 replicaCount: 1
-
+fullnameOverride: aether-roc-api
 image:
   repository: onosproject/aether-roc-api
   tag: "{{ .Chart.AppVersion }}"
