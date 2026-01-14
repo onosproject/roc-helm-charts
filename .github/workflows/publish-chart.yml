@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: Apache-2.0
-# Copyright 2025 Intel Corporation
+# SPDX-FileCopyrightText: 2025 Andy Bavier <andybavier@gmail.com>
 
 name: Publish Umbrella Helm Chart
 
