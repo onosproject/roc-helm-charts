@@ -1,0 +1,20 @@
+# SPDX-License-Identifier: Apache-2.0
+# SPDX-FileCopyrightText: 2025 Andy Bavier <andybavier@gmail.com>
+
+name: Publish Umbrella Helm Chart
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - 'aether-roc-umbrella/Chart.yaml'
+
+jobs:
+  publish:
+    uses: onosproject/.github/.github/workflows/publish-chart-to-ghcr.yml@main
+    permissions:
+      contents: read
+      packages: write
+    with:
+      chart_path: 'aether-roc-umbrella'
