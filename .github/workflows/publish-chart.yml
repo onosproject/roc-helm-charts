@@ -11,37 +11,10 @@ on:
       - 'aether-roc-umbrella/Chart.yaml'
 
 jobs:
-  publish-ghcr:
-    runs-on: ubuntu-latest
+  publish:
+    uses: onosproject/.github/.github/workflows/publish-chart-to-ghcr.yml@main
     permissions:
       contents: read
       packages: write
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Install Helm
-        uses: azure/setup-helm@v4
-
-      - name: Build chart dependencies
-        run: |
-          helm dep build aether-roc-umbrella
-
-      - name: Package Helm chart
-        run: |
-          helm package aether-roc-umbrella
-
-      - name: Login to GitHub Container Registry
-        run: |
-          echo "${{ secrets.GITHUB_TOKEN }}" | helm registry login ghcr.io -u ${{ github.actor }} --password-stdin
-
-      - name: Push chart to GHCR
-        run: |
-          # Convert owner name to lowercase for the registry URL
-          OWNER=$(echo "${{ github.repository_owner }}" | tr '[:upper:]' '[:lower:]')
-          helm push aether-roc-umbrella-*.tgz oci://ghcr.io/$OWNER
-
-      - name: Logout from GHCR
-        if: always()
-        run: |
-          helm registry logout ghcr.io
+    with:
+      chart_path: 'aether-roc-umbrella'
