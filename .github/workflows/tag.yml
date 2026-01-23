@@ -13,11 +13,11 @@ jobs:
   tag-github:
     uses: onosproject/.github/.github/workflows/tag-github.yml@main
     secrets: inherit
+    with:
+      add_v: false
 
   update-version:
     needs: tag-github
     if: needs.tag-github.outputs.changed == 'true'
     uses: onosproject/.github/.github/workflows/bump-version.yml@main
     secrets: inherit
-    with:
-      version: ${{ needs.tag-github.outputs.version }}
