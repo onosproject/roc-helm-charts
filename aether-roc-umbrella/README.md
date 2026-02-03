@@ -11,9 +11,7 @@ First add repos to your Helm client
 stable       	https://charts.helm.sh/stable                        
 cord         	https://charts.opencord.org                          
 atomix       	https://charts.atomix.io                             
-onosproject  	https://charts.onosproject.org                       
 sdran        	https://sdrancharts.onosproject.org                  
-aether       	https://charts.aetherproject.org                     
 cetic        	https://cetic.github.io/helm-charts                  
 bitnami      	https://charts.bitnami.com/bitnami
 ```
