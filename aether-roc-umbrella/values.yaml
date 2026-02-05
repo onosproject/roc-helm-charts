@@ -119,21 +119,21 @@ aether-roc-api: {}
 aether-roc-gui-v2:
   grafana:
     proxyEnabled: true
-    service: "{{ .Release.Name }}-grafana" # the grafana hostname - use FQDN for other namespaces
+    service: "grafana" # the grafana hostname - use FQDN for other namespaces
   prometheus:
     acc:
       proxyEnabled: true
-      service: "{{ .Release.Name }}-prom-label-proxy-acc"
+      service: "prom-label-proxy-acc"
       protocol: http
       port: 8080
     amp:
       proxyEnabled: true
-      service: "{{ .Release.Name }}-prom-label-proxy-amp"
+      service: "prom-label-proxy-amp"
       protocol: http
       port: 8080
     site:
       - name: ace1
-        service: "{{ .Release.Name }}-prometheus-ace-server"
+        service: "prometheus-ace-server"
         protocol: http
         port: 80
 
@@ -143,21 +143,21 @@ aether-roc-gui-v2-1:
     sdnfabric: false
   grafana:
     proxyEnabled: true
-    service: "{{ .Release.Name }}-grafana" # the grafana hostname - use FQDN for other namespaces
+    service: "grafana" # the grafana hostname - use FQDN for other namespaces
   prometheus:
     acc:
       proxyEnabled: true
-      service: "{{ .Release.Name }}-prom-label-proxy-acc"
+      service: "prom-label-proxy-acc"
       protocol: http
       port: 8080
     amp:
       proxyEnabled: true
-      service: "{{ .Release.Name }}-prom-label-proxy-amp"
+      service: "prom-label-proxy-amp"
       protocol: http
       port: 8080
     site:
       - name: ace1
-        service: "{{ .Release.Name }}-prometheus-ace-server"
+        service: "prometheus-ace-server"
         protocol: http
         port: 80
 
@@ -176,16 +176,19 @@ subscriber-proxy:
 
 # Prom label Proxy
 prom-label-proxy-amp:
+  fullnameOverride: prom-label-proxy-amp
   prometheusEnabled: false
   config:
-    upstream: "http://{{ .Release.Name }}-prometheus-amp-server"
+    upstream: "http://prometheus-amp-server"
 
 prom-label-proxy-acc:
+  fullnameOverride: prom-label-proxy-acc
   prometheusEnabled: false
   config:
-    upstream: "http://{{ .Release.Name }}-prometheus-acc-server"
+    upstream: "http://prometheus-acc-server"
 
 grafana:
+  fullnameOverride: grafana
   sidecar:
     dashboards:
        enabled: true
@@ -198,23 +201,23 @@ grafana:
   source:
   - name: acc
     protocol: http
-    service: "{{ .Release.Name }}-prometheus-acc-server"
+    service: "prometheus-acc-server"
     port: 80
   - name: amp
     protocol: http
-    service: "{{ .Release.Name }}-prometheus-amp-server"
+    service: "prometheus-amp-server"
     port: 80
   - name: acme-chicago
     protocol: http
-    service: "{{ .Release.Name }}-prometheus-ace-server"
+    service: "prometheus-ace-server"
     port: 80
   - name: starbucks-newyork
     protocol: http
-    service: "{{ .Release.Name }}-prometheus-ace-server"
+    service: "prometheus-ace-server"
     port: 80
   - name: starbucks-seattle
     protocol: http
-    service: "{{ .Release.Name }}-prometheus-ace-server"
+    service: "prometheus-ace-server"
     port: 80
   grafana.ini:
     log:
@@ -259,6 +262,7 @@ grafana:
       name: KeyCloak
 
 prometheus-acc:
+  fullnameOverride: prometheus-acc
   prometheus-pushgateway:
     enabled: false
   prometheus-node-exporter:
@@ -366,9 +370,10 @@ prometheus-ace:
 # SD-Core Test Dummy
 # proxy_pass has to be added or nginx will not log the $request_body
 sdcore-test-dummy:
+  fullnameOverride: sdcore-test-dummy
   service:
     type: ClusterIP
-  existingServerBlockConfigmap: "{{ .Release.Name }}-sdcore-test-dummy"
+  existingServerBlockConfigmap: "sdcore-test-dummy"
 
 # ONOS-CONFIG
 onos-config:
