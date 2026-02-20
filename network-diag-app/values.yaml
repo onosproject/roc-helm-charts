@@ -11,7 +11,7 @@ image:
   registry: "registry.aetherproject.org"
   repository: aether-apps/network-diag-app
   pullPolicy: Always
-  tag: master
+  tag: "{{ .Chart.AppVersion }}"
 
 service:
   name: network-diag-app

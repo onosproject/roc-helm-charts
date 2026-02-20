@@ -16,7 +16,7 @@ global:
 image:
   registry: ""
   repository: onosproject/subscriber-proxy
-  tag: v0.3.2
+  tag: "{{ .Chart.AppVersion }}"
   pullPolicy: IfNotPresent
   pullSecrets: []
 

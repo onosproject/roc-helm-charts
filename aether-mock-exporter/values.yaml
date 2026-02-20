@@ -17,7 +17,7 @@ global:
 image:
   registry: ""
   repository: onosproject/aether-mock-exporter
-  tag: v0.4.1
+  tag: "{{ .Chart.AppVersion }}"
   pullPolicy: IfNotPresent
   pullSecrets: []
 

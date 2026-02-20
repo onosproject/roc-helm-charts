@@ -9,7 +9,7 @@ description: Aether ROC Mock Exporter
 kubeVersion: ">=1.15.0"
 type: application
 version: 0.2.2
-appVersion: v0.0.0
+appVersion: v0.4.1
 keywords:
   - aether
   - exporter

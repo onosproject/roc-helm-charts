@@ -8,7 +8,7 @@ name: sdcore-prom-kafka
 kubeVersion: ">=1.17.0"
 type: application
 version: 1.0.1
-appVersion: v2.1.0
+appVersion: v0.4.9
 description: Poll Prometheus for core changes and push to Kafka
 keywords:
   - aether
