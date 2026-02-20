@@ -9,7 +9,13 @@ fullnameOverride: "aether-mock-exporter"
 replicaCount: 1
 annotations: {}
 
+global:
+  image:
+    registry: ""
+    tag: ""
+
 image:
+  registry: ""
   repository: onosproject/aether-mock-exporter
   tag: v0.4.1
   pullPolicy: IfNotPresent
