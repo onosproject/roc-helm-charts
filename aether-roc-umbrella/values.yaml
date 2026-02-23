@@ -11,7 +11,7 @@ global:
   fullnameOverride: "onos"
   nameOverride: ""
   image:
-    registry: ""
+    registry: "ghcr.io"  # Use ghcr.io for all images
     tag: ""
   atomix:
     store:

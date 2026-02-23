@@ -2,10 +2,16 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 
+global:
+  image:
+    registry: ""
+    tag: ""
+
 image:
-  repository: registry.aetherproject.org/aether-apps/network-diag-app
+  registry: "registry.aetherproject.org"
+  repository: aether-apps/network-diag-app
   pullPolicy: Always
-  tag: master
+  tag: "{{ .Chart.AppVersion }}"
 
 service:
   name: network-diag-app

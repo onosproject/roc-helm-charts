@@ -54,3 +54,20 @@ Selector labels
 app.kubernetes.io/name: {{ include "sdcore-adapter.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end -}}
+
+{{/*
+sdcore-adapter image name
+*/}}
+{{- define "sdcore-adapter.imagename" -}}
+{{- if .Values.global.image.registry -}}
+{{- printf "%s/" .Values.global.image.registry -}}
+{{- else if .Values.image.registry -}}
+{{- printf "%s/" .Values.image.registry -}}
+{{- end -}}
+{{- printf "%s:" .Values.image.repository -}}
+{{- if .Values.global.image.tag -}}
+{{- .Values.global.image.tag -}}
+{{- else -}}
+{{- tpl .Values.image.tag . -}}
+{{- end -}}
+{{- end -}}

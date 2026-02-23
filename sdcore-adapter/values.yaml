@@ -9,9 +9,15 @@ fullnameOverride: ""
 replicaCount: 1
 annotations: {}
 
+global:
+  image:
+    registry: ""
+    tag: ""
+
 image:
+  registry: ""
   repository: onosproject/sdcore-adapter
-  tag: v0.4.7
+  tag: "{{ .Chart.AppVersion }}"
   pullPolicy: IfNotPresent
   pullSecrets: []
 
