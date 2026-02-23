@@ -99,4 +99,4 @@ dependencies:
   - name: aether-mock-exporter
     condition: import.aether-mock-exporter.enabled
     repository: "file://../aether-mock-exporter"
-    version: 0.2.2
+    version: 0.2.3
